@@ -1,0 +1,9 @@
+﻿.nameHighlight {
+    background-color:#FF8;
+}
+#chat-wrapper.noTimeStamp tr.timestamp_message,
+#chat-wrapper.noEnterRoom tr.enter_message,
+#chat-wrapper.noLeaveRoom tr.leave_message,
+#chat-wrapper.noLeaveRoom tr.kick_message{
+	display: none;
+}

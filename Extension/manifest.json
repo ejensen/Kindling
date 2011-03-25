@@ -1,0 +1,34 @@
+{
+  "name": "Chromefire",
+  "version": "0.1",
+  "description": "Adds useful extentions to 37signals' Campfire.",
+  "background_page": "background.html",
+  "options_page": "options.html",
+  "minimum_chrome_version": "5.0.375.0",
+  "icons": { 
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png" 
+  },
+  "permissions": [
+    "notifications",
+    "tabs",
+    "*://*.campfirenow.com/room/*"
+  ],
+  "page_action": {
+    "default_icon": "icons/icon16.png",
+    "default_title": "Click to configure Chromefire...",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+      {
+      "matches": ["*://*.campfirenow.com/room/*"],
+      "css": ["css/content.css"],
+      "js": [
+        "scripts/jquery-1.5.1.min.js",
+        "scripts/highlightregex.min.js",
+        "scripts/contentscript.js"
+      ]
+    }
+  ]
+}
