@@ -1,7 +1,7 @@
 {
   "name": "Chromefire",
-  "version": "0.1",
-  "description": "Adds useful extentions to 37signals' Campfire.",
+  "version": "1.0.1,
+  "description": "A new extension which adds desktop notifications, name highlighting, and message filtering to 37signals Campfire.",
   "background_page": "background.html",
   "options_page": "options.html",
   "minimum_chrome_version": "5.0.375.0",

@@ -105,7 +105,7 @@ function init() {
     initSetting("enterRoom", false);
     initSetting("leaveRoom", false);
     initSetting("timeStamps", true);
-    initSetting("highlightName", false);
+    initSetting("highlightName", true);
     initSetting("showAvatars", true);
     initSetting("focusNotifications", true);
     initSetting("autoDismiss", true);
