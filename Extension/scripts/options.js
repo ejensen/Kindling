@@ -15,7 +15,7 @@ function onCheckChange($parent, value) {
     }
 
 	if($parent[0].id === "notifications" && value !== (localStorage.notifications === 'true')){
-		$("#highlightName,#showAvatars,#focusNotifications,#dismissDiv").slideToggle(200);
+		$("#showAvatars,#focusNotifications,#dismissDiv").slideToggle(200);
 	}
     else if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
         $("#timeoutDiv").slideToggle(200);
