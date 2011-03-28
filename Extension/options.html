@@ -26,17 +26,19 @@
 		 <label class="cb-disable selected"><span>Off</span></label>
 		 <label for="showAvatars" class="description">Display avatars</label>
 	 </p>
-	 <p class="field switch" id="autoDismiss">
-		 <label class="cb-enable"><span>On</span></label>
-		 <label class="cb-disable selected"><span>Off</span></label>
-		 <label for="autoDismiss" class="description">Auto-dismiss</label>
-	 </p>
-	 <div class="field" id="timeoutDiv">	 
-		 <div style="display:inline-block">
-				<input id="notificationTimeout" type="range" min="1000" max="10000" step="500"/><br />
-				<span id="rangeTooltip"></span>
+	 <div id="dismissDiv">
+		 <p class="field switch" id="autoDismiss">
+			 <label class="cb-enable"><span>On</span></label>
+			 <label class="cb-disable selected"><span>Off</span></label>
+			 <label for="autoDismiss" class="description">Auto-dismiss</label>
+		 </p>
+		 <div class="field" id="timeoutDiv">	 
+			 <div style="display:inline-block">
+					<input id="notificationTimeout" type="range" min="1000" max="10000" step="500"/><br />
+					<span id="rangeTooltip"></span>
+			 </div>
+			 <label for="notificationTimeout" style="vertical-align:top; margin-left:5px;">Auto-dismiss duration</label>
 		 </div>
-		 <label for="notificationTimeout" style="vertical-align:top; margin-left:5px;">Auto-dismiss duration</label>
 	 </div>
 </div>
 <div class="round-panel">

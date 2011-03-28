@@ -14,8 +14,11 @@ function onCheckChange($parent, value) {
         $parent.find(".cb-disable").addClass("selected");
     }
 
-    if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
-        $("#timeoutDiv").slideToggle(275);
+	if($parent[0].id === "notifications" && value !== (localStorage.notifications === 'true')){
+		$("#highlightName,#showAvatars,#focusNotifications,#dismissDiv").slideToggle(200);
+	}
+    else if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
+        $("#timeoutDiv").slideToggle(200);
     }
 }
 
@@ -51,6 +54,10 @@ function init() {
     var notificationTimeoutSlider = document.getElementById("notificationTimeout");
     notificationTimeoutSlider.value = localStorage.notificationTimeout;
     onNotificationTimeoutChanged();
+	
+	if(localStorage.notifications === 'false'){
+		("#highlightName,#showAvatars,#focusNotifications,#dismissDiv").hide();
+	}
     if (localStorage.autoDismiss === 'false') {
         $("#timeoutDiv").hide();
     }
