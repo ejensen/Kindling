@@ -1,0 +1,53 @@
+﻿{
+	"on":{
+		"message": "On"
+	},
+	"off":{
+		"message": "Off"
+	},
+	"notificationsTitle":{
+		"message": "Notifications"
+	},
+	"notifications":{
+		"message": "Chat notifications"
+	},
+	"focusNotifications":{
+		"message": "Display when chat is in focus"
+	},
+	"showAvatars":{
+		"message": "Display avatars"
+	},
+	"autoDismiss":{
+		"message": "Auto-dismiss"
+	},
+	"notificationTimeout":{
+		"message": "Auto-dismiss duration"
+	},
+	"messagesTitle":{
+		"message": "Messages"
+	},
+	"enterRoom":{
+		"message": "Enter room"
+	},
+	"leaveRoom":{
+		"message": "Leave room"
+	},
+	"timeStamps":{
+		"message": "Time stamps"
+	},
+	"otherTitle":{
+		"message": "Other"
+	},
+	"highlightName":{
+		"message": "Name highlighting"
+	},
+	"iconTooltip":{
+		"message": "Click to configure Chromefire..."
+	},
+	"description":{
+		"message": "A new extension which adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
+	},
+	"seconds":{
+		"message": "sec"
+	}
+}

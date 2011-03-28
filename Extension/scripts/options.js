@@ -36,7 +36,7 @@ function onCheckClick(sender, value) {
 function onNotificationTimeoutChanged() {
     var slider = document.getElementById("notificationTimeout");
     var $tooltip = $("#rangeTooltip");
-    $tooltip.html((slider.value / 1000) + " sec");
+    $tooltip.html((slider.value / 1000) + " " + chrome.i18n.getMessage("seconds"));
     $tooltip.css("left", ((slider.value / (slider.max - slider.min)) * $(slider).width()) - ($tooltip.width() / 1.75));
 
     localStorage[slider.id] = slider.value;
@@ -56,7 +56,7 @@ function init() {
     onNotificationTimeoutChanged();
 	
 	if(localStorage.notifications === 'false'){
-		("#highlightName,#showAvatars,#focusNotifications,#dismissDiv").hide();
+		$("#showAvatars,#focusNotifications,#dismissDiv").hide();
 	}
     if (localStorage.autoDismiss === 'false') {
         $("#timeoutDiv").hide();
@@ -69,7 +69,24 @@ var onToggle = function (e) {
     onCheckClick(e.currentTarget, value === 'true' ? false : true);
 };
 
-$(document).ready(function () {
+function getMessages(){
+	$(".cb-enable > span").html(chrome.i18n.getMessage("on"));
+	$(".cb-disable > span").html(chrome.i18n.getMessage("off"));
+	
+	$("#notificationsTitle").html(chrome.i18n.getMessage("notificationsTitle"));
+	$("#messagesTitle").html(chrome.i18n.getMessage("messagesTitle"));
+	$("#otherTitle").html(chrome.i18n.getMessage("otherTitle"));	
+	$("label[for='notificationTimeout']").html(chrome.i18n.getMessage("notificationTimeout"))
+	
+	var i;
+    for (i = 0; i < options.length; i += 1) {
+		$(".description[for='" + options[i] + "']").html(chrome.i18n.getMessage(options[i]));
+    }
+}
+
+window.onload = function () {
+	getMessages();
+	
     $(".cb-enable").click(function () {
         onCheckClick(this, true);
     });
@@ -82,4 +99,4 @@ $(document).ready(function () {
     $notificationTimeoutSlider.change(onNotificationTimeoutChanged);
 
     init();
-});
+};

@@ -10,6 +10,7 @@ body{
 }
 #avatar{
 	clear: both;
+	display: block;
 }
 #author{
 	clear: both;

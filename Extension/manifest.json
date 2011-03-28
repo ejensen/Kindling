@@ -1,7 +1,8 @@
 {
   "name": "Chromefire",
-  "version": "1.0.2",
-  "description": "A new extension which adds desktop notifications, name highlighting, and message filtering to 37signals Campfire.",
+  "version": "1.0.3",
+  "default_locale": "en_US",
+  "description": "__MSG_description__",
   "background_page": "background.html",
   "options_page": "options.html",
   "minimum_chrome_version": "5.0.375.0",
@@ -17,7 +18,7 @@
   ],
   "page_action": {
     "default_icon": "icons/icon16.png",
-    "default_title": "Click to configure Chromefire...",
+    "default_title": "__MSG_iconTooltip__",
     "default_popup": "options.html"
   },
   "content_scripts": [
