@@ -11,6 +11,8 @@ body{
 #avatar{
 	clear: both;
 	display: block;
+	width: 46px;
+	margin: 0 auto;
 }
 #author{
 	clear: both;
