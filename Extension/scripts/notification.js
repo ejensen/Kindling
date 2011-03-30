@@ -40,9 +40,19 @@ function getDomain(url) { //TODO: remove duplication
 	return match ? match[0] : "";
 }
 
+function injectCss (link) {
+    var lnk = document.createElement("link");
+    lnk.type = "text/css";
+	lnk.rel = "stylesheet"
+    lnk.href = link;
+    (document.head || document.body || document.documentElement).appendChild(lnk);
+}
+
 $(document).ready(function () {
     $("#author").html(getQueryVariable("author"));
     $("#room").html(getQueryVariable("room"));
+	
+	injectCss(getQueryVariable("baseUrl") + "/stylesheets/emoji.css");
 
     loadAvatar();
 
@@ -53,12 +63,14 @@ $(document).ready(function () {
 			this.src = getQueryVariable("baseUrl") + this.src.substring(getDomain(this.src).length);
 		}
 	});
+	
 	$content.find("a").each(function() {
 		if(isRelative(this.href)){
 			this.href = getQueryVariable("baseUrl") + this.pathname + this.search;
 		}
 	});
 	$content.find("img").aeImageResize({ width: 226, height: 118 });
+	
 
     if (localStorage.highlightName === 'true') {         //TODO: remove duplication
         var username = regExpEscape( getQueryVariable("user") );
