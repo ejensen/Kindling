@@ -112,3 +112,5 @@ function init() {
     initSetting("notifications", true);
     initSetting("notificationTimeout", 5000);
 }
+
+init();

@@ -70,6 +70,7 @@ var onToggle = function (e) {
 };
 
 function getMessages(){
+	document.title = chrome.i18n.getMessage("chromefireOptions");
 	$(".cb-enable > span").html(chrome.i18n.getMessage("on"));
 	$(".cb-disable > span").html(chrome.i18n.getMessage("off"));
 	
@@ -84,7 +85,7 @@ function getMessages(){
     }
 }
 
-window.onload = function () {
+$(document).ready(function () {
 	getMessages();
 	
     $(".cb-enable").click(function () {
@@ -99,4 +100,4 @@ window.onload = function () {
     $notificationTimeoutSlider.change(onNotificationTimeoutChanged);
 
     init();
-};
+});

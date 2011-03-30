@@ -49,5 +49,8 @@
 	},
 	"seconds":{
 		"message": "sec"
+	},
+	"chromefireOptions":{
+		"message": "Chromefire Options"
 	}
 }
