@@ -26,11 +26,11 @@ var Chromefire = {
     },
 
     bindNewMessage: function () {
-        Chromefire.$chat.bind("DOMNodeInserted", Chromefire.onNewMessage);
+        Chromefire.$chat.bind("DOMSubtreeModified", Chromefire.onNewMessage);
     },
 
     unbindNewMessage: function () {
-        Chromefire.$chat.unbind("DOMNodeInserted");
+        Chromefire.$chat.unbind("DOMSubtreeModified");
     },
 
     onRequest: function (request, sender, callback) {
