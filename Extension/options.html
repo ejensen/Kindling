@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{chromefireOptions}</title>
-<link rel="stylesheet" type="text/css" media="screen and (min-width:425px)" href="css/options.css"/>
-<link rel="stylesheet" type="text/css" media="screen and (max-width:425px)" href="css/options-small.css"/>
-<script type="text/javascript" src="scripts/jquery.min.js"></script>
-<script type="text/javascript" src="scripts/options.js"></script>
+	<title>{chromefireOptions}</title>
+	<link rel="stylesheet" type="text/css" media="screen and (min-width:425px)" href="css/options.css" />
+	<link rel="stylesheet" type="text/css" media="screen and (max-width:425px)" href="css/options-small.css" />
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/options.js"></script>
 </head>
 <body>
-<div id="logo"></div>
-<div class="round-panel">
-	 <h1 id="notificationsTitle">{notificationsTitle}</h1>
-	 <p class="field switch" id="notifications">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="notifications" class="description">{notifications}</label>
-	 </p>
-	 <p class="field switch" id="focusNotifications">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="focusNotifications" class="description">{focusNotifications}</label>
-	 </p>
-	 <p class="field switch" id="showAvatars">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="showAvatars" class="description">{showAvatars}</label>
-	 </p>
-	 <div id="dismissDiv">
-		 <p class="field switch" id="autoDismiss">
-			 <label class="cb-enable"><span>{on}</span></label>
-			 <label class="cb-disable selected"><span>{off}</span></label>
-			 <label for="autoDismiss" class="description">{autoDismiss}</label>
-		 </p>
-		 <div class="field" id="timeoutDiv">	 
-			 <div style="display:inline-block">
-					<input id="notificationTimeout" type="range" min="1000" max="10000" step="500"/><br />
+	<div id="logo"></div>
+	<div class="round-panel">
+		<h1 id="notificationsTitle">{notificationsTitle}</h1>
+		<p class="field switch" id="notifications">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="notifications" class="description">{notifications}</label>
+		</p>
+		<p class="field switch" id="focusNotifications">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="focusNotifications" class="description">{focusNotifications}</label>
+		</p>
+		<p class="field switch" id="showAvatars">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="showAvatars" class="description">{showAvatars}</label>
+		</p>
+		<div id="dismissDiv">
+			<p class="field switch" id="autoDismiss">
+				<label class="cb-enable"><span>{on}</span></label>
+				<label class="cb-disable selected"><span>{off}</span></label>
+				<label for="autoDismiss" class="description">{autoDismiss}</label>
+			</p>
+			<div class="field" id="timeoutDiv">
+				<div style="display: inline-block">
+					<input id="notificationTimeout" type="range" min="1000" max="10000" step="500" /><br />
 					<span id="rangeTooltip"></span>
-			 </div>
-			 <label for="notificationTimeout" style="vertical-align:top; margin-left:5px;">{autoDismiss}</label>
-		 </div>
-	 </div>
-</div>
-<div class="round-panel">
-	 <h1 id="messagesTitle">{messagesTitle}</h1>
-	 <p class="field switch" id="enterRoom">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="enterRoom" class="description">{enterRoom}</label>
-	 </p>
-	 <p class="field switch" id="leaveRoom">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="leaveRoom" class="description">{leaveRoom}</label>
-	 </p>
-	 <p class="field switch" id="timeStamps">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="timeStamps" class="description">{timeStamps}</label>
-	 </p>
-</div>
-<div class="round-panel">
-	 <h1 id="otherTitle">{otherTitle}</h1>
-	 <p class="field switch" id="highlightName">
-		 <label class="cb-enable"><span>{on}</span></label>
-		 <label class="cb-disable selected"><span>{off}</span></label>
-		 <label for="highlightName" class="description">{highlightName}</label>
-	 </p>
-</div>
+				</div>
+				<label for="notificationTimeout" style="vertical-align: top; margin-left: 5px;">{autoDismiss}</label>
+			</div>
+		</div>
+	</div>
+	<div class="round-panel">
+		<h1 id="messagesTitle">{messagesTitle}</h1>
+		<p class="field switch" id="enterRoom">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="enterRoom" class="description">{enterRoom}</label>
+		</p>
+		<p class="field switch" id="leaveRoom">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="leaveRoom" class="description">{leaveRoom}</label>
+		</p>
+		<p class="field switch" id="timeStamps">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="timeStamps" class="description">{timeStamps}</label>
+		</p>
+	</div>
+	<div class="round-panel">
+		<h1 id="otherTitle">{otherTitle}</h1>
+		<p class="field switch" id="highlightName">
+			<label class="cb-enable"><span>{on}</span></label>
+			<label class="cb-disable selected"><span>{off}</span></label>
+			<label for="highlightName" class="description">{highlightName}</label>
+		</p>
+	</div>
 </body>
 </html>
