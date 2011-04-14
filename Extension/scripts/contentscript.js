@@ -78,12 +78,13 @@ var Chromefire = {
 		Chromefire.unbindNewMessage();
 		try {
 			var $messages = Chromefire.$chat.find("div:.body");
-			$messages.highlightRegex();
+			var options = {className: "nameHighlight"};
+			$messages.highlightRegex(undefined, options);
 
 			if (Chromefire.options.highlightName === 'true') {
 				var username = Chromefire.regExpEscape(Chromefire.username);
 				var regex = new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
-				$messages.highlightRegex(regex);
+				$messages.highlightRegex(regex, options);
 			}
 		} catch (err) {
 		}

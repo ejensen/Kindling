@@ -1,78 +1,78 @@
 ﻿body {
-	 font-family: "Myriad Web","Lucida Grande",helvetica,arial,sans-serif;
-	 color: #222;
-	 background-color: #E5E5E5;
+	font-family: "Myriad Web","Lucida Grande",helvetica,arial,sans-serif;
+	color: #222;
+	background-color: #E5E5E5;
 }
 .cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
-	 background: url(switch.gif) repeat-x;
-	 display: block;
-	 float: left;
+	background: url(switch.gif) repeat-x;
+	display: block;
+	float: left;
 }
 h1 {
-	 font-size: 1.5em;
-	 margin: 0;
+	font-size: 1.5em;
+	margin: 0;
 }
 .cb-enable span, .cb-disable span {
-	  line-height: 30px; 
-	  display: block;
-	  background-repeat: no-repeat;
-	  font-weight: bold;
-	  color: #000;
-	  padding: 0 10px;
-	  text-shadow: 0px 1px 0px #e5e5ee;
+	line-height: 30px; 
+	display: block;
+	background-repeat: no-repeat;
+	font-weight: bold;
+	color: #000;
+	padding: 0 10px;
+	text-shadow: 0px 1px 0px #e5e5ee;
 }
 .cb-enable span {
-	 background-position: left -90px;
+	background-position: left -90px;
 }
 .cb-disable span { 
-	 background-position: right -180px;
+	background-position: right -180px;
 }
 .cb-disable.selected {
-	 background-position: 0 -30px;
+	background-position: 0 -30px;
 }
 .cb-disable.selected span {
-	 background-position: right -210px;
-	 color: #FFF;
-	 text-shadow: 0px -1px 0px #374683;
+	background-position: right -210px;
+	color: #FFF;
+	text-shadow: 0px -1px 0px #374683;
 }
 .cb-enable.selected {
-	 background-position: 0 -60px;
+	background-position: 0 -60px;
 }
 .cb-enable.selected span {
-	 background-position: left -150px;
-	 color: #FFF;
-	 text-shadow: 0px -1px 0px #374683;
+	background-position: left -150px;
+	color: #FFF;
+	text-shadow: 0px -1px 0px #374683;
 }
 .switch label {
-	 cursor: pointer;
+	cursor: pointer;
 }
 .description{
-	 margin-left: 0.6em;
+	margin-left: 0.6em;
 }
 .round-panel{
 	border: 3px solid #DDD;
-	 border-radius: 15px;
-	 width: 26em;
-	 padding: 0.5em 1.5em;
-	 margin: 1.5em auto;
-	 background-color: #FFF;
+	border-radius: 15px;
+	width: 26em;
+	padding: 0.5em 1.5em;
+	margin: 1.5em auto;
+	background-color: #FFF;
 }
 .description{
-	 line-height: 30px;
+	line-height: 30px;
 }
 #logo{
-	 background: url(../icons/icon96.png) no-repeat;
-	 display: block;
-	 position: relative;
-	 left: 10em;
-	 margin: 0 auto -5.0em auto;
-	 height: 96px;
-	 width: 96px;
+	background: url(../icons/icon96.png) no-repeat;
+	display: block;
+	position: relative;
+	left: 10em;
+	margin: 0 auto -5.0em auto;
+	height: 96px;
+	width: 96px;
 }
 #rangeTooltip{
-	 position: relative;
-	 top: -0.4em;
+	position: relative;
+	top: -0.4em;
 }
 #notificationTimeout{
-	 width: 80px;
+	width: 80px;
 }

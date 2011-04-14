@@ -1,25 +1,25 @@
 {
   "name": "Chromefire",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "default_locale": "en_US",
   "description": "__MSG_description__",
   "background_page": "background.html",
   "options_page": "options.html",
   "minimum_chrome_version": "5.0.375.0",
   "icons": { 
-	 "16": "icons/icon16.png",
-	 "48": "icons/icon48.png",
-	 "128": "icons/icon128.png" 
+	"16": "icons/icon16.png",
+	"48": "icons/icon48.png",
+	"128": "icons/icon128.png" 
   },
   "permissions": [
-	 "notifications",
-	 "tabs",
-	 "*://*.campfirenow.com/room/*"
+	"notifications",
+	"tabs",
+	"*://*.campfirenow.com/room/*"
   ],
   "page_action": {
-	 "default_icon": "icons/icon16.png",
-	 "default_title": "__MSG_iconTooltip__",
-	 "default_popup": "options.html"
+	"default_icon": "icons/icon16.png",
+	"default_title": "__MSG_iconTooltip__",
+	"default_popup": "options.html"
   },
   "content_scripts": [
 		{
@@ -27,7 +27,7 @@
 		"css": ["css/content.css"],
 		"js": [
 		  "scripts/jquery.min.js",
-		  "scripts/highlightregex.min.js",
+		  "scripts/highlight.min.js",
 		  "scripts/contentscript.js"
 		]
 	 }

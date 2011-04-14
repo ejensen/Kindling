@@ -44,12 +44,12 @@ function createNotification(payload, sender) {
 	}
 
 	var notification = webkitNotifications.createHTMLNotification("notification.html"
-		  + "?room=" + payload.room
-		  + "&author=" + payload.author
-		  + "&avatar=" + payload.avatar
-		  + "&user=" + payload.username
+		+ "?room=" + payload.room
+		+ "&author=" + payload.author
+		+ "&avatar=" + payload.avatar
+		+ "&user=" + payload.username
 		+ "&baseUrl=" + getDomain(sender.tab.url)
-		  + '#' + payload.message);
+		+ '#' + payload.message);
 
 	notification.onclick = function () {
 		chrome.windows.update(sender.tab.windowId, { focused: true });
