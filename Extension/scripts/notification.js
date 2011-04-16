@@ -75,6 +75,6 @@ $(document).ready(function () {
 	if (localStorage.highlightName === 'true') {         //TODO: remove duplication
 		var username = regExpEscape(getQueryVariable("user"));
 		var regex = new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
-		$content.highlightRegex(regex);
+		$content.highlightRegex(regex, {className: "nameHighlight"});
 	}
 });

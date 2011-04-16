@@ -93,13 +93,12 @@ var Chromefire = {
 	},
 
 	onNewMessage: function (e) {
-		Chromefire.highlightName();
-
 		if (e.target.id === "username") {
 			Chromefire.username = e.target.innerText;
 			Chromefire.highlightName();
 			return;
 		}
+		Chromefire.highlightName();
 
 		if (Chromefire.options == undefined || Chromefire.options.notifications !== 'true') {
 			return;
