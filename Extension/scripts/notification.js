@@ -5,7 +5,7 @@ function parseQueryVariables() {
 	var query = window.location.search.substring(1);
 	var vars = query.split('&');
 	var i;
-	for (i = 0; i < vars.length; i += 1) {
+	for (i = 0; i < vars.length; i++) {
 		var pair = vars[i].split('=');
 		variables[pair[0]] = unescape(pair[1]);
 	}
@@ -31,7 +31,7 @@ function regExpEscape(text) {
 }
 
 function isRelative(url) {
-	return url && (url.indexOf('/') === 0 || url.indexOf("chrome-extension://") === 0)
+	return url && (url.indexOf('/') === 0 || url.indexOf("chrome-extension://") === 0);
 }
 
 function getDomain(url) { //TODO: remove duplication
@@ -43,7 +43,7 @@ function getDomain(url) { //TODO: remove duplication
 function injectCss(link) {
 	var lnk = document.createElement("link");
 	lnk.type = "text/css";
-	lnk.rel = "stylesheet"
+	lnk.rel = "stylesheet";
 	lnk.href = link;
 	(document.head || document.body || document.documentElement).appendChild(lnk);
 }

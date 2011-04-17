@@ -60,8 +60,7 @@ var Chromefire = {
 	showHideElements: function (key, value) {
 		if (value === 'false' && Chromefire.$chat.hasClass(key) === false) {
 			Chromefire.$chat.addClass(key);
-		}
-		else if (value === 'true' && Chromefire.$chat.hasClass(key) === true) {
+		} else if (value === 'true' && Chromefire.$chat.hasClass(key) === true) {
 			Chromefire.$chat.removeClass(key);
 		}
 	},
@@ -72,7 +71,7 @@ var Chromefire = {
 	},
 
 	highlightName: function () {
-		if (Chromefire.username === "" || Chromefire.options === undefined) {
+		if (Chromefire.username === "" || !Chromefire.options) {
 			return;
 		}
 		Chromefire.unbindNewMessage();
@@ -100,7 +99,7 @@ var Chromefire = {
 		}
 		Chromefire.highlightName();
 
-		if (Chromefire.options == undefined || Chromefire.options.notifications !== 'true') {
+		if (!Chromefire.options || Chromefire.options.notifications !== 'true') {
 			return;
 		}
 

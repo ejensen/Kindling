@@ -3,7 +3,7 @@ var Inject = {
 
 	init: function () {
 		Inject.getUsername();
-		oldGetChatAuthorColumnWidthFunc = Campfire.LayoutManager.prototype.getChatAuthorColumnWidth;
+		Inject.oldGetChatAuthorColumnWidthFunc = Campfire.LayoutManager.prototype.getChatAuthorColumnWidth;
 		Campfire.LayoutManager.prototype.getChatAuthorColumnWidth = Inject.getChatAuthorColumnWidthOverride;
 	},
 
@@ -11,7 +11,7 @@ var Inject = {
 		try {
 			var i, tmp, authorWidth;
 			var messages = window.chat.transcript.element.getElementsByTagName("tr");
-			for (i = 0; i < messages.length; i += 1) {
+			for (i = 0; i < messages.length; i++) {
 				if (messages[i].cells.length < 2) {
 					continue;
 				}
@@ -29,7 +29,7 @@ var Inject = {
 
 			return authorWidth - Position.cumulativeOffset(window.chat.transcript.element)[0];
 		} catch (err) {
-			return oldGetChatAuthorColumnWidthFunc();
+			return Inject.oldGetChatAuthorColumnWidthFunc();
 		}
 	},
 

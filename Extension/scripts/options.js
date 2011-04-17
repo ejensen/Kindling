@@ -8,16 +8,14 @@ function onCheckChange($parent, value) {
 	if (value) {
 		$parent.find(".cb-disable").removeClass("selected");
 		$parent.find(".cb-enable").addClass("selected");
-	}
-	else {
+	} else {
 		$parent.find(".cb-enable").removeClass("selected");
 		$parent.find(".cb-disable").addClass("selected");
 	}
 
 	if ($parent[0].id === "notifications" && value !== (localStorage.notifications === 'true')) {
 		$("#showAvatars,#focusNotifications,#dismissDiv").slideToggle(200);
-	}
-	else if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
+	} else if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
 		$("#timeoutDiv").slideToggle(200);
 	}
 }
@@ -45,7 +43,7 @@ function onNotificationTimeoutChanged() {
 
 function init() {
 	var i;
-	for (i = 0; i < options.length; i += 1) {
+	for (i = 0; i < options.length; i++) {
 		var savedValue = localStorage[options[i]];
 		var checked = savedValue === undefined || (savedValue === 'true');
 		onCheckChange($(document.getElementById(options[i])), checked);
@@ -77,10 +75,10 @@ function getMessages() {
 	$("#notificationsTitle").html(chrome.i18n.getMessage("notificationsTitle"));
 	$("#messagesTitle").html(chrome.i18n.getMessage("messagesTitle"));
 	$("#otherTitle").html(chrome.i18n.getMessage("otherTitle"));
-	$("label[for='notificationTimeout']").html(chrome.i18n.getMessage("notificationTimeout"))
+	$("label[for='notificationTimeout']").html(chrome.i18n.getMessage("notificationTimeout"));
 
 	var i;
-	for (i = 0; i < options.length; i += 1) {
+	for (i = 0; i < options.length; i++) {
 		$(".description[for='" + options[i] + "']").html(chrome.i18n.getMessage(options[i]));
 	}
 }

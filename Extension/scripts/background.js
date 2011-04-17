@@ -74,19 +74,16 @@ function createNotification(payload, sender) {
 chrome.extension.onRequest.addListener(function (request, sender, callback) {
 	if (request.type === "notification") {
 		createNotification(request.value, sender);
-	}
-	else if (request.type === "init") {
+	} else if (request.type === "init") {
 		chrome.pageAction.show(sender.tab.id);
 		tabs[tabs.length] = sender.tab.id;
 		sendOptionsChangedNotification();
-	}
-	else if (request.type === "unload") {
-		index = tabs.indexOf(sender.tab.id);
+	} else if (request.type === "unload") {
+		var index = tabs.indexOf(sender.tab.id);
 		if (index !== -1) {
 			tabs.splice(index, 1);
 		}
-	}
-	else if (request.type === "optionsChanged") {
+	} else if (request.type === "optionsChanged") {
 		sendOptionsChangedNotification();
 	}
 
