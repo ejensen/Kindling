@@ -56,18 +56,6 @@ function createNotification(payload, sender) {
 		chrome.tabs.update(sender.tab.id, { selected: true });
 	};
 
-	if (localStorage.autoDismiss === 'true') {
-		var timer;
-		notification.ondisplay = function () {
-			timer = setTimeout(function () { notification.cancel(); }, localStorage.notificationTimeout);
-		};
-		notification.onclose = function () {
-			if (timer) {
-				clearTimeout(timer);
-			}
-		};
-	}
-
 	notification.show();
 }
 
@@ -110,4 +98,4 @@ function init() {
 	initSetting("notificationTimeout", 5000);
 }
 
-init();
+init();         

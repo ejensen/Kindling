@@ -1,15 +1,15 @@
 {
 	"name": "Chromefire",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
 	"background_page": "background.html",
 	"options_page": "options.html",
 	"minimum_chrome_version": "5.0.375.0",
-	"icons": { 
+	"icons": {
 		"16": "icons/icon16.png",
 		"48": "icons/icon48.png",
-		"128": "icons/icon128.png" 
+		"128": "icons/icon128.png"
 	},
 	"permissions": [
 		"notifications",

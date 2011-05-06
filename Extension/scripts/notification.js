@@ -77,4 +77,8 @@ $(document).ready(function () {
 		var regex = new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
 		$content.highlightRegex(regex, {className: "nameHighlight"});
 	}
+
+	if (localStorage.autoDismiss === 'true') {
+		setTimeout(function () { window.close(); }, localStorage.notificationTimeout);
+	}
 });
