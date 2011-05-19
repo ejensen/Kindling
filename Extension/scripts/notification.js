@@ -69,10 +69,9 @@ $(document).ready(function () {
 			this.href = getQueryVariable("baseUrl") + this.pathname + this.search;
 		}
 	});
-	$content.find("img").aeImageResize({ width: 226, height: 118 });
+	$content.find("img").css("max-width", 226).css("max-height", 118).css("background-size", "contain");
 
-
-	if (localStorage.highlightName === 'true') {         //TODO: remove duplication
+	if (localStorage.highlightName === 'true') { //TODO: remove duplication
 		var username = regExpEscape(getQueryVariable("user"));
 		var regex = new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
 		$content.highlightRegex(regex, {className: "nameHighlight"});
