@@ -107,9 +107,14 @@ var Chromefire = {
 		if (e.target && e.target.id.indexOf("message_") !== -1 && e.target.id.indexOf("message_pending") === -1 && !($target.is(".enter_message,.leave_message,.kick_message,.timestamp_message,.you"))) {
 			var $author = $target.find(".author:first");
 
-			var $message = $target.find("code:first");
-			if ($message.length === 0) {
-				$message = $target.find("div:.body:first");
+			var $message;
+			if($target.is(".topic_change_message")){
+				$message = $target.find(".body:first");
+			} else {
+				$message = $target.find("code:first");
+				if ($message.length === 0) {
+					$message = $target.find("div:.body:first");
+				}
 			}
 
 			chrome.extension.sendRequest({
