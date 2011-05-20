@@ -52,5 +52,8 @@
 	},
 	"chromefireOptions":{
 		"message": "Chromefire Options"
+	},
+	"colorNames":{
+		"message": "Colorize usernames"
 	}
 }

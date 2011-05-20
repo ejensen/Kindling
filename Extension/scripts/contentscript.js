@@ -3,6 +3,17 @@ var Chromefire = {
 	$chat: undefined,
 	username: "",
 	room: undefined,
+	currentColorIndex: 0,
+	usernameColorMap: {},
+	colors: ["blue", "blueviolet", "saddlebrown",
+			"orangered", "darkgreen", "darkred",
+			"clornflowerblue", "crimson", "black",
+			"lawngreen", "chocolate", "darkmagenta",
+			"darkcyan", "chartreuse", "cadetblue",
+			"coral", "fuchsia", "dimgray", "lime",
+			"darkslategray", "goldenrod", "cyan",
+			"lightpink", "lightseagreen", "indigo",
+			"midnightblue", "lightslategray", "lightcyan"],		
 
 	init: function () {
 		Chromefire.room = $("#room_name").html();
@@ -12,7 +23,9 @@ var Chromefire = {
 		};
 		chrome.extension.onRequest.addListener(Chromefire.onRequest);
 		chrome.extension.sendRequest({ type: "init" });
-
+		
+		//Chromefire.colorAllUsernames();	
+		
 		Chromefire.bindNewMessage();
 
 		Chromefire.injectJs("scripts/inject.js");
@@ -47,6 +60,19 @@ var Chromefire = {
 		Chromefire.options = request.value;
 		Chromefire.filterMessages();
 		Chromefire.highlightName();
+		Chromefire.colorAllUsernames();
+	},
+	
+	colorAllUsernames: function() {
+		if(Chromefire.options && Chromefire.options.colorNames === 'true') {
+			$("td.person span").each(function(i, elem) {
+				elem.style.color = Chromefire.getUsernameColor(elem.innerHTML);
+			});
+		} else {
+			$("td.person span").each(function(i, elem) {
+				elem.style.color = "#333";
+			});
+		}
 	},
 
 	filterMessages: function () {
@@ -99,13 +125,21 @@ var Chromefire = {
 		}
 		Chromefire.highlightName();
 
-		if (!Chromefire.options || Chromefire.options.notifications !== 'true') {
+		if (!Chromefire.options) {
 			return;
 		}
 
 		var $target = $(e.target);
 		if (e.target && e.target.id.indexOf("message_") !== -1 && e.target.id.indexOf("message_pending") === -1 && !($target.is(".enter_message,.leave_message,.kick_message,.timestamp_message,.you"))) {
 			var $author = $target.find(".author:first");
+
+			if(Chromefire.options.colorNames === 'true') {
+				$author.css("color", Chromefire.getUsernameColor($author.text()));
+			}
+
+			if(Chromefire.options.notifications !== 'true') {
+				return;
+			}
 
 			var $message;
 			if($target.is(".topic_change_message")){
@@ -128,6 +162,15 @@ var Chromefire = {
 				}
 			});
 		}
+	},
+
+	getUsernameColor: function(username) {
+		if(!Chromefire.usernameColorMap[username]) {
+			Chromefire.usernameColorMap[username] = Chromefire.colors[Chromefire.currentColorIndex];
+			Chromefire.currentColorIndex = (Chromefire.currentColorIndex + 1) % Chromefire.colors.length;
+		}
+
+		return Chromefire.usernameColorMap[username];
 	}
 };
 

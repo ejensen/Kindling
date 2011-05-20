@@ -91,6 +91,7 @@ function init() {
 	initSetting("leaveRoom", false);
 	initSetting("timeStamps", true);
 	initSetting("highlightName", true);
+	initSetting("colorNames", false);
 	initSetting("showAvatars", true);
 	initSetting("focusNotifications", true);
 	initSetting("autoDismiss", true);

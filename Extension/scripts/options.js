@@ -1,4 +1,4 @@
-var options = ["enterRoom", "leaveRoom", "timeStamps", "notifications", "highlightName", "showAvatars", "focusNotifications", "autoDismiss"];
+var options = ["enterRoom", "leaveRoom", "timeStamps", "notifications", "highlightName", "colorNames", "showAvatars", "focusNotifications", "autoDismiss"];
 
 function onOptionChanged() {
 	chrome.extension.sendRequest({ type: "optionsChanged" });
