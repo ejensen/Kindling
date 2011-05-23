@@ -92,6 +92,7 @@ function init() {
 	initSetting("timeStamps", true);
 	initSetting("highlightName", true);
 	initSetting("showAvatars", true);
+	initSetting("filterNotifications", false);
 	initSetting("focusNotifications", true);
 	initSetting("autoDismiss", true);
 	initSetting("notifications", true);

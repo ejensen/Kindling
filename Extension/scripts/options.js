@@ -1,4 +1,4 @@
-var options = ["enterRoom", "leaveRoom", "timeStamps", "notifications", "highlightName", "showAvatars", "focusNotifications", "autoDismiss"];
+var options = ["enterRoom", "leaveRoom", "timeStamps", "notifications", "highlightName", "showAvatars", "focusNotifications", "autoDismiss", "filterNotifications"];
 
 function onOptionChanged() {
 	chrome.extension.sendRequest({ type: "optionsChanged" });
@@ -14,7 +14,7 @@ function onCheckChange($parent, value) {
 	}
 
 	if ($parent[0].id === "notifications" && value !== (localStorage.notifications === 'true')) {
-		$("#showAvatars,#focusNotifications,#dismissDiv").slideToggle(200);
+		$("#showAvatars,#focusNotifications,#dismissDiv,#filterNotifications").slideToggle(200);
 	} else if ($parent[0].id === "autoDismiss" && value !== (localStorage.autoDismiss === 'true')) {
 		$("#timeoutDiv").slideToggle(200);
 	}

@@ -69,6 +69,11 @@ var Chromefire = {
 		var regex = new RegExp("[.*+?|()\\[\\]{}\\\\]", 'g');
 		return text.replace(regex, "\\$&");
 	},
+	
+	getUsernameRegex: function() {
+		var username = Chromefire.regExpEscape(Chromefire.username);
+		return new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
+	},
 
 	highlightName: function () {
 		if (Chromefire.username === "" || !Chromefire.options) {
@@ -81,9 +86,7 @@ var Chromefire = {
 			$messages.highlightRegex(undefined, options);
 
 			if (Chromefire.options.highlightName === 'true') {
-				var username = Chromefire.regExpEscape(Chromefire.username);
-				var regex = new RegExp("\\b(" + username + '|' + username.split(' ').join('|') + ")\\b", 'i');
-				$messages.highlightRegex(regex, options);
+				$messages.highlightRegex(Chromefire.getUsernameRegex(), options);
 			}
 		} catch (err) {
 		}
@@ -114,6 +117,13 @@ var Chromefire = {
 				$message = $target.find("code:first");
 				if ($message.length === 0) {
 					$message = $target.find("div:.body:first");
+				}
+			}
+
+			if(Chromefire.options.filterNotifications) {
+ 				var regex = Chromefire.getUsernameRegex();
+ 				if(!regex.test($message.html())) {
+					return;
 				}
 			}
 
