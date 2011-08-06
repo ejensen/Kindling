@@ -27,7 +27,7 @@ chromefire.notification = {
 		if (localStorage.highlightName === 'true') {
 			var username = chromefire.common.regExpEscape(this.getQueryVariable('user'));
 			var regex = new RegExp('\\b(' + username + '|' + username.split(' ').join('|') + ')\\b', 'i');
-			$content.highlightRegex(regex, { className: 'nameHighlight' });
+			$content.highlightRegex(regex, { className: 'nameHighlight', tagType: 'mark' });
 		}
 
 		if (localStorage.autoDismiss === 'true') {

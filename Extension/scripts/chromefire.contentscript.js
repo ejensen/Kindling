@@ -34,7 +34,7 @@ chromefire.contentscript = {
 
 	onRequest: function (request, sender, callback) {
 		if (request.type === 'optionsChanged') {
-		    chromefire.contentscript.onOptionsChanged(request);
+			chromefire.contentscript.onOptionsChanged(request);
 		}
 
 		if (callback) {
@@ -64,6 +64,11 @@ chromefire.contentscript = {
 		}
 	},
 
+	getUsernameRegex: function () {
+		var username = chromefire.common.regExpEscape(this.username);
+		return new RegExp('\\b(' + username + '|' + username.split(' ').join('|') + ')\\b', 'i');
+	},
+
 	highlightName: function () {
 		if (this.username === '' || !this.options) {
 			return;
@@ -71,13 +76,11 @@ chromefire.contentscript = {
 		this.unbindNewMessage();
 		try {
 			var $messages = this.$chat.find('div:.body');
-			var options = { className: 'nameHighlight' };
+			var options = { className: 'nameHighlight', tagType: 'mark' };
 			$messages.highlightRegex(undefined, options);
 
 			if (this.options.highlightName === 'true') {
-				var username = this.common.regExpEscape(this.username);
-				var regex = new RegExp('\\b(' + username + '|' + username.split(' ').join('|') + ')\\b', 'i');
-				$messages.highlightRegex(regex, options);
+				$messages.highlightRegex(this.getUsernameRegex(), options);
 			}
 		} catch (err) {
 		}
@@ -86,7 +89,7 @@ chromefire.contentscript = {
 	},
 
 	onNewMessage: function (e) {
-	    if (e.target.id === 'chromefire_username') {
+		if (e.target.id === 'chromefire_username') {
 			chromefire.contentscript.username = e.target.innerText;
 			chromefire.contentscript.highlightName();
 			return;
@@ -99,13 +102,20 @@ chromefire.contentscript = {
 
 		var $target = $(e.target);
 		if (e.target && e.target.id.indexOf('message_') !== -1 && e.target.id.indexOf("message_pending") === -1 && !($target.is('.enter_message,.leave_message,.kick_message,.timestamp_message,.you'))) {
-		    var $message, $author = $target.find('.author:first');
+			var $message, $author = $target.find('.author:first');
 			if ($target.is('.topic_change_message')) {
 				$message = $target.find('.body:first');
 			} else {
 				$message = $target.find('code:first');
 				if ($message.length === 0) {
 					$message = $target.find('div:.body:first');
+				}
+			}
+
+			if (chromefire.contentscript.options.filterNotifications) {
+			    var regex = chromefire.contentscript.getUsernameRegex();
+				if (!regex.test($message.html())) {
+					return;
 				}
 			}
 

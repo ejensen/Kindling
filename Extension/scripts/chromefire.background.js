@@ -8,6 +8,7 @@ chromefire.background = {
 		this.initSetting('highlightName', true);
 		this.initSetting('showAvatars', true);
 		this.initSetting('focusNotifications', true);
+		this.initSetting("filterNotifications", false);
 		this.initSetting('autoDismiss', true);
 		this.initSetting('notifications', true);
 		this.initSetting('notificationTimeout', 5000);

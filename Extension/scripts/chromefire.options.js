@@ -1,5 +1,5 @@
 chromefire.options = {
-	OPTIONS: ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'focusNotifications', 'autoDismiss'],
+	OPTIONS: ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'focusNotifications', 'autoDismiss', 'filterNotifications'],
 
 	init: function () {
 		this.getMessages();
@@ -30,7 +30,7 @@ chromefire.options = {
 		this.onNotificationTimeoutChanged();
 
 		if (localStorage.notifications === 'false') {
-			$('#showAvatars,#focusNotifications,#dismissDiv').hide();
+		    $('#focusNotifications,#filterNotifications,#showAvatars,#dismissDiv').hide();
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
@@ -49,7 +49,7 @@ chromefire.options = {
 
 		var i;
 		for (i = 0; i < this.OPTIONS.length; i++) {
-		    $('.description[for="' + this.OPTIONS[i] + '"]').html(chrome.i18n.getMessage(this.OPTIONS[i]));
+			$('.description[for="' + this.OPTIONS[i] + '"]').html(chrome.i18n.getMessage(this.OPTIONS[i]));
 		}
 	},
 
@@ -67,7 +67,7 @@ chromefire.options = {
 		}
 
 		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#showAvatars,#focusNotifications,#dismissDiv').slideToggle(200);
+			$('#focusNotifications,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
 		}
