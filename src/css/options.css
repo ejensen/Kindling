@@ -4,7 +4,7 @@
 	background-color: #E5E5E5;
 }
 .cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
-	background: url(switch.gif) repeat-x;
+	background: url(../img/switch.png) repeat-x;
 	display: block;
 	float: left;
 }
@@ -61,7 +61,7 @@ h1 {
 	line-height: 30px;
 }
 #logo{
-	background: url(../icons/icon96.png) no-repeat;
+	background: url(../img/icon96.png) no-repeat;
 	display: block;
 	position: relative;
 	left: 10em;

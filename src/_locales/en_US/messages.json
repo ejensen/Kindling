@@ -15,7 +15,7 @@
 		"message": "Display when chat is in focus"
 	},
 	"filterNotifications":{
-		"message": "Display only when my name is mentioned"
+		"message": "Only display when my name is mentioned"
 	},
 	"showAvatars":{
 		"message": "Display avatars"
