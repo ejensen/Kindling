@@ -19,9 +19,9 @@ chromefire.contentscript = {
 	},
 
 	injectJs: function (link) {
-		var scr = document.createElement('script');
-		scr.src = chrome.extension.getURL(link);
-		document.body.appendChild(scr);
+		var script = document.createElement('script');
+		script.src = chrome.extension.getURL(link);
+		document.body.appendChild(script);
 	},
 
 	bindNewMessage: function () {
@@ -113,7 +113,7 @@ chromefire.contentscript = {
 			}
 
 			if (chromefire.contentscript.options.filterNotifications) {
-			    var regex = chromefire.contentscript.getUsernameRegex();
+				var regex = chromefire.contentscript.getUsernameRegex();
 				if (!regex.test($message.html())) {
 					return;
 				}

@@ -5,7 +5,7 @@ chromefire.common = {
 		var regex = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
 		return text.replace(regex, '\\$&');
 	},
-	getDomain: function (url, protocol) {
+	getDomain: function (url) {
 		var regex = new RegExp('(chrome-extension|https?):\/\/(.[^/]+)');
 		var match = url.match(regex);
 		return match ? match[0] : '';
