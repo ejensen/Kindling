@@ -101,7 +101,7 @@ chromefire.contentscript = {
 		}
 
 		var $target = $(e.target);
-		if (e.target && e.target.id.indexOf('message_') !== -1 && e.target.id.indexOf("message_pending") === -1 && !($target.is('.enter_message,.leave_message,.kick_message,.timestamp_message,.you'))) {
+		if (e.target && e.target.id.indexOf('message_') !== -1 && e.target.id.indexOf('message_pending') === -1 && !($target.is('.enter_message,.leave_message,.kick_message,.timestamp_message,.you'))) {
 			var $message, $author = $target.find('.author:first');
 			if ($target.is('.topic_change_message')) {
 				$message = $target.find('.body:first');
@@ -112,7 +112,7 @@ chromefire.contentscript = {
 				}
 			}
 
-			if (chromefire.contentscript.options.filterNotifications) {
+			if (chromefire.contentscript.options.filterNotifications === 'true') {
 				var regex = chromefire.contentscript.getUsernameRegex();
 				if (!regex.test($message.html())) {
 					return;
