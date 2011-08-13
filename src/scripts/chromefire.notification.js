@@ -25,9 +25,8 @@ chromefire.notification = {
 		$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
 
 		if (localStorage.highlightName === 'true') {
-			var username = chromefire.common.regExpEscape(this.getQueryVariable('user'));
-			var regex = new RegExp('\\b(' + username + '|' + username.split(' ').join('|') + ')\\b', 'i');
-			$content.highlightRegex(regex, { className: 'nameHighlight', tagType: 'mark' });
+			var usernameRegex = chromefire.common.getUsernameRegex(this.getQueryVariable('user'));
+			$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
 		}
 
 		if (localStorage.autoDismiss === 'true') {

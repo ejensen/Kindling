@@ -5,17 +5,17 @@ chromefire.background = {
 		this.initSetting('enterRoom', false);
 		this.initSetting('leaveRoom', false);
 		this.initSetting('timeStamps', true);
-		this.initSetting('highlightName', true);
 		this.initSetting('showAvatars', true);
 		this.initSetting('focusNotifications', true);
 		this.initSetting("filterNotifications", false);
 		this.initSetting('autoDismiss', true);
 		this.initSetting('notifications', true);
 		this.initSetting('notificationTimeout', 5000);
+		this.initSetting('highlightName', true);
 
 		chrome.extension.onRequest.addListener(function (request, sender, callback) {
 			if (request.type === 'notification') {
-				chromefire.background.createNotification(request.value, sender);
+				chromefire.background.tryToCreateNotification(request.value, sender, chromefire.background.showNotification);
 			} else if (request.type === 'init') {
 				chrome.pageAction.show(sender.tab.id);
 				chromefire.background.tabs[chromefire.background.tabs.length] = sender.tab.id;
@@ -36,7 +36,7 @@ chromefire.background = {
 	},
 
 	initSetting: function (setting, defaultValue) {
-		if (localStorage[setting] === undefined) {
+		if (!localStorage[setting]) {
 			localStorage[setting] = defaultValue;
 		}
 	},
@@ -58,25 +58,26 @@ chromefire.background = {
 		}
 	},
 
-	createNotification: function (payload, sender) {
-		var focusedTab = false;
+	tryToCreateNotification: function (payload, sender, successCallback) {
 		if (localStorage.focusNotifications === 'false') {
-			chrome.windows.getLastFocused(function (window) {
-				if (window.id === sender.tab.windowId) {
-					chrome.tabs.getSelected(window.id, function (tab) {
-						if (tab.id === sender.tab.id) {
-							focusedTab = true;
+			chrome.windows.getLastFocused(function (wnd) {
+				if (wnd.id === sender.tab.windowId) {
+					chrome.tabs.getSelected(wnd.id, function (tab) {
+						if (tab.id !== sender.tab.id) {
+							successCallback(payload, sender);
 						}
 					});
+				} else {
+					successCallback(payload, sender);
 				}
 			});
+		} else {
+			successCallback(payload, sender);
 		}
-
-		if (focusedTab === true) {
-			return;
-		}
-
-		var notification = webkitNotifications.createHTMLNotification('notification.html'
+	},
+	
+	showNotification: function (payload, sender) {
+			var notification = webkitNotifications.createHTMLNotification('notification.html'
 			+ '?room=' + payload.room
 			+ '&author=' + payload.author
 			+ '&avatar=' + payload.avatar
