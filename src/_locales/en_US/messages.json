@@ -12,7 +12,7 @@
 		"message": "Chat notifications"
 	},
 	"focusNotifications":{
-		"message": "Display when chat is in focus"
+		"message": "Display when chat has focus"
 	},
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
@@ -39,10 +39,13 @@
 		"message": "Time stamps"
 	},
 	"otherTitle":{
-		"message": "Other"
+		"message": "Misc."
 	},
 	"highlightName":{
 		"message": "Name highlighting"
+	},
+	"faviconCounter":{
+		"message": "Display unread message count in tab icon"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Chromefire..."
