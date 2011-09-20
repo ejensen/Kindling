@@ -45,7 +45,7 @@
 		"message": "Name highlighting"
 	},
 	"faviconCounter":{
-		"message": "Display unread message count in tab icon"
+		"message": "Display # of unread messages in tab icon"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Chromefire..."

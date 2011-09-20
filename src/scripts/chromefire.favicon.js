@@ -2,15 +2,22 @@ chromefire.favicon = {
 	iconElement: null,
 	iconCanvas: null,
 	badgedCanvas: [],
+	enabled: false,
 	iconSource: chromefire.common.getDomain(window.location.toString()) + '/favicon.ico',
 
 	init: function () {
-		$.subscribe('newMessage', this.onNewMessage);
+		var titleElem = document.getElementsByTagName('title')[0];
+		document.documentElement.addEventListener('DOMSubtreeModified', function (e) {
+			if (e.target === titleElem || (e.target.parentNode && e.target.parentNode === titleElem)) {
+				chromefire.favicon.onTitleChanged();
+			}
+		});
+
 		$.subscribe('optionsChanged', this.onOptionsChanged);
 	},
 
-	onNewMessage: function (e, options) {
-		if (options.faviconCounter === 'true') {
+	onTitleChanged: function () {
+		if (chromefire.favicon.enabled) {
 			chromefire.favicon.updateIcon();
 		}
 	},
@@ -27,7 +34,8 @@ chromefire.favicon = {
 	},
 
 	onOptionsChanged: function (e, options) {
-		if (options.faviconCounter === 'true') {
+		chromefire.favicon.enabled = (options.faviconCounter === 'true');
+		if (options.faviconCounter.enabled) {
 			chromefire.favicon.updateIcon();
 		} else {
 			chromefire.favicon.resetIcon();
@@ -67,9 +75,9 @@ chromefire.favicon = {
 				ctx.textBaseline = 'top';
 				ctx.textAlign = 'left';
 				ctx.font = '10px san-sarif';
-				ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-				ctx.strokeStyle = 'rgba(255, 255, 255, 0.75)';
-				ctx.lineWidth = 2;
+				ctx.fillStyle = 'rgba(0, 0, 0, 1.0)';
+				ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+				ctx.lineWidth = 3;
 
 				var valueWidth = ctx.measureText(unreadCount);
 				var left = 16 - valueWidth.width - ctx.lineWidth / 2;
@@ -77,7 +85,7 @@ chromefire.favicon = {
 
 				ctx.strokeText(unreadCount, left, top);
 				ctx.fillText(unreadCount, left, top);
-				
+
 				chromefire.favicon.badgedCanvas[unreadCount] = canvas;
 				callback(chromefire.favicon.badgedCanvas[unreadCount]);
 			});
@@ -108,7 +116,7 @@ chromefire.favicon = {
 		this.iconElement.rel = 'icon';
 		this.iconElement.type = 'image/x-icon';
 		document.head.appendChild(this.iconElement);
-		
+
 		window.onbeforeunload = function () {
 			chromefire.favicon.iconElement.href = chromefire.favicon.iconSource;
 		};

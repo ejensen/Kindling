@@ -10,7 +10,7 @@
 #chat-wrapper.noLeaveRoom tr.leave_message *,
 #chat-wrapper.noLeaveRoom tr.kick_message,
 #chat-wrapper.noLeaveRoom tr.kick_message *{
-/* 'display: none' can cause issues with the placement of the message 'star button' */
+/* 'display: none' causes issues with the placement of the 'star buttons' */
 	height: 0;
 	line-height: 0;
 	margin: 0;
