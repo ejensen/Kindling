@@ -52,6 +52,6 @@ chromefire.contentscript = {
 	}
 };
 
-$(document).ready(function () {
+$(function () {
 	chromefire.contentscript.init();
 });
