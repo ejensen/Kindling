@@ -1,6 +1,7 @@
 chromefire.highlight = {
 	init: function () {
 		$.subscribe('optionsChanged', this.highlightName);
+		$.subscribe('loaded', this.highlightName);
 		$.subscribe('newMessage', this.highlightName);
 	},
 

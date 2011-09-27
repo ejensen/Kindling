@@ -19,3 +19,12 @@
 	font-size: 0;
 	opacity: 0;
 }
+
+.tooltip {
+	display:none;
+	background-color:rgba(0,0,0,0.75);
+	border-radius:18px;
+	height:100px;
+	width:160px;
+	color:#fff;
+}

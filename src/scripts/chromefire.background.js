@@ -13,7 +13,7 @@ chromefire.background = {
 		this.initSetting('highlightName', true);
 		this.initSetting('faviconCounter', true);
 		this.initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
-		localStorage.removeItem('focusNotifications');
+		localStorage.removeItem('focusNotifications'); //Obsolete option
 
 		chrome.extension.onRequest.addListener(function (request, sender, callback) {
 			if (request.type === 'notification') {
