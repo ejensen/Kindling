@@ -6,13 +6,14 @@ chromefire.background = {
 		this.initSetting('leaveRoom', false);
 		this.initSetting('timeStamps', true);
 		this.initSetting('showAvatars', true);
-		this.initSetting('focusNotifications', true);
-		this.initSetting("filterNotifications", false);
+		this.initSetting('filterNotifications', false);
 		this.initSetting('autoDismiss', true);
 		this.initSetting('notifications', true);
 		this.initSetting('notificationTimeout', 5000);
 		this.initSetting('highlightName', true);
 		this.initSetting('faviconCounter', true);
+		this.initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+		localStorage.removeItem('focusNotifications');
 
 		chrome.extension.onRequest.addListener(function (request, sender, callback) {
 			if (request.type === 'notification') {
@@ -60,7 +61,7 @@ chromefire.background = {
 	},
 
 	tryToCreateNotification: function (payload, sender, successCallback) {
-		if (localStorage.focusNotifications === 'false') {
+		if (localStorage.disableNotificationsWhenInFocus === 'true') {
 			chrome.windows.getLastFocused(function (wnd) {
 				if (wnd.id === sender.tab.windowId) {
 					chrome.tabs.getSelected(wnd.id, function (tab) {

@@ -11,8 +11,8 @@
 	"notifications":{
 		"message": "Chat notifications"
 	},
-	"focusNotifications":{
-		"message": "Display when chat has focus"
+	"disableNotificationsWhenInFocus":{
+		"message": "Disable when tab has focus"
 	},
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
