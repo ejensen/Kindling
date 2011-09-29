@@ -27,7 +27,6 @@
 		"js": [
 			"scripts/jquery.min.js",
 			"scripts/pubsub.min.js",
-			"scripts/tooltip.min.js",
 			"scripts/highlight.min.js",
 			"scripts/chromefire.common.js",
 			"scripts/chromefire.emoji.js",

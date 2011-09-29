@@ -20,11 +20,52 @@
 	opacity: 0;
 }
 
+#emojiButton {
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+}
+
 .tooltip {
-	display:none;
-	background-color:rgba(0,0,0,0.75);
-	border-radius:18px;
-	height:100px;
-	width:160px;
-	color:#fff;
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.tooltip-inner {
+	display: none;
+	cursor: default;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	z-index: 999;
+	width: 230px;
+	margin-left: -127px;
+	padding: 10px;
+	border: 2px solid #ccc;
+	opacity: .95;
+	background-color: #fff;
+}
+
+.tooltip-inner:before, .tooltip-inner:after{
+	content: "";
+	position: absolute;
+	z-index: 1000;
+	bottom: -12px;
+	left: 50%;
+	margin-left: -12px;
+	border-top: 12px solid white;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 0;
+}
+
+.tooltip-inner:before {
+	border-top-color: #ccc;
+	bottom: -14px;
+}
+
+.tooltip-inner .emoji {
+	cursor: pointer;
+	margin: 4px;
 }
