@@ -68,9 +68,9 @@ chromefire.favicon = {
 		if (!this.badgedCanvas[unreadCount]) {
 			this.getIconCanvas(function (iconCanvas) {
 				var canvas = document.createElement('canvas');
-				canvas.height = canvas.width = chromefire.favicon.iconCanvas.width;
+				canvas.height = canvas.width = iconCanvas.width;
 				var ctx = canvas.getContext('2d');
-				ctx.drawImage(chromefire.favicon.iconCanvas, 0, -1);
+				ctx.drawImage(iconCanvas, 0, -1);
 
 				ctx.textBaseline = 'top';
 				ctx.textAlign = 'left';

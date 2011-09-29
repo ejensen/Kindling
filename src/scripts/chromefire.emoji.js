@@ -47,29 +47,30 @@ chromefire.emoji = {
 	},
 
 	addMenu: function () {
-		$('#chat_controls').append('<div id="emojiButton" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") +'\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="emojiButton" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
-		$emojiContainer = $('#emojiContainer');
-		for(emoji in this.emojis) {
+		var $emojiContainer = $('#emojiContainer');
+		var emoji;
+		for (emoji in this.emojis) {
 			$emojiContainer.append('<span class="emoji emoji' + this.emojis[emoji] + '" data-value="' + emoji + '"></span>');
 		}
 
-		$('#emojiButton').click(function(e){
+		$('#emojiButton').click(function () {
 			$emojiContainer.toggle();
 		});
 
-		$(document).click(function(e) {
-			if (e.target.id != 'emojiButton') {
+		$(document).click(function (e) {
+			if (e.target.id !== 'emojiButton') {
 				$emojiContainer.hide();
 			}
 		});
 
-		$emojiContainer.children('.emoji').click(function() {
-		  $('#input').insertAtCaret(':' + this.getAttribute('data-value') + ':');
+		$emojiContainer.children('.emoji').click(function () {
+			$('#input').insertAtCaret(':' + this.getAttribute('data-value') + ':');
 		});
 	}
 };
 
-$(function(){
+$(function () {
 	chromefire.emoji.init();
 });
