@@ -30,6 +30,7 @@
 			"scripts/highlight.min.js",
 			"scripts/chromefire.common.js",
 			"scripts/chromefire.emoji.js",
+			"scripts/chromefire.sounds.js",
 			"scripts/chromefire.favicon.js",
 			"scripts/chromefire.highlight.js",
 			"scripts/chromefire.messagefilter.js",

@@ -1,39 +1,39 @@
 chromefire.emoji = {
 	emojis: {
-		'sunny': '2600',
-		'zap': '26a1',
+		'bulb': '1f4a1',
+		'calling': '1f4f1',
+		'cop': '1f46c',
+		'email': '1f4e8',
+		'feet': '1f463',
+		'fish': '1f413',
+		'gift': '1f4e7',
+		'hammer': '1f52c',
+		'heart': '2764',
 		'leaves': '1f343',
 		'lipstick': '1f483',
-		'hammer': '1f52c',
-		'cop': '1f46c',
-		'wheelchair': '267f',
-		'fish': '1f413',
-		'moneybag': '1f4b0',
-		'memo': '1f4dd',
+		'lock': '1f54b',
+		'mag': '1f520',
 		'mega': '1f4e4',
-		'gift': '1f4e7',
-		'scissors': '2702',
-		'feet': '1f463',
-		'runner': '1f6b6',
-		'heart': '2764',
-		'smoking': '1f6ac',
-		'warning': '26a0',
-		'tm': '2122',
-		'ok': '1f502',
-		'vs': '1f504',
+		'memo': '1f4dd',
+		'moneybag': '1f4b0',
 		'new': '1f505',
-		'bulb': '1f4a1',
-		'zzz': '1f4a4',
+		'ok': '1f502',
+		'runner': '1f6b6',
+		'scissors': '2702',
+		'smoking': '1f6ac',
 		'sparkles': '2728',
 		'star': '2b50',
-		'mag': '1f520',
-		'lock': '1f54b',
-		'calling': '1f4f1',
-		'email': '1f4e8',
-		'v': '270c',
+		'sunny': '2600',
+		'tm': '2122',
+		'vs': '1f504',
+		'warning': '26a0',
+		'wheelchair': '267f',
+		'zap': '26a1',
+		'zzz': '1f4a4',
+		'clap': '1f44d',
 		'fist': '270a',
 		'punch': '1f446',
-		'clap': '1f44d',
+		'v': '270c',
 		'+1': '1f447',
 		'-1': '1f44f'
 	},
@@ -44,15 +44,17 @@ chromefire.emoji = {
 	},
 
 	optionsChanged: function (e, options) {
+		//TODO: add/remove button
 	},
 
 	addMenu: function () {
-		$('#chat_controls').append('<div id="emojiButton" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
+		//TODO: localize
+		$('#chat_controls').append('<div id="emojiButton" title="Insert emoji..." class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
 		var $emojiContainer = $('#emojiContainer');
 		var emoji;
 		for (emoji in this.emojis) {
-			$emojiContainer.append('<span class="emoji emoji' + this.emojis[emoji] + '" data-value="' + emoji + '"></span>');
+			$emojiContainer.append('<span class="emoji emoji' + this.emojis[emoji] + '" title="' + emoji + '"></span>');
 		}
 
 		$('#emojiButton').click(function () {
@@ -66,7 +68,7 @@ chromefire.emoji = {
 		});
 
 		$emojiContainer.children('.emoji').click(function () {
-			$('#input').insertAtCaret(':' + this.getAttribute('data-value') + ':');
+			$('#input').insertAtCaret(':' + this.getAttribute('title') + ':').focus();
 		});
 	}
 };
