@@ -1,5 +1,5 @@
 chromefire.sounds = {
-	sounds: {
+	SOUNDS: {
 		'Crickets chirping': 'crickets',
 		'Do it live!': 'live',
 		'Great job': 'greatjob',
@@ -10,22 +10,12 @@ chromefire.sounds = {
 	},
 
 	init: function () {
-		$.subscribe('optionsChanged', this.optionsChanged);
-		this.addMenu();
-	},
-
-	optionsChanged: function (e, options) {
-		//TODO: add/remove button
-	},
-
-	addMenu: function () {
-		//TODO: localize
-		$('#chat_controls').append('<div id="soundButton" title="Play sound..." class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/sound.gif") + '\')"><span id="soundContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/sound.gif") + '\')"><span id="soundContainer" class="tooltip-inner"></span></div>');
 		
 		var $soundContainer = $('#soundContainer');
 		var sound;
-		for (sound in this.sounds) {
-			$soundContainer.append('<a class="sound" data-value="' + this.sounds[sound] + '">' + sound + '</a>');
+		for (sound in this.SOUNDS) {
+			$soundContainer.append('<a class="sound" data-value="' + this.SOUNDS[sound] + '">' + sound + '</a>');
 		}
 
 		$('#soundButton').click(function () {

@@ -58,5 +58,11 @@
 	},
 	"chromefireOptions":{
 		"message": "Chromefire Options"
+	},
+	"emojiMenuTooltip":{
+		"message": "Insert emoji..."
+	},
+	"soundMenuTooltip":{
+		"message": "Play sound..."
 	}
 }

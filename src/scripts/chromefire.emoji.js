@@ -1,5 +1,5 @@
 chromefire.emoji = {
-	emojis: {
+	EMOJIS: {
 		'bulb': '1f4a1',
 		'calling': '1f4f1',
 		'cop': '1f46c',
@@ -39,22 +39,12 @@ chromefire.emoji = {
 	},
 
 	init: function () {
-		$.subscribe('optionsChanged', this.optionsChanged);
-		this.addMenu();
-	},
-
-	optionsChanged: function (e, options) {
-		//TODO: add/remove button
-	},
-
-	addMenu: function () {
-		//TODO: localize
-		$('#chat_controls').append('<div id="emojiButton" title="Insert emoji..." class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
 		var $emojiContainer = $('#emojiContainer');
 		var emoji;
-		for (emoji in this.emojis) {
-			$emojiContainer.append('<span class="emoji emoji' + this.emojis[emoji] + '" title="' + emoji + '"></span>');
+		for (emoji in this.EMOJIS) {
+			$emojiContainer.append('<span class="emoji emoji' + this.EMOJIS[emoji] + '" title="' + emoji + '"></span>');
 		}
 
 		$('#emojiButton').click(function () {
