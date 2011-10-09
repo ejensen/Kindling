@@ -77,9 +77,15 @@
 .tooltip-inner .emoji, .tooltip-inner .sound {
 	cursor: pointer;
 }
+
 .tooltip-inner .emoji {
 	margin: 4px;
 }
+
+.tooltip-inner .emoji:hover {
+	background-color:#BDF;
+}
+
 .tooltip-inner a {
 	display:block;
 }

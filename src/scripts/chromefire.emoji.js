@@ -39,7 +39,7 @@ chromefire.emoji = {
 	},
 
 	init: function () {
-		$('#chat_controls').append('<div id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.png") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.gif") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
 		var $emojiContainer = $('#emojiContainer');
 		var emoji;
