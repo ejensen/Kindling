@@ -10,21 +10,20 @@ chromefire.sounds = {
 	},
 
 	init: function () {
-		$('#chat_controls').append('<div id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/sound.gif") + '\')"><span id="soundContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="soundButton-wrapper" class="tooltip"><img id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" src="' + chrome.extension.getURL("img/sound.gif") + '" width="18" height="15" /><span id="soundContainer" class="tooltip-inner"></span></div>');
 		
+		var $soundButton = $('#soundButton');
 		var $soundContainer = $('#soundContainer');
 		var sound;
 		for (sound in this.SOUNDS) {
 			$soundContainer.append('<a class="sound" data-value="' + this.SOUNDS[sound] + '">' + sound + '</a>');
 		}
 
-		$('#soundButton').click(function () {
-			$soundContainer.toggle();
-		});
-
 		$(document).click(function (e) {
-			if (e.target.id !== 'soundButton') {
+			if (e.target.id !== 'soundButton' && $soundButton.find(e.target).length === 0) {
 				$soundContainer.hide();
+			} else {
+				$soundContainer.toggle();
 			}
 		});
 
