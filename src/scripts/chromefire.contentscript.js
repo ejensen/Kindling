@@ -44,7 +44,7 @@ chromefire.contentscript = {
 	onNewMessage: function (e) {
 		if (e.target.id === 'chromefire_username') {
 			chromefire.contentscript.username = e.target.innerText;		
-			$.publish('newMessage', [chromefire.contentscript.options, chromefire.contentscript.username]);
+			$.publish('loaded', [chromefire.contentscript.options, chromefire.contentscript.username]);
 			return;
 		}
 
@@ -52,6 +52,6 @@ chromefire.contentscript = {
 	}
 };
 
-$(document).ready(function () {
+$(function () {
 	chromefire.contentscript.init();
 });

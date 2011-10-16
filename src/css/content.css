@@ -1,25 +1,91 @@
-﻿mark.nameHighlight {
+﻿mark.nameHighlight{
 	background-color:#FF8;
 }
 
-#chat-wrapper.noTimeStamp tr.timestamp_message,
-#chat-wrapper.noTimeStamp tr.timestamp_message td,
-#chat-wrapper.noTimeStamp tr.timestamp_message div,
-#chat-wrapper.noEnterRoom tr.enter_message,
-#chat-wrapper.noEnterRoom tr.enter_message td,
-#chat-wrapper.noEnterRoom tr.enter_message div,
-#chat-wrapper.noLeaveRoom tr.leave_message,
-#chat-wrapper.noLeaveRoom tr.leave_message td,
-#chat-wrapper.noLeaveRoom tr.leave_message div,
-#chat-wrapper.noLeaveRoom tr.kick_message,
-#chat-wrapper.noLeaveRoom tr.kick_message td,
-#chat-wrapper.noLeaveRoom tr.kick_message div {
-/* 'display: none' can cause issues with the placement of the message 'star button' */
+#chat-wrapper.noTimeStamp tr.timestamp_message *,
+#chat-wrapper.noEnterRoom tr.enter_message *,
+#chat-wrapper.noLeaveRoom tr.leave_message *,
+#chat-wrapper.noLeaveRoom tr.kick_message *{
+/* 'display: none' causes issues with the placement of the 'star buttons' */
 	height: 0;
 	line-height: 0;
 	margin: 0;
 	padding: 0;
 	border-width: 0;
 	font-size: 0;
-	opacity: 0;
+	visibility: hidden;
+}
+
+#emojiButton, #soundButton {
+	width: 18px;
+	height: 16px;
+	background-repeat: no-repeat;
+	margin: 2px 5px;
+	opacity: 0.7;
+}
+
+#emojiButton:hover, #soundButton:hover {
+	opacity: 0.95;
+}
+
+.tooltip {
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.tooltip-inner {
+	display: none;
+	cursor: default;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	z-index: 999;
+	padding: 10px;
+	border: 2px solid #ccc;
+	background-color: #fff;
+}
+
+.tooltip-inner:before, .tooltip-inner:after {
+	content: "";
+	position: absolute;
+	z-index: 1000;
+	bottom: -12px;
+	left: 50%;
+	margin-left: -12px;
+	border-top: 12px solid white;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 0;
+}
+
+.tooltip-inner:before {
+	border-top-color: #ccc;
+	bottom: -14px;
+}
+
+#emojiContainer {
+	width: 168px;
+	margin-left: -96px;
+}
+
+#soundContainer {
+	width: 132px;
+	margin-left: -78px;
+}
+
+.tooltip-inner .emoji, .tooltip-inner .sound {
+	cursor: pointer;
+}
+
+.tooltip-inner .emoji {
+	margin: 4px;
+}
+
+.tooltip-inner .emoji:hover {
+	background-color:#BDF;
+}
+
+.tooltip-inner a {
+	display:block;
 }

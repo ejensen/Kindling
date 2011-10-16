@@ -67,7 +67,7 @@ chromefire.notification = {
 		var lnk = document.createElement('link');
 		lnk.rel = 'stylesheet';
 		lnk.href = link;
-		(document.head || document.body).appendChild(lnk);
+		document.head.appendChild(lnk);
 	}
 };
 
