@@ -1,8 +1,6 @@
 chromefire.highlight = {
 	init: function () {
-		$.subscribe('optionsChanged', this.highlightName);
-		$.subscribe('loaded', this.highlightName);
-		$.subscribe('newMessage', this.highlightName);
+		$.subscribe('loaded optionsChanged newMessage', this.highlightName);
 	},
 
 	highlightName: function (e, options, username) {
@@ -21,9 +19,9 @@ chromefire.highlight = {
 				$messages.highlightRegex(chromefire.common.getUsernameRegex(username), highlightOptions);
 			}
 		} catch (err) {
+		} finally {
+			chromefire.contentscript.bindNewMessage();
 		}
-
-		chromefire.contentscript.bindNewMessage();
 	}
 };
 
