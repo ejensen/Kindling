@@ -1,5 +1,5 @@
 chromefire.options = {
-	OPTIONS: ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'],
+	OPTIONS: ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'faviconCounter'],
 
 	init: function () {
 		this.getMessages();

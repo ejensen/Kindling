@@ -1,6 +1,6 @@
 {
 	"name": "Chromefire",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
 	"background_page": "background.html",
@@ -31,6 +31,7 @@
 			"scripts/chromefire.common.js",
 			"scripts/chromefire.emoji.js",
 			"scripts/chromefire.sounds.js",
+			"scripts/chromefire.favicon.js",
 			"scripts/chromefire.highlight.js",
 			"scripts/chromefire.messagefilter.js",
 			"scripts/chromefire.notificationpublisher.js",
