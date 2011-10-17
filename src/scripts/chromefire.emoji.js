@@ -38,6 +38,15 @@ chromefire.emoji = {
 		'-1': '1f44f'
 	},
 
+	insertAtCaret: function (input, value) {
+		if (input.selectionStart || input.selectionStart === 0) {
+			input.value = input.value.substring(0, input.selectionStart) + value + input.value.substring(input.selectionEnd, input.value.length);
+			input.selectionStart = input.selectionEnd = input.selectionStart + value.length;
+		} else {
+			input.value += value;
+		}
+	},
+
 	init: function () {
 		$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip"><img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL("img/emoji.gif") + '" width="16" height="16"/><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
@@ -56,8 +65,10 @@ chromefire.emoji = {
 			}
 		});
 
+		var $input = $('#input');
 		$emojiContainer.children('.emoji').click(function () {
-			$('#input').insertAtCaret(':' + this.getAttribute('title') + ':').focus();
+			chromefire.emoji.insertAtCaret($input[0], ':' + this.getAttribute('title') + ':');
+			$input.focus();
 		});
 	}
 };
