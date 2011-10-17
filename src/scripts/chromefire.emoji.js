@@ -39,21 +39,20 @@ chromefire.emoji = {
 	},
 
 	init: function () {
-		$('#chat_controls').append('<div id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" class="tooltip" style="background-image:url(\'' + chrome.extension.getURL("img/emoji.gif") + '\')"><span id="emojiContainer" class="tooltip-inner"></span></div>');
+		$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip"><img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL("img/emoji.gif") + '" width="16" height="16"/><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
+		var $emojiButton = $('#emojiButton');
 		var $emojiContainer = $('#emojiContainer');
 		var emoji;
 		for (emoji in this.EMOJIS) {
 			$emojiContainer.append('<span class="emoji emoji' + this.EMOJIS[emoji] + '" title="' + emoji + '"></span>');
 		}
 
-		$('#emojiButton').click(function () {
-			$emojiContainer.toggle();
-		});
-
 		$(document).click(function (e) {
-			if (e.target.id !== 'emojiButton') {
+			if (e.target.id !== 'emojiButton' && $emojiButton.find(e.target).length === 0) {
 				$emojiContainer.hide();
+			} else {
+				$emojiContainer.toggle();
 			}
 		});
 
