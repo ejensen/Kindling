@@ -8,7 +8,7 @@ chromefire.sounds = {
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
 		'Secret Area': 'secret',
-		'Tada' : 'tada',
+		'Ta-da!' : 'tada',
 		'The More You Know': 'tmyk',
 		'Yeeeaah!': 'yeah',
 		'Vuvuzela': 'vuvuzela'
