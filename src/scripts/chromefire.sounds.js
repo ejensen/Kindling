@@ -2,10 +2,13 @@ chromefire.sounds = {
 	SOUNDS: {
 		'Crickets chirping': 'crickets',
 		'Do it live!': 'live',
+		'Drama': 'drama',
 		'Great job': 'greatjob',
+		'Push it': 'pushit',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
 		'The More You Know': 'tmyk',
+		'Yeeeaah!': 'yeah',
 		'Vuvuzela': 'vuvuzela'
 	},
 
