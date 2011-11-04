@@ -1,5 +1,5 @@
-chromefire.sounds = {
-	SOUNDS: {
+(function () {
+	var SOUNDS = {
 		'Crickets chirping': 'crickets',
 		'Do it live!': 'live',
 		'Drama': 'drama',
@@ -12,16 +12,16 @@ chromefire.sounds = {
 		'The More You Know': 'tmyk',
 		'Yeeeaah!': 'yeah',
 		'Vuvuzela': 'vuvuzela'
-	},
+	};
 
-	init: function () {
+	return function () {
 		$('#chat_controls').append('<div id="soundButton-wrapper" class="tooltip"><img id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" src="' + chrome.extension.getURL("img/sound.gif") + '" width="18" height="15" /><span id="soundContainer" class="tooltip-inner"></span></div>');
-		
+
 		var $soundButton = $('#soundButton');
 		var $soundContainer = $('#soundContainer');
 		var sound;
-		for (sound in this.SOUNDS) {
-			$soundContainer.append('<a class="sound" data-value="' + this.SOUNDS[sound] + '">' + sound + '</a>');
+		for (sound in SOUNDS) {
+			$soundContainer.append('<a class="sound" data-value="' + SOUNDS[sound] + '">' + sound + '</a>');
 		}
 
 		$(document).click(function (e) {
@@ -39,9 +39,5 @@ chromefire.sounds = {
 			document.getElementById('send').click();
 			input.value = oldValue;
 		});
-	}
-};
-
-$(function () {
-	chromefire.sounds.init();
-});
+	};
+})()();

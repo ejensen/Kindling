@@ -1,76 +1,74 @@
-chromefire.notification = {
-	variables: null,
+$(function () {
+	var variables = null;
 
-	init: function () {
-		$('#author').html(this.getQueryVariable('author'));
-		$('#room').html(this.getQueryVariable('room'));
+	function init() {
+		$('#author').html(getQueryVariable('author'));
+		$('#room').html(getQueryVariable('room'));
 
-		this.injectCss(this.getQueryVariable('baseUrl') + '/stylesheets/emoji.css');
+		injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css');
 
-		this.loadAvatar();
+		loadAvatar();
 
 		var $content = $('#content');
 		$content.html(location.hash.substring(1));
 		$content.find('img').each(function () {
-			if (chromefire.notification.isRelative(this.src)) {
-				this.src = chromefire.notification.getQueryVariable('baseUrl') + this.src.substring(chromefire.common.getDomain(this.src).length);
+			if (isRelative(this.src)) {
+				this.src = getQueryVariable('baseUrl') + this.src.substring(chromefire.getDomain(this.src).length);
 			}
 		});
 
 		$content.find('a').each(function () {
-			if (chromefire.notification.isRelative(this.href)) {
-				this.href = chromefire.notification.getQueryVariable('baseUrl') + this.pathname + this.search;
+			if (isRelative(this.href)) {
+				this.href = getQueryVariable('baseUrl') + this.pathname + this.search;
 			}
 		});
 		$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
 
 		if (localStorage.highlightName === 'true') {
-			var usernameRegex = chromefire.common.getUsernameRegex(this.getQueryVariable('user'));
+			var usernameRegex = chromefire.getUsernameRegex(getQueryVariable('user'));
 			$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
 		}
 
 		if (localStorage.autoDismiss === 'true') {
 			setTimeout(function () { window.close(); }, localStorage.notificationTimeout);
 		}
-	},
+	}
 
-	parseQueryVariables: function () {
-		this.variables = {};
+	function parseQueryVariables() {
+		variables = {};
 		var query = window.location.search.substring(1);
 		var vars = query.split('&');
-		var i;
+		var i, pair;
 		for (i = 0; i < vars.length; i++) {
-			var pair = vars[i].split('=');
-			this.variables[pair[0]] = unescape(pair[1]);
+			pair = vars[i].split('=');
+			variables[pair[0]] = unescape(pair[1]);
 		}
-	},
+	}
 
-	getQueryVariable: function (variable) {
-		if (!this.variables) {
-			this.parseQueryVariables();
+	function getQueryVariable(variable) {
+		if (!variables) {
+			parseQueryVariables();
 		}
-		return this.variables[variable];
-	},
+		return variables[variable];
+	}
 
-	loadAvatar: function () {
-		var avatar = this.getQueryVariable('avatar');
+	function loadAvatar() {
+		var avatar = getQueryVariable('avatar');
 		if (avatar && avatar !== 'undefined' && (localStorage.showAvatars === 'true')) {
 			document.getElementById('avatar').src = avatar;
 		}
-	},
+	}
 
-	isRelative: function (url) {
+	function isRelative(url) {
 		return url && (url.indexOf('/') === 0 || url.indexOf('chrome-extension://') === 0);
-	},
+	}
 
-	injectCss: function (link) {
+	function injectCss(link) {
 		var lnk = document.createElement('link');
 		lnk.rel = 'stylesheet';
 		lnk.href = link;
 		document.head.appendChild(lnk);
 	}
-};
 
-$(document).ready(function () {
-	chromefire.notification.init();
+	init();
 });

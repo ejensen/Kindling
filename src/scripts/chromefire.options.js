@@ -1,33 +1,33 @@
-chromefire.options = {
-	OPTIONS: ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'],
+$(function () {
+	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'];
 
-	init: function () {
-		this.getMessages();
+	function init() {
+		getMessages();
 
 		$('.cb-enable').click(function () {
-			chromefire.options.onCheckClick(this, true);
+			onCheckClick(this, true);
 		});
 		$('.cb-disable').click(function () {
-			chromefire.options.onCheckClick(this, false);
+			onCheckClick(this, false);
 		});
-		$('.description').click(this.onToggle);
+		$('.description').click(onToggle);
 
-		$('#notificationTimeout').change(this.onNotificationTimeoutChanged);
+		$('#notificationTimeout').change(onNotificationTimeoutChanged);
 
-		this.initOptions();
-	},
+		initOptions();
+	}
 
-	initOptions: function () {
+	function initOptions() {
 		var i;
-		for (i = 0; i < this.OPTIONS.length; i++) {
-			var savedValue = localStorage[this.OPTIONS[i]];
+		for (i = 0; i < OPTIONS.length; i++) {
+			var savedValue = localStorage[OPTIONS[i]];
 			var checked = savedValue === undefined || (savedValue === 'true');
-			this.onCheckChange($(document.getElementById(this.OPTIONS[i])), checked);
+			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
 		}
 
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
-		this.onNotificationTimeoutChanged();
+		onNotificationTimeoutChanged();
 
 		if (localStorage.notifications === 'false') {
 		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
@@ -35,9 +35,9 @@ chromefire.options = {
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
 		}
-	},
+	}
 
-	getMessages: function () {
+	function getMessages() {
 		document.title = chrome.i18n.getMessage('chromefireOptions');
 		$('.cb-enable > span').html(chrome.i18n.getMessage('on'));
 		$('.cb-disable > span').html(chrome.i18n.getMessage('off'));
@@ -48,16 +48,16 @@ chromefire.options = {
 		$('label[for="notificationTimeout"]').html(chrome.i18n.getMessage('notificationTimeout'));
 
 		var i;
-		for (i = 0; i < this.OPTIONS.length; i++) {
-			$('.description[for="' + this.OPTIONS[i] + '"]').html(chrome.i18n.getMessage(this.OPTIONS[i]));
+		for (i = 0; i < OPTIONS.length; i++) {
+			$('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
 		}
-	},
+	}
 
-	onOptionChanged: function () {
+	function onOptionChanged() {
 		chrome.extension.sendRequest({ type: 'optionsChanged' });
-	},
+	}
 
-	onCheckChange: function ($parent, value) {
+	function onCheckChange($parent, value) {
 		if (value) {
 			$parent.find('.cb-disable').removeClass('selected');
 			$parent.find('.cb-enable').addClass('selected');
@@ -71,36 +71,34 @@ chromefire.options = {
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
 		}
-	},
+	}
 
-	saveOption: function (id, value) {
+	function saveOption(id, value) {
 		localStorage[id] = value;
-		this.onOptionChanged();
-	},
+		onOptionChanged();
+	}
 
-	onCheckClick: function (sender, value) {
+	function onCheckClick(sender, value) {
 		var $parent = $(sender).parents('.switch:first');
-		this.onCheckChange($parent, value);
-		this.saveOption($parent[0].id, value);
-	},
+		onCheckChange($parent, value);
+		saveOption($parent[0].id, value);
+	}
 
-	onNotificationTimeoutChanged: function () {
+	var onNotificationTimeoutChanged = function () {
 		var slider = document.getElementById('notificationTimeout');
 		var $tooltip = $('#rangeTooltip');
 		$tooltip.html((slider.value / 1000) + ' ' + chrome.i18n.getMessage('seconds'));
 		$tooltip.css('left', ((slider.value / (slider.max - slider.min)) * $(slider).width()) - ($tooltip.width() / 1.75));
 
 		localStorage[slider.id] = slider.value;
-		this.onOptionChanged();
-	},
+		onOptionChanged();
+	};
 
-	onToggle: function (e) {
+	var onToggle = function (e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
-		chromefire.options.onCheckClick(e.currentTarget, value === 'true' ? false : true);
-	}
-};
+		onCheckClick(e.currentTarget, value === 'true' ? false : true);
+	};
 
-$(document).ready(function () {
-	chromefire.options.init();
+	init();
 });

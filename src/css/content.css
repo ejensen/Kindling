@@ -41,8 +41,8 @@
 	left: 50%;
 	z-index: 999;
 	padding: 10px;
-	border: 2px solid #ccc;
 	background-color: #fff;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
 .tooltip-inner:before, .tooltip-inner:after {
@@ -82,9 +82,9 @@
 }
 
 .tooltip-inner .emoji:hover {
-	background-color:#BDF;
+	background-color: #BDF;
 }
 
 .tooltip-inner a {
-	display:block;
+	display: block;
 }
