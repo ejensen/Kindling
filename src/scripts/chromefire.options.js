@@ -1,41 +1,5 @@
-$(function () {
+(function () {
 	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'];
-
-	function init() {
-		getMessages();
-
-		$('.cb-enable').click(function () {
-			onCheckClick(this, true);
-		});
-		$('.cb-disable').click(function () {
-			onCheckClick(this, false);
-		});
-		$('.description').click(onToggle);
-
-		$('#notificationTimeout').change(onNotificationTimeoutChanged);
-
-		initOptions();
-	}
-
-	function initOptions() {
-		var i;
-		for (i = 0; i < OPTIONS.length; i++) {
-			var savedValue = localStorage[OPTIONS[i]];
-			var checked = savedValue === undefined || (savedValue === 'true');
-			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
-		}
-
-		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
-		notificationTimeoutSlider.value = localStorage.notificationTimeout;
-		onNotificationTimeoutChanged();
-
-		if (localStorage.notifications === 'false') {
-		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
-		}
-		if (localStorage.autoDismiss === 'false') {
-			$('#timeoutDiv').hide();
-		}
-	}
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('chromefireOptions');
@@ -48,7 +12,7 @@ $(function () {
 		$('label[for="notificationTimeout"]').html(chrome.i18n.getMessage('notificationTimeout'));
 
 		var i;
-		for (i = 0; i < OPTIONS.length; i++) {
+		for (i = 0; i < OPTIONS.length; i += 1) {
 			$('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
 		}
 	}
@@ -100,5 +64,39 @@ $(function () {
 		onCheckClick(e.currentTarget, value === 'true' ? false : true);
 	};
 
-	init();
-});
+	function initOptions() {
+		var i;
+		for (i = 0; i < OPTIONS.length; i += 1) {
+			var savedValue = localStorage[OPTIONS[i]];
+			var checked = savedValue === undefined || (savedValue === 'true');
+			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
+		}
+
+		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
+		notificationTimeoutSlider.value = localStorage.notificationTimeout;
+		onNotificationTimeoutChanged();
+
+		if (localStorage.notifications === 'false') {
+		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
+		}
+		if (localStorage.autoDismiss === 'false') {
+			$('#timeoutDiv').hide();
+		}
+	}
+
+	$(function () {
+		getMessages();
+
+		$('.cb-enable').click(function () {
+			onCheckClick(this, true);
+		});
+		$('.cb-disable').click(function () {
+			onCheckClick(this, false);
+		});
+		$('.description').click(onToggle);
+
+		$('#notificationTimeout').change(onNotificationTimeoutChanged);
+
+		initOptions();
+	});
+}());

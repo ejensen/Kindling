@@ -10,7 +10,7 @@
 	function getSettingsObject() {
 		var i, settingsObject = {};
 		var count = localStorage.length;
-		for (i = 0; i < count; i++) {
+		for (i = 0; i < count; i += 1) {
 			var key = localStorage.key(i);
 			settingsObject[key] = localStorage.getItem(key);
 		}
@@ -19,7 +19,7 @@
 
 	function sendOptionsChangedNotification() {
 		var i, count = tabs.length;
-		for (i = 0; i < count; i++) {
+		for (i = 0; i < count; i += 1) {
 			chrome.tabs.sendRequest(tabs[i], { type: 'optionsChanged', value: getSettingsObject() });
 		}
 	}
@@ -44,7 +44,7 @@
 			successCallback(payload, sender);
 		}
 	}
-	
+
 	var showNotification = function (payload, sender) {
 		var notification = webkitNotifications.createHTMLNotification('notification.html'
 			+ '?room=' + payload.room
@@ -96,4 +96,4 @@
 			}
 		});
 	};
-})()();
+}()());

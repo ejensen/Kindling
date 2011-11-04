@@ -1,4 +1,5 @@
 (function () {
+	var room;
 	var publishNotification = function (e, options, username, message) {
 		if (!options || !username || !message || options.notifications !== 'true') {
 			return;
@@ -23,7 +24,7 @@
 				}
 			}
 
-			var room = room || $('#room_name').html();
+			room = room || $('#room_name').html();
 			chrome.extension.sendRequest({
 				type: 'notification',
 				value: {
@@ -39,4 +40,4 @@
 	};
 
 	$.subscribe('newMessage', publishNotification);
-})();
+}());

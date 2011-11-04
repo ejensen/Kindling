@@ -1,5 +1,5 @@
 var chromefire = chromefire || (function () {
-	function regExpEscape (text) {
+	function regExpEscape(text) {
 		var regex = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
 		return text.replace(regex, '\\$&');
 	}
@@ -16,4 +16,4 @@ var chromefire = chromefire || (function () {
 			return match ? match[0] : '';
 		}
 	};
-})();
+}());

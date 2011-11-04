@@ -1,37 +1,7 @@
-$(function () {
+(function (module) {
 	var options = null;
 	var $chat = null;
 	var username = '';
-
-	function init() {
-		$chat = $('#chat-wrapper');
-		chromefire.bindNewMessages = bindNewMessages;
-		chromefire.unbindNewMessages = unbindNewMessages;
-
-		window.onunload = function () {
-			chrome.extension.sendRequest({ type: 'unload' });
-		};
-		chrome.extension.onRequest.addListener(onRequest);
-		chrome.extension.sendRequest({ type: 'init' });
-
-		bindNewMessages();
-
-		injectJs('scripts/chromefire.inject.js');
-	}
-
-	function injectJs(link) {
-		var script = document.createElement('script');
-		script.src = chrome.extension.getURL(link);
-		document.body.appendChild(script);
-	}
-
-	var bindNewMessages = function () {
-		$chat.bind('DOMNodeInserted', onNewMessage);
-	}
-
-	var unbindNewMessages = function () {
-		$chat.unbind('DOMNodeInserted');
-	}
 
 	var onRequest = function (request, sender, callback) {
 		if (request.type === 'optionsChanged') {
@@ -53,5 +23,35 @@ $(function () {
 		}
 	};
 
-	init();
-});
+	var bindNewMessages = function () {
+		$chat.bind('DOMNodeInserted', onNewMessage);
+	};
+
+	var unbindNewMessages = function () {
+		$chat.unbind('DOMNodeInserted');
+	};
+	
+	function injectJs(link) {
+		var script = document.createElement('script');
+		script.src = chrome.extension.getURL(link);
+		document.body.appendChild(script);
+	}
+
+	$(function () {
+		$chat = $('#chat-wrapper');
+
+		module.bindNewMessages = bindNewMessages;
+		module.unbindNewMessages = unbindNewMessages;
+
+		window.onunload = function () {
+			chrome.extension.sendRequest({ type: 'unload' });
+		};
+		chrome.extension.onRequest.addListener(onRequest);
+		chrome.extension.sendRequest({ type: 'init' });
+
+		bindNewMessages();
+
+		injectJs('scripts/chromefire.inject.js');
+	});
+
+}(chromefire || {}));
