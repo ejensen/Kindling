@@ -1,28 +1,11 @@
-chromefire.favicon = {
-	iconElement: null,
-	iconCanvas: null,
-	badgedCanvas: [],
-	enabled: false,
-	iconSource: chromefire.getDomain(window.location.toString()) + '/favicon.ico',
+(function () {
+	var iconElement = null;
+	var iconCanvas = null;
+	var badgedCanvas = [];
+	var enabled = false;
+	var iconSource = chromefire.getDomain(window.location.toString()) + '/favicon.ico';
 
-	init: function () {
-		var titleElem = document.getElementsByTagName('title')[0];
-		document.documentElement.addEventListener('DOMSubtreeModified', function (e) {
-			if (e.target === titleElem || (e.target.parentNode && e.target.parentNode === titleElem)) {
-				chromefire.favicon.onTitleChanged();
-			}
-		});
-
-		$.subscribe('optionsChanged', this.onOptionsChanged);
-	},
-
-	onTitleChanged: function () {
-		if (chromefire.favicon.enabled) {
-			chromefire.favicon.updateIcon();
-		}
-	},
-
-	getUnreadCount: function () {
+	function getUnreadCount() {
 		var unreadCount = 0;
 		if (document.title.indexOf('(') === 0) {
 			var end = document.title.indexOf(')', 1);
@@ -31,42 +14,43 @@ chromefire.favicon = {
 			}
 		}
 		return unreadCount;
-	},
+	}
 
-	onOptionsChanged: function (e, options) {
-		chromefire.favicon.enabled = (options.faviconCounter === 'true');
-		if (options.faviconCounter.enabled) {
-			chromefire.favicon.updateIcon();
+	function updateIconElement(newIconCanvas) {
+		iconElement.href = newIconCanvas.toDataURL('image/png');
+	}
+
+	function getIconCanvas(callback) {
+		if (!iconCanvas) {
+			iconCanvas = document.createElement('canvas');
+			iconCanvas.height = iconCanvas.width = 16;
+			var ctx = iconCanvas.getContext('2d');
+			var image = new Image();
+			image.onload = function () {
+				ctx.drawImage(image, 0, 0);
+				callback(iconCanvas);
+			};
+			image.src = iconSource;
 		} else {
-			chromefire.favicon.resetIcon();
+			callback(iconCanvas);
 		}
-	},
+	}
 
-	resetIcon: function () {
-		if (this.iconCanvas) {
-			this.updateIconElement(this.iconCanvas);
-		}
-	},
+	function injectIcon() {
+		iconElement = document.createElement('link');
+		iconElement.href = iconSource;
+		iconElement.rel = 'icon';
+		iconElement.type = 'image/x-icon';
+		document.head.appendChild(iconElement);
 
-	updateIcon: function () {
-		if (!this.iconElement) {
-			this.injectIcon();
-		}
-		var unreadCount = chromefire.favicon.getUnreadCount();
-		if (unreadCount < 1) {
-			this.resetIcon();
-		} else {
-			this.getBadgedIconCanvas(unreadCount, this.updateIconElement);
-		}
-	},
+		window.onbeforeunload = function () {
+			iconElement.href = iconSource;
+		};
+	}
 
-	updateIconElement: function (newIconCanvas) {
-		chromefire.favicon.iconElement.href = newIconCanvas.toDataURL('image/png');
-	},
-
-	getBadgedIconCanvas: function (unreadCount, callback) {
-		if (!this.badgedCanvas[unreadCount]) {
-			this.getIconCanvas(function (iconCanvas) {
+	function getBadgedIconCanvas(unreadCount, callback) {
+		if (!badgedCanvas[unreadCount]) {
+			getIconCanvas(function (iconCanvas) {
 				var canvas = document.createElement('canvas');
 				canvas.height = canvas.width = iconCanvas.width;
 				var ctx = canvas.getContext('2d');
@@ -86,41 +70,55 @@ chromefire.favicon = {
 				ctx.strokeText(unreadCount, left, top);
 				ctx.fillText(unreadCount, left, top);
 
-				chromefire.favicon.badgedCanvas[unreadCount] = canvas;
-				callback(chromefire.favicon.badgedCanvas[unreadCount]);
+				badgedCanvas[unreadCount] = canvas;
+				callback(badgedCanvas[unreadCount]);
 			});
 		} else {
-			callback(this.badgedCanvas[unreadCount]);
+			callback(badgedCanvas[unreadCount]);
 		}
-	},
-
-	getIconCanvas: function (callback) {
-		if (!this.iconCanvas) {
-			this.iconCanvas = document.createElement('canvas');
-			this.iconCanvas.height = this.iconCanvas.width = 16;
-			var ctx = this.iconCanvas.getContext('2d');
-			var image = new Image();
-			image.onload = function () {
-				ctx.drawImage(image, 0, 0);
-				callback(this.iconCanvas);
-			};
-			image.src = this.iconSource;
-		} else {
-			callback(this.iconCanvas);
-		}
-	},
-
-	injectIcon: function () {
-		this.iconElement = document.createElement('link');
-		this.iconElement.href = this.iconSource;
-		this.iconElement.rel = 'icon';
-		this.iconElement.type = 'image/x-icon';
-		document.head.appendChild(this.iconElement);
-
-		window.onbeforeunload = function () {
-			chromefire.favicon.iconElement.href = chromefire.favicon.iconSource;
-		};
 	}
-};
 
-chromefire.favicon.init();
+	function resetIcon() {
+		if (iconCanvas) {
+			updateIconElement(iconCanvas);
+		}
+	}
+
+	function updateIcon() {
+		if (!iconElement) {
+			injectIcon();
+		}
+		var unreadCount = getUnreadCount();
+		if (unreadCount < 1) {
+			resetIcon();
+		} else {
+			getBadgedIconCanvas(unreadCount, updateIconElement);
+		}
+	}
+
+	function onTitleChanged() {
+		if (enabled) {
+			updateIcon();
+		}
+	}
+
+	var onOptionsChanged = function (e, options) {
+		enabled = (options.faviconCounter === 'true');
+		if (enabled) {
+			updateIcon();
+		} else {
+			resetIcon();
+		}
+	};
+
+	$(function () {
+		var titleElem = document.getElementsByTagName('title')[0];
+		document.documentElement.addEventListener('DOMSubtreeModified', function (e) {
+			if (e.target === titleElem || (e.target.parentNode && e.target.parentNode === titleElem)) {
+				onTitleChanged();
+			}
+		});
+
+		$.subscribe('optionsChanged', onOptionsChanged);
+	});
+}());
