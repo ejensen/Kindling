@@ -7,7 +7,7 @@
 		'Push it': 'pushit',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
-		'Secret Area': 'secret',
+		'Secret area': 'secret',
 		'Ta-da!' : 'tada',
 		'The More You Know': 'tmyk',
 		'Yeeeaah!': 'yeah',
