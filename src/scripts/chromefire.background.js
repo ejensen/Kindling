@@ -1,66 +1,33 @@
-chromefire.background = {
-	tabs: [],
+(function () {
+	var tabs = [];
 
-	init: function () {
-		this.initSetting('enterRoom', false);
-		this.initSetting('leaveRoom', false);
-		this.initSetting('timeStamps', true);
-		this.initSetting('showAvatars', true);
-		this.initSetting('filterNotifications', false);
-		this.initSetting('autoDismiss', true);
-		this.initSetting('notifications', true);
-		this.initSetting('notificationTimeout', 5000);
-		this.initSetting('highlightName', true);
-		this.initSetting('faviconCounter', true);
-		this.initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
-		localStorage.removeItem('focusNotifications'); //Obsolete option
-
-		chrome.extension.onRequest.addListener(function (request, sender, callback) {
-			if (request.type === 'notification') {
-				chromefire.background.tryToCreateNotification(request.value, sender, chromefire.background.showNotification);
-			} else if (request.type === 'init') {
-				chrome.pageAction.show(sender.tab.id);
-				chromefire.background.tabs[chromefire.background.tabs.length] = sender.tab.id;
-				chromefire.background.sendOptionsChangedNotification();
-			} else if (request.type === 'unload') {
-				var index = chromefire.background.tabs.indexOf(sender.tab.id);
-				if (index !== -1) {
-					chromefire.background.tabs.splice(index, 1);
-				}
-			} else if (request.type === 'optionsChanged') {
-				chromefire.background.sendOptionsChangedNotification();
-			}
-
-			if (callback) {
-				callback();
-			}
-		});
-	},
-
-	initSetting: function (setting, defaultValue) {
+	function initSetting(setting, defaultValue) {
 		if (!localStorage[setting]) {
 			localStorage[setting] = defaultValue;
 		}
-	},
+	}
 
-	getSettingsObject: function () {
+	function getSettingsObject() {
 		var i, settingsObject = {};
 		var count = localStorage.length;
-		for (i = 0; i < count; i++) {
+		for (i = 0; i < count; i += 1) {
 			var key = localStorage.key(i);
 			settingsObject[key] = localStorage.getItem(key);
 		}
 		return settingsObject;
-	},
+	}
 
-	sendOptionsChangedNotification: function () {
-		var i, count = this.tabs.length;
-		for (i = 0; i < count; i++) {
-			chrome.tabs.sendRequest(this.tabs[i], { type: 'optionsChanged', value: this.getSettingsObject() });
+	function sendOptionsChangedNotification() {
+		var i, count = tabs.length;
+		for (i = 0; i < count; i += 1) {
+			chrome.tabs.sendRequest(tabs[i], { type: 'optionsChanged', value: getSettingsObject() });
 		}
-	},
+	}
 
-	tryToCreateNotification: function (payload, sender, successCallback) {
+	function tryToCreateNotification(payload, sender, successCallback) {
+		if (Date.now() - payload.timestamp > 10000) {
+			return; //timeout
+		}
 		if (localStorage.disableNotificationsWhenInFocus === 'true') {
 			chrome.windows.getLastFocused(function (wnd) {
 				if (wnd.id === sender.tab.windowId) {
@@ -76,15 +43,15 @@ chromefire.background = {
 		} else {
 			successCallback(payload, sender);
 		}
-	},
-	
-	showNotification: function (payload, sender) {
-			var notification = webkitNotifications.createHTMLNotification('notification.html'
+	}
+
+	var showNotification = function (payload, sender) {
+		var notification = webkitNotifications.createHTMLNotification('notification.html'
 			+ '?room=' + payload.room
 			+ '&author=' + payload.author
 			+ '&avatar=' + payload.avatar
 			+ '&user=' + payload.username
-			+ '&baseUrl=' + chromefire.common.getDomain(sender.tab.url)
+			+ '&baseUrl=' + chromefire.getDomain(sender.tab.url)
 			+ '#' + payload.message);
 
 		notification.onclick = function () {
@@ -93,7 +60,43 @@ chromefire.background = {
 		};
 
 		notification.show();
-	}
-};
+	};
 
-chromefire.background.init();
+	function init() {
+		initSetting('enterRoom', false);
+		initSetting('leaveRoom', false);
+		initSetting('timeStamps', true);
+		initSetting('showAvatars', true);
+		initSetting('filterNotifications', false);
+		initSetting('autoDismiss', true);
+		initSetting('notifications', true);
+		initSetting('notificationTimeout', 5000);
+		initSetting('highlightName', true);
+      initSetting('faviconCounter', true);
+		initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+		localStorage.removeItem('focusNotifications'); //obsolete option
+
+		chrome.extension.onRequest.addListener(function (request, sender, callback) {
+			if (request.type === 'notification') {
+				tryToCreateNotification(request.value, sender, showNotification);
+			} else if (request.type === 'init') {
+				chrome.pageAction.show(sender.tab.id);
+				tabs[tabs.length] = sender.tab.id;
+				sendOptionsChangedNotification();
+			} else if (request.type === 'unload') {
+				var index = tabs.indexOf(sender.tab.id);
+				if (index !== -1) {
+					tabs.splice(index, 1);
+				}
+			} else if (request.type === 'optionsChanged') {
+				sendOptionsChangedNotification();
+			}
+
+			if (callback) {
+				callback();
+			}
+		});
+	}
+	
+	init();
+}());

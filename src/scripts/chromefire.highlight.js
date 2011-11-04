@@ -1,28 +1,27 @@
-chromefire.highlight = {
-	init: function () {
-		$.subscribe('loaded optionsChanged newMessage', this.highlightName);
-	},
+(function () {
+	var $chat;
 
-	highlightName: function (e, options, username) {
+	var highlightName = function (e, options, username) {
 		if (!options || username === '') {
 			return;
 		}
 
-		chromefire.contentscript.unbindNewMessage();
+		$chat = $chat || $('#chat-wrapper');
+		var $messages = $chat.find('div:.body');
+
+		chromefire.unbindNewMessages();
 		try {
-			this.$chat = this.$chat || $('#chat-wrapper');
-			var $messages = this.$chat.find('div:.body');
 			var highlightOptions = { className: 'nameHighlight', tagType: 'mark' };
 			$messages.highlightRegex(undefined, highlightOptions);
 
 			if (options.highlightName === 'true') {
-				$messages.highlightRegex(chromefire.common.getUsernameRegex(username), highlightOptions);
+				$messages.highlightRegex(chromefire.getUsernameRegex(username), highlightOptions);
 			}
 		} catch (err) {
 		} finally {
-			chromefire.contentscript.bindNewMessage();
+			chromefire.bindNewMessages();
 		}
-	}
-};
+	};
 
-chromefire.highlight.init();
+	$.subscribe('loaded optionsChanged newMessage', highlightName);
+}());

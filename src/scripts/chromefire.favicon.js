@@ -3,7 +3,7 @@ chromefire.favicon = {
 	iconCanvas: null,
 	badgedCanvas: [],
 	enabled: false,
-	iconSource: chromefire.common.getDomain(window.location.toString()) + '/favicon.ico',
+	iconSource: chromefire.getDomain(window.location.toString()) + '/favicon.ico',
 
 	init: function () {
 		var titleElem = document.getElementsByTagName('title')[0];

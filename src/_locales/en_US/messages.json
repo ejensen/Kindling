@@ -51,7 +51,7 @@
 		"message": "Click to configure Chromefire..."
 	},
 	"description":{
-		"message": "Chromefire adds desktop notifications, name highlighting, and message filtering to your 37signals Campfire group chat."
+		"message": "Chromefire adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
 	},
 	"seconds":{
 		"message": "sec"

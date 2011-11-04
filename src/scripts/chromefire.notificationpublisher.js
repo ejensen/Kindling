@@ -1,9 +1,6 @@
-chromefire.notificationpublisher = {
-	init: function () {
-		$.subscribe('newMessage', this.publishNotification);
-	},
-
-	publishNotification: function (e, options, username, message) {
+(function () {
+	var room;
+	var publishNotification = function (e, options, username, message) {
 		if (!options || !username || !message || options.notifications !== 'true') {
 			return;
 		}
@@ -21,25 +18,26 @@ chromefire.notificationpublisher = {
 			}
 
 			if (options.filterNotifications === 'true') {
-				var regex = chromefire.common.getUsernameRegex(username);
+				var regex = chromefire.getUsernameRegex(username);
 				if (!regex.test($body.html())) {
 					return;
 				}
 			}
 
-			this.room = this.room || $('#room_name').html();
+			room = room || $('#room_name').html();
 			chrome.extension.sendRequest({
 				type: 'notification',
 				value: {
 					username: username,
-					room: this.room,
+					room: room,
 					author: $author.text(),
 					avatar: $author.attr('data-avatar'),
-					message: $body.html()
+					message: $body.html(),
+					timestamp: Date.now()
 				}
 			});
 		}
-	}
-};
+	};
 
-chromefire.notificationpublisher.init();
+	$.subscribe('newMessage', publishNotification);
+}());
