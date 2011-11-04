@@ -30,7 +30,7 @@
 	var unbindNewMessages = function () {
 		$chat.unbind('DOMNodeInserted');
 	};
-	
+
 	function injectJs(link) {
 		var script = document.createElement('script');
 		script.src = chrome.extension.getURL(link);

@@ -62,7 +62,7 @@
 		notification.show();
 	};
 
-	return function () {
+	function init() {
 		initSetting('enterRoom', false);
 		initSetting('leaveRoom', false);
 		initSetting('timeStamps', true);
@@ -95,5 +95,7 @@
 				callback();
 			}
 		});
-	};
-}()());
+	}
+	
+	init();
+}());
