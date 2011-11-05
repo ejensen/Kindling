@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var variables = null;
 
 	function parseQueryVariables() {

@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var $chat;
 
 	var highlightName = function (e, options, username) {

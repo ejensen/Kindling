@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var SOUNDS = {
 		'Crickets chirping': 'crickets',
 		'Do it live!': 'live',

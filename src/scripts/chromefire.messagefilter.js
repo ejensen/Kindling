@@ -1,10 +1,14 @@
 (function () {
+	"use strict";
+
+	var $chat;
+
 	function showHideElements (key, value) {
-		this.$chat = this.$chat || $('#chat-wrapper');
-		if (value === 'false' && this.$chat.hasClass(key) === false) {
-			this.$chat.addClass(key);
-		} else if (value === 'true' && this.$chat.hasClass(key) === true) {
-			this.$chat.removeClass(key);
+		$chat = $chat || $('#chat-wrapper');
+		if (value === 'false' && $chat.hasClass(key) === false) {
+			$chat.addClass(key);
+		} else if (value === 'true' && $chat.hasClass(key) === true) {
+			$chat.removeClass(key);
 		}
 	}
 

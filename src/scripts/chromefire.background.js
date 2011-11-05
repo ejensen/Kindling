@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var tabs = [];
 
 	function initSetting(setting, defaultValue) {
