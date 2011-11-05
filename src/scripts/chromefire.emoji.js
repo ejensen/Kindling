@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var EMOJIS = {
 		'apple': '1f34e',
 		'beer': '1f37a',

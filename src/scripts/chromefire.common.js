@@ -1,4 +1,6 @@
 var chromefire = chromefire || (function () {
+	"use strict";
+
 	function regExpEscape(text) {
 		var regex = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
 		return text.replace(regex, '\\$&');

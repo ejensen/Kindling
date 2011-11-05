@@ -1,4 +1,6 @@
 (function () {
+	"use strict";
+
 	var room;
 	var publishNotification = function (e, options, username, message) {
 		if (!options || !username || !message || options.notifications !== 'true') {

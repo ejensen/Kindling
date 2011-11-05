@@ -1,4 +1,6 @@
-(function (module) {
+(function () {
+	"use strict";
+
 	var options = null;
 	var $chat = null;
 	var username = '';
@@ -40,8 +42,8 @@
 	$(function () {
 		$chat = $('#chat-wrapper');
 
-		module.bindNewMessages = bindNewMessages;
-		module.unbindNewMessages = unbindNewMessages;
+		chromefire.bindNewMessages = bindNewMessages;
+		chromefire.unbindNewMessages = unbindNewMessages;
 
 		window.onunload = function () {
 			chrome.extension.sendRequest({ type: 'unload' });
@@ -54,4 +56,4 @@
 		injectJs('scripts/chromefire.inject.js');
 	});
 
-}(chromefire || {}));
+}());
