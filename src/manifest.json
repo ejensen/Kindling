@@ -1,5 +1,5 @@
 {
-	"name": "Chromefire",
+	"name": "Campsite",
 	"version": "1.2.3",
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
@@ -28,13 +28,13 @@
 			"scripts/jquery.min.js",
 			"scripts/pubsub.min.js",
 			"scripts/highlight.min.js",
-			"scripts/chromefire.common.js",
-			"scripts/chromefire.emoji.js",
-			"scripts/chromefire.sounds.js",
-			"scripts/chromefire.highlight.js",
-			"scripts/chromefire.messagefilter.js",
-			"scripts/chromefire.notificationpublisher.js",
-			"scripts/chromefire.contentscript.js"
+			"scripts/campsite.common.js",
+			"scripts/campsite.emoji.js",
+			"scripts/campsite.sounds.js",
+			"scripts/campsite.highlight.js",
+			"scripts/campsite.messagefilter.js",
+			"scripts/campsite.notificationpublisher.js",
+			"scripts/campsite.contentscript.js"
 		]
 	}]
 }

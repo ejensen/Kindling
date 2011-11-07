@@ -45,16 +45,16 @@
 		"message": "Name highlighting"
 	},
 	"iconTooltip":{
-		"message": "Click to configure Chromefire..."
+		"message": "Click to configure Campsite..."
 	},
 	"description":{
-		"message": "Chromefire adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
+		"message": "Campsite adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
 	},
 	"seconds":{
 		"message": "sec"
 	},
-	"chromefireOptions":{
-		"message": "Chromefire Options"
+	"options":{
+		"message": "Campsite Options"
 	},
 	"emojiMenuTooltip":{
 		"message": "Insert emoticon..."
