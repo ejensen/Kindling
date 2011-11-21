@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var $chat;
 
@@ -25,5 +25,9 @@
 		}
 	};
 
-	$.subscribe('loaded optionsChanged newMessage', highlightName);
+	return {
+		init: function () {
+			$.subscribe('loaded optionsChanged newMessage', highlightName);
+		}
+	};
 }());

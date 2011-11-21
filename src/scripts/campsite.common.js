@@ -1,5 +1,5 @@
-var campsite = campsite || (function () {
-	"use strict";
+var campsite = campsite || (function (domReady) {
+	'use strict';
 
 	function regExpEscape(text) {
 		var regex = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
@@ -16,6 +16,15 @@ var campsite = campsite || (function () {
 			var regex = new RegExp('(chrome-extension|https?):\/\/(.[^/]+)');
 			var match = url.match(regex);
 			return match ? match[0] : '';
+		},
+
+		module: function (m) {
+			if (m.init) {
+				domReady(function() {
+					m.init();
+				});
+			}
+			return m;
 		}
 	};
-}());
+}(window.$ || function(f){f()}));

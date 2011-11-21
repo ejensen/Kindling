@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var room;
 	var publishNotification = function (e, options, username, message) {
@@ -34,12 +34,15 @@
 					room: room,
 					author: $author.text(),
 					avatar: $author.attr('data-avatar'),
-					message: $body.html(),
-					timestamp: Date.now()
+					message: $body.html()
 				}
 			});
 		}
 	};
 
-	$.subscribe('newMessage', publishNotification);
+	return {
+		init: function () {
+			$.subscribe('newMessage', publishNotification);
+		}
+	};
 }());

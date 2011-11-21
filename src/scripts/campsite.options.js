@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'];
 
@@ -86,19 +86,21 @@
 		}
 	}
 
-	$(function () {
-		getMessages();
+	return {
+		init: function () {
+			getMessages();
 
-		$('.cb-enable').click(function () {
-			onCheckClick(this, true);
-		});
-		$('.cb-disable').click(function () {
-			onCheckClick(this, false);
-		});
-		$('.description').click(onToggle);
+			$('.cb-enable').click(function () {
+				onCheckClick(this, true);
+			});
+			$('.cb-disable').click(function () {
+				onCheckClick(this, false);
+			});
+			$('.description').click(onToggle);
 
-		$('#notificationTimeout').change(onNotificationTimeoutChanged);
+			$('#notificationTimeout').change(onNotificationTimeoutChanged);
 
-		initOptions();
-	});
+			initOptions();
+		}
+	};
 }());

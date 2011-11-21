@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var tabs = [];
 
@@ -27,9 +27,6 @@
 	}
 
 	function tryToCreateNotification(payload, sender, successCallback) {
-		if (Date.now() - payload.timestamp > 10000) {
-			return; //timeout
-		}
 		if (localStorage.disableNotificationsWhenInFocus === 'true') {
 			chrome.windows.getLastFocused(function (wnd) {
 				if (wnd.id === sender.tab.windowId) {
@@ -64,40 +61,40 @@
 		notification.show();
 	};
 
-	function init() {
-		initSetting('enterRoom', false);
-		initSetting('leaveRoom', false);
-		initSetting('timeStamps', true);
-		initSetting('showAvatars', true);
-		initSetting('filterNotifications', false);
-		initSetting('autoDismiss', true);
-		initSetting('notifications', true);
-		initSetting('notificationTimeout', 5000);
-		initSetting('highlightName', true);
-		initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
-		localStorage.removeItem('focusNotifications'); //obsolete option
+	return {
+		init: function () {
+			initSetting('enterRoom', false);
+			initSetting('leaveRoom', false);
+			initSetting('timeStamps', true);
+			initSetting('showAvatars', true);
+			initSetting('filterNotifications', false);
+			initSetting('autoDismiss', true);
+			initSetting('notifications', true);
+			initSetting('notificationTimeout', 5000);
+			initSetting('highlightName', true);
+			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+			localStorage.removeItem('focusNotifications'); //obsolete option
 
-		chrome.extension.onRequest.addListener(function (request, sender, callback) {
-			if (request.type === 'notification') {
-				tryToCreateNotification(request.value, sender, showNotification);
-			} else if (request.type === 'init') {
-				chrome.pageAction.show(sender.tab.id);
-				tabs[tabs.length] = sender.tab.id;
-				sendOptionsChangedNotification();
-			} else if (request.type === 'unload') {
-				var index = tabs.indexOf(sender.tab.id);
-				if (index !== -1) {
-					tabs.splice(index, 1);
+			chrome.extension.onRequest.addListener(function (request, sender, callback) {
+				if (request.type === 'notification') {
+					tryToCreateNotification(request.value, sender, showNotification);
+				} else if (request.type === 'init') {
+					chrome.pageAction.show(sender.tab.id);
+					tabs[tabs.length] = sender.tab.id;
+					sendOptionsChangedNotification();
+				} else if (request.type === 'unload') {
+					var index = tabs.indexOf(sender.tab.id);
+					if (index !== -1) {
+						tabs.splice(index, 1);
+					}
+				} else if (request.type === 'optionsChanged') {
+					sendOptionsChangedNotification();
 				}
-			} else if (request.type === 'optionsChanged') {
-				sendOptionsChangedNotification();
-			}
 
-			if (callback) {
-				callback();
-			}
-		});
-	}
-	
-	init();
+				if (callback) {
+					callback();
+				}
+			});
+		}
+	};
 }());

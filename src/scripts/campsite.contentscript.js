@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var options = null;
 	var $chat = null;
@@ -38,22 +38,23 @@
 		script.src = chrome.extension.getURL(link);
 		document.body.appendChild(script);
 	}
+	
+	return {
+		init: function () {
+			$chat = $('#chat-wrapper');
 
-	$(function () {
-		$chat = $('#chat-wrapper');
+			campsite.bindNewMessages = bindNewMessages;
+			campsite.unbindNewMessages = unbindNewMessages;
 
-		campsite.bindNewMessages = bindNewMessages;
-		campsite.unbindNewMessages = unbindNewMessages;
+			window.onunload = function () {
+				chrome.extension.sendRequest({ type: 'unload' });
+			};
+			chrome.extension.onRequest.addListener(onRequest);
+			chrome.extension.sendRequest({ type: 'init' });
 
-		window.onunload = function () {
-			chrome.extension.sendRequest({ type: 'unload' });
-		};
-		chrome.extension.onRequest.addListener(onRequest);
-		chrome.extension.sendRequest({ type: 'init' });
+			bindNewMessages();
 
-		bindNewMessages();
-
-		injectJs('scripts/campsite.inject.js');
-	});
-
+			injectJs('scripts/campsite.inject.js');
+		}
+	};
 }());

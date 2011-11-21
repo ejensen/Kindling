@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var EMOJIS = {
 		'apple': '1f34e',
@@ -91,28 +91,30 @@
 		}
 	}
 
-	$(function () {
-		$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip"><img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL("img/emoji.gif") + '" width="16" height="16"/><span id="emojiContainer" class="tooltip-inner"></span></div>');
+	return {
+		init: function () {
+			$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip"><img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL("img/emoji.gif") + '" width="16" height="16"/><span id="emojiContainer" class="tooltip-inner"></span></div>');
 
-		var $emojiButton = $('#emojiButton');
-		var $emojiContainer = $('#emojiContainer');
-		var emoji;
-		for (emoji in EMOJIS) {
-			$emojiContainer.append('<span class="emoji emoji' + EMOJIS[emoji] + '" title="' + emoji + '"></span>');
-		}
-
-		$(document).click(function (e) {
-			if (e.target.id !== 'emojiButton' && $emojiButton.find(e.target).length === 0) {
-				$emojiContainer.hide();
-			} else {
-				$emojiContainer.toggle();
+			var $emojiButton = $('#emojiButton');
+			var $emojiContainer = $('#emojiContainer');
+			var emoji;
+			for (emoji in EMOJIS) {
+				$emojiContainer.append('<span class="emoji emoji' + EMOJIS[emoji] + '" title="' + emoji + '"></span>');
 			}
-		});
 
-		var $input = $('#input');
-		$emojiContainer.children('.emoji').click(function () {
-			insertAtCaret($input[0], ':' + this.getAttribute('title') + ':');
-			$input.focus();
-		});
-	});
+			$(document).click(function (e) {
+				if (e.target.id !== 'emojiButton' && $emojiButton.find(e.target).length === 0) {
+					$emojiContainer.hide();
+				} else {
+					$emojiContainer.toggle();
+				}
+			});
+
+			var $input = $('#input');
+			$emojiContainer.children('.emoji').click(function () {
+				insertAtCaret($input[0], ':' + this.getAttribute('title') + ':');
+				$input.focus();
+			});
+		}
+	};
 }());

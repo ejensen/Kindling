@@ -1,5 +1,5 @@
-(function () {
-	"use strict";
+campsite.module(function () {
+	'use strict';
 
 	var variables = null;
 
@@ -39,36 +39,38 @@
 		document.head.appendChild(lnk);
 	}
 
-	$(function () {
-		$('#author').html(getQueryVariable('author'));
-		$('#room').html(getQueryVariable('room'));
+	return {
+		init: function () {
+			$('#author').html(getQueryVariable('author'));
+			$('#room').html(getQueryVariable('room'));
 
-		injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css');
+			injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css');
 
-		loadAvatar();
+			loadAvatar();
 
-		var $content = $('#content');
-		$content.html(location.hash.substring(1));
-		$content.find('img').each(function () {
-			if (isRelative(this.src)) {
-				this.src = getQueryVariable('baseUrl') + this.src.substring(campsite.getDomain(this.src).length);
+			var $content = $('#content');
+			$content.html(location.hash.substring(1));
+			$content.find('img').each(function () {
+				if (isRelative(this.src)) {
+					this.src = getQueryVariable('baseUrl') + this.src.substring(campsite.getDomain(this.src).length);
+				}
+			});
+
+			$content.find('a').each(function () {
+				if (isRelative(this.href)) {
+					this.href = getQueryVariable('baseUrl') + this.pathname + this.search;
+				}
+			});
+			$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
+
+			if (localStorage.highlightName === 'true') {
+				var usernameRegex = campsite.getUsernameRegex(getQueryVariable('user'));
+				$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
 			}
-		});
 
-		$content.find('a').each(function () {
-			if (isRelative(this.href)) {
-				this.href = getQueryVariable('baseUrl') + this.pathname + this.search;
+			if (localStorage.autoDismiss === 'true') {
+				setTimeout(function () { window.close(); }, localStorage.notificationTimeout);
 			}
-		});
-		$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
-
-		if (localStorage.highlightName === 'true') {
-			var usernameRegex = campsite.getUsernameRegex(getQueryVariable('user'));
-			$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
 		}
-
-		if (localStorage.autoDismiss === 'true') {
-			setTimeout(function () { window.close(); }, localStorage.notificationTimeout);
-		}
-	});
+	};
 }());
