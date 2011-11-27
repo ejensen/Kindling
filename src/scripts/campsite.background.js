@@ -4,9 +4,7 @@ campsite.module(function () {
 	var tabs = [];
 
 	function initSetting(setting, defaultValue) {
-		if (!localStorage[setting]) {
-			localStorage[setting] = defaultValue;
-		}
+		localStorage[setting] = localStorage[setting] || defaultValue;
 	}
 
 	function getSettingsObject() {
@@ -63,15 +61,15 @@ campsite.module(function () {
 
 	return {
 		init: function () {
-			initSetting('enterRoom', false);
-			initSetting('leaveRoom', false);
-			initSetting('timeStamps', true);
-			initSetting('showAvatars', true);
-			initSetting('filterNotifications', false);
-			initSetting('autoDismiss', true);
-			initSetting('notifications', true);
-			initSetting('notificationTimeout', 5000);
-			initSetting('highlightName', true);
+			initSetting('enterRoom', 'false');
+			initSetting('leaveRoom', 'false');
+			initSetting('timeStamps', 'true');
+			initSetting('showAvatars', 'true');
+			initSetting('filterNotifications', 'false');
+			initSetting('autoDismiss', 'true');
+			initSetting('notifications', 'true');
+			initSetting('notificationTimeout', '5000');
+			initSetting('highlightName', 'true');
 			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 			localStorage.removeItem('focusNotifications'); //obsolete option
 

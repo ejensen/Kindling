@@ -1,5 +1,5 @@
 (function () {
-	"use strict";
+	'use strict';
 
 	if (window.chat && window.chat.username) {
 		var usernameElem = document.createElement('span');
