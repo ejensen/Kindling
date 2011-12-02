@@ -1,4 +1,4 @@
-var campsite = campsite || (function (domReady) {
+var kindling = kindling || (function (domReady) {
 	'use strict';
 
 	function regExpEscape(text) {

@@ -45,16 +45,16 @@
 		"message": "Name highlighting"
 	},
 	"iconTooltip":{
-		"message": "Click to configure Campsite..."
+		"message": "Click to configure Kindling..."
 	},
 	"description":{
-		"message": "Campsite adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
+		"message": "Kindling adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
 	},
 	"seconds":{
 		"message": "sec"
 	},
 	"options":{
-		"message": "Campsite Options"
+		"message": "Kindling Options"
 	},
 	"emojiMenuTooltip":{
 		"message": "Insert emoticon..."

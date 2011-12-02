@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var $chat;

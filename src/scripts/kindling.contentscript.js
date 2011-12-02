@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var options = null;
@@ -17,7 +17,7 @@ campsite.module(function () {
 	};
 
 	var onNewMessage = function (e) {
-		if (e.target.id === 'campsite_username') {
+		if (e.target.id === 'kindling_username') {
 			username = e.target.innerText;		
 			$.publish('loaded', [options, username]);
 		} else {
@@ -43,8 +43,8 @@ campsite.module(function () {
 		init: function () {
 			$chat = $('#chat-wrapper');
 
-			campsite.bindNewMessages = bindNewMessages;
-			campsite.unbindNewMessages = unbindNewMessages;
+			kindling.bindNewMessages = bindNewMessages;
+			kindling.unbindNewMessages = unbindNewMessages;
 
 			window.onunload = function () {
 				chrome.extension.sendRequest({ type: 'unload' });
@@ -54,7 +54,7 @@ campsite.module(function () {
 
 			bindNewMessages();
 
-			injectJs('scripts/campsite.inject.js');
+			injectJs('scripts/kindling.inject.js');
 		}
 	};
 }());

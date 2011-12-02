@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var variables = null;
@@ -52,7 +52,7 @@ campsite.module(function () {
 			$content.html(location.hash.substring(1));
 			$content.find('img').each(function () {
 				if (isRelative(this.src)) {
-					this.src = getQueryVariable('baseUrl') + this.src.substring(campsite.getDomain(this.src).length);
+					this.src = getQueryVariable('baseUrl') + this.src.substring(kindling.getDomain(this.src).length);
 				}
 			});
 
@@ -64,7 +64,7 @@ campsite.module(function () {
 			$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
 
 			if (localStorage.highlightName === 'true') {
-				var usernameRegex = campsite.getUsernameRegex(getQueryVariable('user'));
+				var usernameRegex = kindling.getUsernameRegex(getQueryVariable('user'));
 				$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
 			}
 

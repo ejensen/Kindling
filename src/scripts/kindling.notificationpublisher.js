@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var room;
@@ -20,7 +20,7 @@ campsite.module(function () {
 			}
 
 			if (options.filterNotifications === 'true') {
-				var regex = campsite.getUsernameRegex(username);
+				var regex = kindling.getUsernameRegex(username);
 				if (!regex.test($body.html())) {
 					return;
 				}

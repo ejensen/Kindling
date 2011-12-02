@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'];

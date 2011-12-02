@@ -1,6 +1,6 @@
 {
-	"name": "Campsite",
-	"version": "1.2.3",
+	"name": "Kindling for Campfire",
+	"version": "1.3.0",
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
 	"background_page": "background.html",
@@ -28,13 +28,13 @@
 			"scripts/jquery.min.js",
 			"scripts/pubsub.min.js",
 			"scripts/highlight.min.js",
-			"scripts/campsite.common.js",
-			"scripts/campsite.emoji.js",
-			"scripts/campsite.sounds.js",
-			"scripts/campsite.highlight.js",
-			"scripts/campsite.messagefilter.js",
-			"scripts/campsite.notificationpublisher.js",
-			"scripts/campsite.contentscript.js"
+			"scripts/kindling.common.js",
+			"scripts/kindling.emoji.js",
+			"scripts/kindling.sounds.js",
+			"scripts/kindling.highlight.js",
+			"scripts/kindling.messagefilter.js",
+			"scripts/kindling.notificationpublisher.js",
+			"scripts/kindling.contentscript.js"
 		]
 	}]
 }

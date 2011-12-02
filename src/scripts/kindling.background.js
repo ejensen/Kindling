@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var tabs = [];
@@ -48,7 +48,7 @@ campsite.module(function () {
 			+ '&author=' + payload.author
 			+ '&avatar=' + payload.avatar
 			+ '&user=' + payload.username
-			+ '&baseUrl=' + campsite.getDomain(sender.tab.url)
+			+ '&baseUrl=' + kindling.getDomain(sender.tab.url)
 			+ '#' + payload.message);
 
 		notification.onclick = function () {

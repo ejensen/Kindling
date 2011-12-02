@@ -1,4 +1,4 @@
-campsite.module(function () {
+kindling.module(function () {
 	'use strict';
 
 	var $chat;
@@ -11,17 +11,17 @@ campsite.module(function () {
 		$chat = $chat || $('#chat-wrapper');
 		var $messages = $chat.find('div:.body');
 
-		campsite.unbindNewMessages();
+		kindling.unbindNewMessages();
 		try {
 			var highlightOptions = { className: 'nameHighlight', tagType: 'mark' };
 			$messages.highlightRegex(undefined, highlightOptions);
 
 			if (options.highlightName === 'true') {
-				$messages.highlightRegex(campsite.getUsernameRegex(username), highlightOptions);
+				$messages.highlightRegex(kindling.getUsernameRegex(username), highlightOptions);
 			}
 		} catch (err) {
 		} finally {
-			campsite.bindNewMessages();
+			kindling.bindNewMessages();
 		}
 	};
 
