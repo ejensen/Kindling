@@ -5,7 +5,7 @@ kindling.module(function () {
 		'apple': '1f34e',
 		'beer': '1f37a',
 		'egg': '1f373',
-		//'eggplant': '1f346', waiting on a bugfix in campfire
+		//'eggplant': '1f346', waiting on a typo fix in campfire's js
 		'cake': '1f370',
 		'tada': '1f389',
 		'flags': '1f38f',
@@ -37,8 +37,8 @@ kindling.module(function () {
 		'dog': '1f436',
 		'hamster': '1f414',
 		'koala': '1f417',
-		'horse': '1f408',
 		'cow': '1f41b',
+		'horse': '1f408',
 		'fish': '1f413',
 		'dolphin': '1f411',
 		'computer': '1f4bb',
