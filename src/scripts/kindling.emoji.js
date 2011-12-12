@@ -4,12 +4,15 @@ kindling.module(function () {
 	var EMOJIS = {
 		'apple': '1f34e',
 		'beer': '1f37a',
+		'egg': '1f373',
+		//'eggplant': '1f346', waiting on a bugfix in campfire
 		'cake': '1f370',
 		'tada': '1f389',
 		'flags': '1f38f',
 		'art': '1f3a8',
 		'moneybag': '1f4b0',
 		'tophat': '1f3a9',
+		'bowtie': 'bowtie',
 		'mega': '1f4e4',
 		'fire': '1f528',
 		'bomb': '1f4a3',
@@ -35,6 +38,7 @@ kindling.module(function () {
 		'hamster': '1f414',
 		'koala': '1f417',
 		'horse': '1f408',
+		'cow': '1f41b',
 		'fish': '1f413',
 		'dolphin': '1f411',
 		'computer': '1f4bb',
@@ -56,7 +60,7 @@ kindling.module(function () {
 		'lips': '1f444',
 		'lipstick': '1f483',
 		'nail_care': '1f484',
-		'shit': '1f4a9',
+		'poop': '1f4a9',
 		'toilet': '1f6bf',
 		'ok': '1f502',
 		'cool': '1f507',
@@ -93,7 +97,10 @@ kindling.module(function () {
 
 	return {
 		init: function () {
-			$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip"><img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL("img/emoji.gif") + '" width="16" height="16"/><span id="emojiContainer" class="tooltip-inner"></span></div>');
+			$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip">\
+				<img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL('img/emoji.gif') + '" width="16" height="16"/>\
+				<span id="emojiContainer" class="tooltip-inner"></span>\
+			</div>');
 
 			var $emojiButton = $('#emojiButton');
 			var $emojiContainer = $('#emojiContainer');
