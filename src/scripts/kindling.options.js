@@ -1,7 +1,7 @@
 kindling.module(function () {
 	'use strict';
 
-	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications'];
+	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'soundAndEmojiMenus'];
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('options');

@@ -86,6 +86,8 @@ kindling.module(function () {
 		'thumbsdown': '1f44f'
 	};
 
+	var MENU_ID = 'emojiButton-wrapper';
+
 	function insertAtCaret(input, value) {
 		if (input.selectionStart || input.selectionStart === 0) {
 			input.value = input.value.substring(0, input.selectionStart) + value + input.value.substring(input.selectionEnd, input.value.length);
@@ -95,33 +97,48 @@ kindling.module(function () {
 		}
 	}
 
-	return {
-		init: function () {
-			$('#chat_controls').append('<div id="emojiButton-wrapper" class="tooltip">\
+	function displayMenu() {
+		if (document.getElementById(MENU_ID)) {
+			return;
+		}
+		$('#chat_controls').append('<div id="' + MENU_ID + '" class="tooltip">\
 				<img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL('img/emoji.gif') + '" width="16" height="16"/>\
 				<span id="emojiContainer" class="tooltip-inner"></span>\
-			</div>');
+		</div>');
 
-			var $emojiButton = $('#emojiButton');
-			var $emojiContainer = $('#emojiContainer');
-			var emoji;
-			for (emoji in EMOJIS) {
-				$emojiContainer.append('<span class="emoji emoji' + EMOJIS[emoji] + '" title="' + emoji + '"></span>');
+		var $emojiButton = $('#emojiButton');
+		var $emojiContainer = $('#emojiContainer');
+		var emoji;
+		for (emoji in EMOJIS) {
+			$emojiContainer.append('<span class="emoji emoji' + EMOJIS[emoji] + '" title="' + emoji + '"></span>');
+		}
+
+		$(document).click(function (e) {
+			if (e.target.id !== 'emojiButton' && $emojiButton.find(e.target).length === 0) {
+				$emojiContainer.hide();
+			} else {
+				$emojiContainer.toggle();
 			}
+		});
 
-			$(document).click(function (e) {
-				if (e.target.id !== 'emojiButton' && $emojiButton.find(e.target).length === 0) {
-					$emojiContainer.hide();
-				} else {
-					$emojiContainer.toggle();
-				}
-			});
+		var $input = $('#input');
+		$emojiContainer.children('.emoji').click(function () {
+			insertAtCaret($input[0], ':' + this.getAttribute('title') + ':');
+			$input.focus();
+		});
+	}
 
-			var $input = $('#input');
-			$emojiContainer.children('.emoji').click(function () {
-				insertAtCaret($input[0], ':' + this.getAttribute('title') + ':');
-				$input.focus();
-			});
+	var onOptionsChanged = function (e, options) {
+		if (options.soundAndEmojiMenus === 'true') {
+			displayMenu();
+		} else {
+			$('#' + MENU_ID).remove();
+		}
+	};
+
+	return {
+		init: function () {
+			$.subscribe('optionsChanged', onOptionsChanged);
 		}
 	};
 }());

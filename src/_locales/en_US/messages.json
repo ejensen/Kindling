@@ -44,6 +44,9 @@
 	"highlightName":{
 		"message": "Name highlighting"
 	},
+	"soundAndEmojiMenus":{
+		"message": "Emoticon and sound menus"
+	},
 	"iconTooltip":{
 		"message": "Click to configure Kindling..."
 	},
