@@ -53,8 +53,8 @@ h1 {
 	border: 3px solid #DDD;
 	border-radius: 12px;
 	width: 26em;
-	padding: 0.5em 1.5em;
-	margin: 1.5em auto;
+	padding: 8px 24px;
+	margin: 24px auto;
 	background-color: #FFF;
 }
 .description{
@@ -65,7 +65,7 @@ h1 {
 	display: block;
 	position: relative;
 	left: 10em;
-	margin: 0 auto -5.0em auto;
+	margin: 0 auto -88px auto;
 	height: 96px;
 	width: 96px;
 }

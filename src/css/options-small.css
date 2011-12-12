@@ -54,12 +54,12 @@ p{
 	cursor: pointer;
 }
 .description{
-	margin-left: 0.5em;
+	margin-left: 8px;
 }
 .round-panel{
 	background-color: #FFF;
 	margin-bottom: 0.75em;
-	padding: 0.5em 0.75em 0.25em 0.75em;
+	padding: 8px 12px 4px 12px;
 	border-radius: 5px;
 }
 .description{
@@ -68,7 +68,7 @@ p{
 #logo{
 	background: url(../img/icon48.png) no-repeat;
 	float: right;
-	margin: 0.25em 0.6em -3em auto;
+	margin: 4px 10px -48px auto;
 	height: 48px;
 	width: 48px;
 }
