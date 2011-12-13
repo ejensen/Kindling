@@ -3,7 +3,7 @@ kindling.module(function () {
 
 	var $chat;
 
-	function showHideElements (key, value) {
+	function showHideElements(key, value) {
 		$chat = $chat || $('#chat-wrapper');
 		if (value === 'false' && $chat.hasClass(key) === false) {
 			$chat.addClass(key);

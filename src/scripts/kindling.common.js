@@ -20,11 +20,11 @@ var kindling = kindling || (function (domReady) {
 
 		module: function (m) {
 			if (m.init) {
-				domReady(function() {
+				domReady(function () {
 					m.init();
 				});
 			}
 			return m;
 		}
 	};
-}(window.$ || function(f){f()}));
+}(window.$ || function (f) { f() }));

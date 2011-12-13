@@ -18,7 +18,7 @@ kindling.module(function () {
 
 	var onNewMessage = function (e) {
 		if (e.target.id === 'kindling_username') {
-			username = e.target.innerText;		
+			username = e.target.innerText;
 			$.publish('loaded', [options, username]);
 		} else {
 			$.publish('newMessage', [options, username, e.target]);
