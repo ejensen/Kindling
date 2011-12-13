@@ -1,11 +1,11 @@
-﻿mark.nameHighlight{
+﻿mark.nameHighlight {
 	background-color:#FF8;
 }
 
 #chat-wrapper.noTimeStamp tr.timestamp_message *,
 #chat-wrapper.noEnterRoom tr.enter_message *,
 #chat-wrapper.noLeaveRoom tr.leave_message *,
-#chat-wrapper.noLeaveRoom tr.kick_message *{
+#chat-wrapper.noLeaveRoom tr.kick_message * {
 /* 'display: none' causes issues with the placement of the 'star buttons' */
 	height: 0;
 	line-height: 0;
@@ -73,18 +73,18 @@
 	margin-left: -78px;
 }
 
-.tooltip-inner .emoji, .tooltip-inner .sound {
+.tooltip-inner > .emoji, .tooltip-inner > .sound {
 	cursor: pointer;
 }
 
-.tooltip-inner .emoji {
+.tooltip-inner > .emoji {
 	margin: 4px;
 }
 
-.tooltip-inner .emoji:hover {
+.tooltip-inner > .emoji:hover {
 	background-color: #BDF;
 }
 
-.tooltip-inner a {
+.tooltip-inner > a {
 	display: block;
 }

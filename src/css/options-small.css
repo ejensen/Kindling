@@ -5,7 +5,7 @@
 	font-size: 85%;
 	background-color: #E8E8E8;
 }
-.cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
+.cb-enable, .cb-disable, .cb-enable > span, .cb-disable > span {
 	background: url(../img/switch.png) repeat-x;
 	display: block;
 	float: left;
@@ -19,7 +19,7 @@ p{
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
 }
-.cb-enable span, .cb-disable span {
+.cb-enable > span, .cb-disable > span {
 	line-height: 30px; 
 	display: block;
 	background-repeat: no-repeat;
@@ -28,16 +28,16 @@ p{
 	padding: 0 10px;
 	text-shadow: 0 1px 0 #e5e5ee;
 }
-.cb-enable span {
+.cb-enable > span {
 	background-position: left -90px;
 }
-.cb-disable span { 
+.cb-disable > span { 
 	background-position: right -180px;
 }
 .cb-disable.selected {
 	background-position: 0 -30px;
 }
-.cb-disable.selected span {
+.cb-disable.selected > span {
 	background-position: right -210px;
 	color: #FFF;
 	text-shadow: 0 -1px 0 #374683;
@@ -45,37 +45,37 @@ p{
 .cb-enable.selected {
 	background-position: 0 -60px;
 }
-.cb-enable.selected span {
+.cb-enable.selected > span {
 	background-position: left -150px;
 	color: #FFF;
 	text-shadow: 0 -1px 0 #374683;
 }
-.switch label {
+.switch > label {
 	cursor: pointer;
 }
-.description{
+.description {
 	margin-left: 8px;
 }
-.round-panel{
+.round-panel {
 	background-color: #FFF;
 	margin-bottom: 0.75em;
 	padding: 8px 12px 4px 12px;
 	border-radius: 5px;
 }
-.description{
+.description {
 	line-height: 30px; 
 }
-#logo{
+#logo {
 	background: url(../img/icon48.png) no-repeat;
 	float: right;
 	margin: 4px 10px -48px auto;
 	height: 48px;
 	width: 48px;
 }
-#rangeTooltip{
+#rangeTooltip {
 	position: relative;
 	top: -0.4em;
 }
-#notificationTimeout{
+#notificationTimeout {
 	width: 75px;
 }
