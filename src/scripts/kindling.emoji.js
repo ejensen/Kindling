@@ -51,7 +51,7 @@ kindling.module(function () {
 		'scissors',
 		'mag',
 		'gift',
-		'heart',,
+		'heart',
 		'broken_heart',
 		'key',
 		'lock',
