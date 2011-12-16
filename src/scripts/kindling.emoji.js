@@ -108,9 +108,9 @@ kindling.module(function () {
 
 		var $emojiButton = $('#emojiButton');
 		var $emojiContainer = $('#emojiContainer');
-		var emoji;
-		for (emoji in EMOJIS) {
-			$emojiContainer.append('<span class="emoji emoji-' + EMOJIS[emoji] + '" title="' + EMOJIS[emoji] + '"></span>');
+		var i;
+		for (i = 0; i < EMOJIS.length; i++) {
+			$emojiContainer.append('<span class="emoji emoji-' + EMOJIS[i] + '" title="' + EMOJIS[i] + '"></span>');
 		}
 
 		$(document).click(function (e) {
