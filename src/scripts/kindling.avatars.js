@@ -71,12 +71,12 @@ kindling.module(function () {
 		}
 	}
 
-	var onNewMessage = function (e, options, username, message) {
+	function onNewMessage(e, options, username, message) {
 		var $person = $(message).find('.person');
 		if ($person[0] && tryToAddAvatar($person[0])) {
 			scrollChatToBottom();
 		}
-	};
+	}
 
 	return {
 		init: function () {

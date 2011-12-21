@@ -104,14 +104,14 @@ kindling.module(function () {
 		}
 	}
 
-	var onOptionsChanged = function (e, options) {
+	function onOptionsChanged(e, options) {
 		enabled = (options.faviconCounter === 'true');
 		if (enabled) {
 			updateIcon();
 		} else {
 			resetIcon();
 		}
-	};
+	}
 
 	return {
 		init: function () {
