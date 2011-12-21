@@ -71,6 +71,8 @@ kindling.module(function () {
 			initSetting('notificationTimeout', '5000');
 			initSetting('highlightName', 'true');
 			initSetting('soundAndEmojiMenus', 'true');
+			initSetting('faviconCounter', true);
+			initSetting('showAvatarsInChat', true);
 			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 			localStorage.removeItem('focusNotifications'); //obsolete option
 

@@ -1,7 +1,20 @@
 kindling.module(function () {
 	'use strict';
 
-	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'soundAndEmojiMenus'];
+	var OPTIONS = [
+			'enterRoom',
+			'leaveRoom',
+			'timeStamps',
+			'notifications',
+			'highlightName',
+			'showAvatarsInNotifications',
+			'disableNotificationsWhenInFocus',
+			'autoDismiss',
+			'filterNotifications',
+			'soundAndEmojiMenus',
+			'showAvatarsInChat',
+			'faviconCounter'
+		];
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('options');
@@ -33,7 +46,7 @@ kindling.module(function () {
 		}
 
 		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').slideToggle(200);
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
 		}
@@ -79,7 +92,7 @@ kindling.module(function () {
 		onNotificationTimeoutChanged();
 
 		if (localStorage.notifications === 'false') {
-		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
+		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').hide();
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();

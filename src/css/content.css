@@ -16,6 +16,11 @@
 	visibility: hidden;
 }
 
+.avatar {
+	border-radius: 4px;
+	background-size: contain;
+}
+
 #emojiButton-wrapper, #soundButton-wrapper {
 	width: 18px;
 	height: 16px;

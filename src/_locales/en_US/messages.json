@@ -17,7 +17,7 @@
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
 	},
-	"showAvatars":{
+	"showAvatarsInNotifications":{
 		"message": "Display avatars"
 	},
 	"autoDismiss":{
@@ -46,6 +46,12 @@
 	},
 	"soundAndEmojiMenus":{
 		"message": "Emoticon and sound menus"
+	},
+	"faviconCounter":{
+		"message": "Display # of unread messages in tab icon"
+	},
+	"showAvatarsInChat":{
+		"message": "Display avatars in chat"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Kindling..."
