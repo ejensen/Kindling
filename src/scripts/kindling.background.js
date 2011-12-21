@@ -1,7 +1,7 @@
 kindling.module(function () {
 	'use strict';
 
-	var tabs = [];
+	var tabMap = {};
 
 	function initSetting(setting, defaultValue) {
 		localStorage[setting] = localStorage[setting] || defaultValue;
@@ -18,9 +18,9 @@ kindling.module(function () {
 	}
 
 	function sendOptionsChangedNotification() {
-		var i, count = tabs.length;
-		for (i = 0; i < count; i += 1) {
-			chrome.tabs.sendRequest(tabs[i], { type: 'optionsChanged', value: getSettingsObject() });
+		var settingsObject = getSettingsObject();
+		for (var tab in tabMap) {
+			chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: settingsObject });
 		}
 	}
 
@@ -42,7 +42,7 @@ kindling.module(function () {
 		}
 	}
 
-	var showNotification = function (payload, sender) {
+	function showNotification(payload, sender) {
 		var notification = webkitNotifications.createHTMLNotification('notification.html'
 			+ '?room=' + payload.room
 			+ '&author=' + payload.author
@@ -52,12 +52,12 @@ kindling.module(function () {
 			+ '#' + payload.message);
 
 		notification.onclick = function () {
-			chrome.windows.update(sender.tab.windowId, { focused: true });
+			chrome.windows.update(tabMap[sender.tab.id], { focused: true });
 			chrome.tabs.update(sender.tab.id, { selected: true });
 		};
 
 		notification.show();
-	};
+	}
 
 	return {
 		init: function () {
@@ -74,18 +74,21 @@ kindling.module(function () {
 			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 			localStorage.removeItem('focusNotifications'); //obsolete option
 
+			chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
+				if (tabMap.hasOwnProperty(tabId)) {
+					tabMap[tabId] = attachInfo.newWindowId;
+				}
+			});
+
 			chrome.extension.onRequest.addListener(function (request, sender, callback) {
 				if (request.type === 'notification') {
 					tryToCreateNotification(request.value, sender, showNotification);
 				} else if (request.type === 'init') {
 					chrome.pageAction.show(sender.tab.id);
-					tabs[tabs.length] = sender.tab.id;
+					tabMap[sender.tab.id] = sender.tab.windowId;
 					sendOptionsChangedNotification();
 				} else if (request.type === 'unload') {
-					var index = tabs.indexOf(sender.tab.id);
-					if (index !== -1) {
-						tabs.splice(index, 1);
-					}
+					delete tabMap[sender.tab.id];
 				} else if (request.type === 'optionsChanged') {
 					sendOptionsChangedNotification();
 				}
