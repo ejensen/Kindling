@@ -1,15 +1,12 @@
 kindling.module(function () {
 	'use strict';
 
-	var $chat;
-
-	var highlightName = function (e, options, username) {
+	function highlightName(e, options, username) {
 		if (!options || username === '') {
 			return;
 		}
 
-		$chat = $chat || $('#chat-wrapper');
-		var $messages = $chat.find('div:.body');
+		var $messages = $('#chat-wrapper').find('div:.body');
 
 		kindling.unbindNewMessages();
 		try {
@@ -23,7 +20,7 @@ kindling.module(function () {
 		} finally {
 			kindling.bindNewMessages();
 		}
-	};
+	}
 
 	return {
 		init: function () {

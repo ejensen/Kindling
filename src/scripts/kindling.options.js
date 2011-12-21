@@ -63,7 +63,7 @@ kindling.module(function () {
 		saveOption($parent[0].id, value);
 	}
 
-	var onNotificationTimeoutChanged = function () {
+	function onNotificationTimeoutChanged() {
 		var slider = document.getElementById('notificationTimeout');
 		var $tooltip = $('#rangeTooltip');
 		$tooltip.html((slider.value / 1000) + ' ' + chrome.i18n.getMessage('seconds'));
@@ -71,13 +71,13 @@ kindling.module(function () {
 
 		localStorage[slider.id] = slider.value;
 		onOptionChanged();
-	};
+	}
 
-	var onToggle = function (e) {
+	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
 		onCheckClick(e.currentTarget, value === 'true' ? false : true);
-	};
+	}
 
 	function initOptions() {
 		var i;

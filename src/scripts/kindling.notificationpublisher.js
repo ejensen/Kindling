@@ -1,8 +1,7 @@
 kindling.module(function () {
 	'use strict';
 
-	var room;
-	var publishNotification = function (e, options, username, message) {
+	function publishNotification(e, options, username, message) {
 		if (!options || !username || !message || options.notifications !== 'true') {
 			return;
 		}
@@ -26,19 +25,18 @@ kindling.module(function () {
 				}
 			}
 
-			room = room || $('#room_name').html();
 			chrome.extension.sendRequest({
 				type: 'notification',
 				value: {
 					username: username,
-					room: room,
+					room: $('#room_name').html(),
 					author: $author.text(),
 					avatar: $author.attr('data-avatar'),
 					message: $body.html()
 				}
 			});
 		}
-	};
+	}
 
 	return {
 		init: function () {

@@ -52,13 +52,13 @@ kindling.module(function () {
 		});
 	}
 
-	var onOptionsChanged = function (e, options) {
+	function onOptionsChanged(e, options) {
 		if (options.soundAndEmojiMenus === 'true') {
 			displayMenu();
 		} else {
 			$('#' + MENU_ID).remove();
 		}
-	};
+	}
 
 	return {
 		init: function () {

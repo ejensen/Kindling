@@ -5,7 +5,7 @@ kindling.module(function () {
 	var $chat = null;
 	var username = '';
 
-	var onRequest = function (request, sender, callback) {
+	function onRequest(request, sender, callback) {
 		if (request.type === 'optionsChanged') {
 			options = request.value;
 			$.publish(request.type, [request.value, username]);
@@ -14,31 +14,31 @@ kindling.module(function () {
 		if (callback) {
 			callback();
 		}
-	};
+	}
 
-	var onNewMessage = function (e) {
+	function onNewMessage(e) {
 		if (e.target.id === 'kindling_username') {
 			username = e.target.innerText;
 			$.publish('loaded', [options, username]);
 		} else {
 			$.publish('newMessage', [options, username, e.target]);
 		}
-	};
+	}
 
-	var bindNewMessages = function () {
+	function bindNewMessages() {
 		$chat.bind('DOMNodeInserted', onNewMessage);
-	};
+	}
 
-	var unbindNewMessages = function () {
+	function unbindNewMessages() {
 		$chat.unbind('DOMNodeInserted');
-	};
+	}
 
 	function injectJs(link) {
 		var script = document.createElement('script');
 		script.src = chrome.extension.getURL(link);
 		document.body.appendChild(script);
 	}
-	
+
 	return {
 		init: function () {
 			$chat = $('#chat-wrapper');
