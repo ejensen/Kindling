@@ -27,9 +27,11 @@ kindling.module(function () {
          }
 
          if (options.filterNotificationsByCustom === 'true') {
-            regex = new RegExp(options.customFilter);
+            regex = new RegExp(options.customFilterValue);
             if (!regex.test($body.html())) {
                return;
+            } else {
+               console.log('it matched');
             }
          }
 

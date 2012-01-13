@@ -67,7 +67,7 @@ kindling.module(function () {
          initSetting('showAvatars', 'true');
          initSetting('filterNotifications', 'false');
          initSetting('filterNotificationsByCustom', 'false');
-         initSetting('customFilter', '.*');
+         initSetting('customFilterValue', '.*');
          initSetting('autoDismiss', 'true');
          initSetting('notifications', 'true');
          initSetting('notificationTimeout', '5000');

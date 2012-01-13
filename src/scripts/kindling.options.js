@@ -1,106 +1,119 @@
 kindling.module(function () {
-	'use strict';
+   'use strict';
 
-	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'filterNotificationsByCustom', 'soundAndEmojiMenus'];
+   var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'filterNotificationsByCustom', 'soundAndEmojiMenus'];
 
-	function getMessages() {
-		document.title = chrome.i18n.getMessage('options');
-		$('.cb-enable > span').html(chrome.i18n.getMessage('on'));
-		$('.cb-disable > span').html(chrome.i18n.getMessage('off'));
+   function getMessages() {
+      document.title = chrome.i18n.getMessage('options');
+      $('.cb-enable > span').html(chrome.i18n.getMessage('on'));
+      $('.cb-disable > span').html(chrome.i18n.getMessage('off'));
 
-		$('#notificationsTitle').html(chrome.i18n.getMessage('notificationsTitle'));
-		$('#messagesTitle').html(chrome.i18n.getMessage('messagesTitle'));
-		$('#otherTitle').html(chrome.i18n.getMessage('otherTitle'));
-		$('label[for="notificationTimeout"]').html(chrome.i18n.getMessage('notificationTimeout'));
+      $('#notificationsTitle').html(chrome.i18n.getMessage('notificationsTitle'));
+      $('#messagesTitle').html(chrome.i18n.getMessage('messagesTitle'));
+      $('#otherTitle').html(chrome.i18n.getMessage('otherTitle'));
+      $('label[for="notificationTimeout"]').html(chrome.i18n.getMessage('notificationTimeout'));
 
-		var i;
-		for (i = 0; i < OPTIONS.length; i += 1) {
-			$('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
-		}
-	}
+      var i;
+      for (i = 0; i < OPTIONS.length; i += 1) {
+         $('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
+      }
+   }
 
-	function onOptionChanged() {
-		chrome.extension.sendRequest({ type: 'optionsChanged' });
-	}
+   function onOptionChanged() {
+      chrome.extension.sendRequest({ type: 'optionsChanged' });
+   }
 
-	function onCheckChange($parent, value) {
-		if (value) {
-			$parent.find('.cb-disable').removeClass('selected');
-			$parent.find('.cb-enable').addClass('selected');
-		} else {
-			$parent.find('.cb-enable').removeClass('selected');
-			$parent.find('.cb-disable').addClass('selected');
-		}
+   function onCheckChange($parent, value) {
+      if (value) {
+         $parent.find('.cb-disable').removeClass('selected');
+         $parent.find('.cb-enable').addClass('selected');
+      } else {
+         $parent.find('.cb-enable').removeClass('selected');
+         $parent.find('.cb-disable').addClass('selected');
+      }
 
-		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
-		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
-			$('#timeoutDiv').slideToggle(200);
-		}
-	}
+      if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
+         $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
+      } else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
+         $('#timeoutDiv').slideToggle(200);
+      }
+   }
 
-	function saveOption(id, value) {
-		localStorage[id] = value;
-		onOptionChanged();
-	}
+   function saveOption(id, value) {
+      localStorage[id] = value;
+      onOptionChanged();
+   }
 
-	function onCheckClick(sender, value) {
-		var $parent = $(sender).parents('.switch:first');
-		onCheckChange($parent, value);
-		saveOption($parent[0].id, value);
-	}
+   function onCheckClick(sender, value) {
+      var $parent = $(sender).parents('.switch:first');
+      onCheckChange($parent, value);
+      saveOption($parent[0].id, value);
+   }
 
-	function onNotificationTimeoutChanged() {
-		var slider = document.getElementById('notificationTimeout');
-		var $tooltip = $('#rangeTooltip');
-		$tooltip.html((slider.value / 1000) + ' ' + chrome.i18n.getMessage('seconds'));
-		$tooltip.css('left', ((slider.value / (slider.max - slider.min)) * $(slider).width()) - ($tooltip.width() / 1.75));
+   function onNotificationTimeoutChanged() {
+      var slider = document.getElementById('notificationTimeout');
+      var $tooltip = $('#rangeTooltip');
+      $tooltip.html((slider.value / 1000) + ' ' + chrome.i18n.getMessage('seconds'));
+      $tooltip.css('left', ((slider.value / (slider.max - slider.min)) * $(slider).width()) - ($tooltip.width() / 1.75));
 
-		localStorage[slider.id] = slider.value;
-		onOptionChanged();
-	}
+      localStorage[slider.id] = slider.value;
+      onOptionChanged();
+   }
 
-	function onToggle(e) {
-		var option = $(e.currentTarget).attr('for');
-		var value = localStorage[option];
-		onCheckClick(e.currentTarget, value === 'true' ? false : true);
-	}
+   function onCustomFilterValueChanged() {
+      var customFilterValue = document.getElementById('customFilterValue');
+      saveOption(customFilterValue.id, customFilterValue.value);
+      onOptionChanged();
+   }
 
-	function initOptions() {
-		var i;
-		for (i = 0; i < OPTIONS.length; i += 1) {
-			var savedValue = localStorage[OPTIONS[i]];
-			var checked = savedValue === undefined || (savedValue === 'true');
-			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
-		}
+   function onToggle(e) {
+      var option = $(e.currentTarget).attr('for');
+      var value = localStorage[option];
+      onCheckClick(e.currentTarget, value === 'true' ? false : true);
+   }
 
-		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
-		notificationTimeoutSlider.value = localStorage.notificationTimeout;
-		onNotificationTimeoutChanged();
+   function initOptions() {
+      var i;
+      for (i = 0; i < OPTIONS.length; i += 1) {
+         var savedValue = localStorage[OPTIONS[i]];
+         var checked = savedValue === undefined || (savedValue === 'true');
+         onCheckChange($(document.getElementById(OPTIONS[i])), checked);
+      }
 
-		if (localStorage.notifications === 'false') {
-		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
-		}
-		if (localStorage.autoDismiss === 'false') {
-			$('#timeoutDiv').hide();
-		}
-	}
+      var notificationTimeoutSlider = document.getElementById('notificationTimeout');
+      notificationTimeoutSlider.value = localStorage.notificationTimeout;
+      onNotificationTimeoutChanged();
 
-	return {
-		init: function () {
-			getMessages();
+      var customFilterValue = document.getElementById('customFilterValue');
+      if (localStorage.customFilterValue) {
+         customFilterValue.value = localStorage.customFilterValue;
+         onCustomFilterValueChanged();
+      }
 
-			$('.cb-enable').click(function () {
-				onCheckClick(this, true);
-			});
-			$('.cb-disable').click(function () {
-				onCheckClick(this, false);
-			});
-			$('.description').click(onToggle);
+      if (localStorage.notifications === 'false') {
+         $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
+      }
+      if (localStorage.autoDismiss === 'false') {
+         $('#timeoutDiv').hide();
+      }
+   }
 
-			$('#notificationTimeout').change(onNotificationTimeoutChanged);
+   return {
+      init: function () {
+         getMessages();
 
-			initOptions();
-		}
-	};
-}());
+         $('.cb-enable').click(function () {
+            onCheckClick(this, true);
+         });
+         $('.cb-disable').click(function () {
+            onCheckClick(this, false);
+         });
+         $('.description').click(onToggle);
+
+         $('#notificationTimeout').change(onNotificationTimeoutChanged);
+         $('#customFilterValue').change(onCustomFilterValueChanged);
+
+         initOptions();
+      }
+   };
+} ());
