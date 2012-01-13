@@ -48,7 +48,7 @@ kindling.module(function () {
       + '&author=' + payload.author
       + '&avatar=' + payload.avatar
   	   + '&user=' + payload.username
-	   + '&baseUrl=' + kindling.getDomain(sender.tab.url)
+      + '&baseUrl=' + kindling.getDomain(sender.tab.url)
       + '#' + payload.message);
 
     notification.onclick = function () {
