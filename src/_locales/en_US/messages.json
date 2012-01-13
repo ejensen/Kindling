@@ -17,6 +17,9 @@
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
 	},
+   "filterNotificationsByCustom":{
+      "message": "Only display when this filter matches"
+   },
 	"showAvatars":{
 		"message": "Display avatars"
 	},
