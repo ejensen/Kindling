@@ -30,8 +30,6 @@ kindling.module(function () {
             regex = new RegExp(options.customFilterValue);
             if (!regex.test($body.html())) {
                return;
-            } else {
-               console.log('it matched');
             }
          }
 
