@@ -20,6 +20,9 @@
    "filterNotificationsByCustom":{
       "message": "Only display when this filter matches"
    },
+   "customFilterValue":{
+      "message": "Filter for messages"
+   },
 	"showAvatars":{
 		"message": "Display avatars"
 	},
