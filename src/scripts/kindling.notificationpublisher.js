@@ -9,7 +9,7 @@ kindling.module(function () {
 		var $message = $(message);
 		if (message.id.indexOf('message_') !== -1 && message.id.indexOf('message_pending') === -1 && !($message.is('.enter_message,.leave_message,.kick_message,.timestamp_message,.you'))) {
 			var $body, $author = $message.find('.author:first');
-			if ($message.is('.topic_change_message')) {
+			if ($message.hasClass('topic_change_message') || $message.hasClass('lock_message') || $message.hasClass('unlock_message')) {
 				$body = $message.find('.body:first');
 			} else {
 				$body = $message.find('code:first');
