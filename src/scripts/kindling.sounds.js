@@ -8,6 +8,7 @@ kindling.module(function () {
 		'Great job': 'greatjob',
 		'Nyan cat': 'nyan',
 		'Push it': 'pushit',
+		'Oh, my': 'ohmy',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
 		'Secret area': 'secret',
