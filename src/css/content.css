@@ -19,6 +19,12 @@
 .avatar {
 	border-radius: 4px;
 	background-size: contain;
+	height: 55px;
+	opacity: 1.0 !important;
+}
+
+.inline-author {
+	margin-bottom: 0.5em;
 }
 
 #emojiButton-wrapper, #soundButton-wrapper {

@@ -12,7 +12,6 @@ kindling.module(function () {
 
 		var el = document.createElement('img');
 		$(el).attr('src', $author.attr('data-avatar'))
-			.css('height', '55px')
 			.addClass('avatar');
 		return el;
 	}
@@ -23,7 +22,6 @@ kindling.module(function () {
 
 		var $bodyAuthor = $(document.createElement('h4'));
 		$bodyAuthor.html($author.html() + ' ')
-			.css('margin-bottom', '.5em')
 			.addClass('inline-author');
 
 		var $messageBody = $messageEl.find('td.body');
