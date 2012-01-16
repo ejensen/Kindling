@@ -101,4 +101,4 @@ kindling.module(function () {
 			});
 		}
 	};
-} ());
+}());

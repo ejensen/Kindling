@@ -51,4 +51,4 @@ kindling.module(function () {
 			$.subscribe('newMessage', publishNotification);
 		}
 	};
-} ());
+}());

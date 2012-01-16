@@ -15,7 +15,7 @@ kindling.module(function () {
 
 		var i;
 		for (i = 0; i < OPTIONS.length; i += 1) {
-		 $('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
+			$('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
 		}
 	}
 
@@ -33,7 +33,7 @@ kindling.module(function () {
 		}
 
 		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#customFilterDiv,#showAvatars,#dismissDiv').slideToggle(200);
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
 		}
@@ -91,7 +91,7 @@ kindling.module(function () {
 		}
 
 		if (localStorage.notifications === 'false') {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#customFilterDiv,#showAvatars,#dismissDiv').hide();
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
@@ -116,4 +116,4 @@ kindling.module(function () {
 			initOptions();
 		}
 	};
-} ());
+}());

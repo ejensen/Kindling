@@ -17,12 +17,12 @@
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
 	},
-   "filterNotificationsByCustom":{
-      "message": "Only display when this filter matches"
-   },
-   "customFilterValue":{
-      "message": "Filter for messages"
-   },
+	"filterNotificationsByCustom":{
+		"message": "Only display when this filter matches"
+	},
+	"customFilterValue":{
+		"message": "Filter for messages"
+	},
 	"showAvatars":{
 		"message": "Display avatars"
 	},
