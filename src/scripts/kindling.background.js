@@ -47,7 +47,7 @@ kindling.module(function () {
 			+ '?room=' + payload.room
 			+ '&author=' + payload.author
 			+ '&avatar=' + payload.avatar
-			 + '&user=' + payload.username
+			+ '&user=' + payload.username
 			+ '&baseUrl=' + kindling.getDomain(sender.tab.url)
 			+ '#' + payload.message);
 
