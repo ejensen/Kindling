@@ -36,6 +36,8 @@ kindling.module(function () {
 			$('#disableNotificationsWhenInFocus,#filterNotifications,#customFilterDiv,#showAvatars,#dismissDiv').slideToggle(200);
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
+		} else if ($parent[0].id === 'filterNotificationsByCustom' && value !== (localStorage.filterNotificationsByCustom === 'true')) {
+			$('#customFilterValueDiv').slideToggle(200);
 		}
 	}
 
@@ -95,6 +97,9 @@ kindling.module(function () {
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
+		}
+		if (localStorage.filterNotificationsByCustom === 'false') {
+			$('#customFilterValueDiv').hide();
 		}
 	}
 
