@@ -7,6 +7,7 @@ kindling.module(function () {
 		'Drama': 'drama',
 		'Great job': 'greatjob',
 		'Nyan cat': 'nyan',
+		'Oh my': 'ohmy',
 		'Push it': 'pushit',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
