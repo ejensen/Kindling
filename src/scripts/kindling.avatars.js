@@ -16,44 +16,26 @@ kindling.module(function () {
 		return el;
 	}
 
-	function moveAuthorToBody($messageEl) {
-		var $author = $messageEl.find('.author');
+	function moveAuthorToBody($message) {
+		var $author = $message.find('.author');
 		$author.hide();
 
 		var $bodyAuthor = $(document.createElement('h4'));
 		$bodyAuthor.html($author.html() + ' ')
 			.addClass('inline-author');
 
-		var $messageBody = $messageEl.find('td.body');
+		var $messageBody = $message.find('td.body');
 		$messageBody.css('vertical-align', 'top');
-
-		var $messageDiv = $messageBody.find('div');
-		if (!$messageDiv.hasClass('body')) {
-			var messageSpan = document.createElement('span');
-			$(messageSpan).html($messageDiv.html())
-				.addClass('inline-message');
-
-			$messageBody.html(messageSpan);
-
-			$bodyAuthor.css('display', 'inline');
-		}
 
 		$messageBody.prepend($bodyAuthor);
 	}
 
-	function removeAuthorFromBody($messageEl) {
-		var $messageBody = $messageEl.find('td.body');
+	function removeAuthorFromBody($message) {
+		var $messageBody = $message.find('td.body');
 		$messageBody.css('vertical-align', '');
 
-		var $inlineMessage = $messageBody.find('.inline-message');
-		if ($inlineMessage[0]) {
-			var messageDiv = document.createElement('div');
-			$(messageDiv).html($inlineMessage.html())
-			$messageBody.html(messageDiv);
-		}
-
-		$messageEl.find('.author').show();
-		$messageEl.find('.inline-author').remove();
+		$message.find('.author').show();
+		$message.find('.inline-author').remove();
 	}
 
 	function tryToAddAvatar(person) {
@@ -66,9 +48,14 @@ kindling.module(function () {
 		if (!avatar) {
 			return false;
 		}
-
+		
+		var $message = $(person).parent();
+		if (!$message.find('td.body').find('div').hasClass('body')) {
+			return false;
+		}
+		
 		$(person).append(avatar);
-		moveAuthorToBody($(person).parent());
+		moveAuthorToBody($message);
 		return true;
 	}
 
