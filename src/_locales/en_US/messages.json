@@ -30,13 +30,13 @@
 		"message": "Messages"
 	},
 	"enterRoom":{
-		"message": "Enter room"
+		"message": "Enter room messages"
 	},
 	"leaveRoom":{
-		"message": "Leave room"
+		"message": "Leave room messages"
 	},
 	"timeStamps":{
-		"message": "Time stamps"
+		"message": "Time stamp messages"
 	},
 	"otherTitle":{
 		"message": "Misc."
@@ -48,7 +48,7 @@
 		"message": "Emoticon and sound menus"
 	},
 	"faviconCounter":{
-		"message": "Display # of unread messages in tab icon"
+		"message": "Display unread message count in tab icon*"
 	},
 	"showAvatarsInChat":{
 		"message": "Display avatars in chat"

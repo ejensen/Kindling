@@ -48,12 +48,12 @@ kindling.module(function () {
 		if (!avatar) {
 			return false;
 		}
-		
+
 		var $message = $(person).parent();
 		if (!$message.find('td.body').find('div').hasClass('body')) {
 			return false;
 		}
-		
+
 		$(person).append(avatar);
 		moveAuthorToBody($message);
 		return true;

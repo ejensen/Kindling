@@ -46,9 +46,9 @@ kindling.module(function () {
 		}
 
 		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').slideToggle(200);
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').slideToggle(500, 'easeInOutExpo');
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
-			$('#timeoutDiv').slideToggle(200);
+			$('#timeoutDiv').slideToggle(500, 'easeInOutExpo');
 		}
 	}
 
@@ -114,6 +114,8 @@ kindling.module(function () {
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
 
 			initOptions();
+
+			$('#coda-slider').codaSlider();
 		}
 	};
 }());
