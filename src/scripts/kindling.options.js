@@ -1,7 +1,7 @@
 kindling.module(function () {
 	'use strict';
 
-	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'soundAndEmojiMenus'];
+	var OPTIONS = ['enterRoom', 'leaveRoom', 'timeStamps', 'notifications', 'highlightName', 'showAvatars', 'disableNotificationsWhenInFocus', 'autoDismiss', 'filterNotifications', 'filterNotificationsByCustom', 'customFilterValue', 'soundAndEmojiMenus'];
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('options');
@@ -33,9 +33,11 @@ kindling.module(function () {
 		}
 
 		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').slideToggle(200);
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#customFilterDiv,#showAvatars,#dismissDiv').slideToggle(200);
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(200);
+		} else if ($parent[0].id === 'filterNotificationsByCustom' && value !== (localStorage.filterNotificationsByCustom === 'true')) {
+			$('#customFilterValueDiv').slideToggle(200);
 		}
 	}
 
@@ -60,6 +62,12 @@ kindling.module(function () {
 		onOptionChanged();
 	}
 
+	function onCustomFilterValueChanged() {
+		var customFilterValue = document.getElementById('customFilterValue');
+		saveOption(customFilterValue.id, customFilterValue.value);
+		onOptionChanged();
+	}
+
 	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
@@ -78,11 +86,20 @@ kindling.module(function () {
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
 		onNotificationTimeoutChanged();
 
+		var customFilterValue = document.getElementById('customFilterValue');
+		if (localStorage.customFilterValue) {
+			customFilterValue.value = localStorage.customFilterValue;
+			onCustomFilterValueChanged();
+		}
+
 		if (localStorage.notifications === 'false') {
-		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatars,#dismissDiv').hide();
+			$('#disableNotificationsWhenInFocus,#filterNotifications,#customFilterDiv,#showAvatars,#dismissDiv').hide();
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
+		}
+		if (localStorage.filterNotificationsByCustom === 'false') {
+			$('#customFilterValueDiv').hide();
 		}
 	}
 
@@ -99,6 +116,7 @@ kindling.module(function () {
 			$('.description').click(onToggle);
 
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
+			$('#customFilterValue').change(onCustomFilterValueChanged);
 
 			initOptions();
 		}

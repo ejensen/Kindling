@@ -18,8 +18,16 @@ kindling.module(function () {
 				}
 			}
 
+			var regex;
 			if (options.filterNotifications === 'true') {
-				var regex = kindling.getUsernameRegex(username);
+				regex = kindling.getUsernameRegex(username);
+				if (!regex.test($body.html())) {
+					return;
+				}
+			}
+
+			if (options.filterNotificationsByCustom === 'true') {
+				regex = new RegExp(options.customFilterValue);
 				if (!regex.test($body.html())) {
 					return;
 				}
