@@ -2,13 +2,15 @@ kindling.module(function () {
 	'use strict';
 
 	var SOUNDS = {
+		'Bueller?': 'bueller',
 		'Crickets chirping': 'crickets',
 		'Do it live!': 'live',
 		'Drama': 'drama',
 		'Great job': 'greatjob',
 		'Nyan cat': 'nyan',
+		'Oh my': 'ohmy',
+		'Oh yeah': 'ohyeah',
 		'Push it': 'pushit',
-		'Oh, my': 'ohmy',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
 		'Secret area': 'secret',
