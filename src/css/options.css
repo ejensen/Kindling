@@ -1,7 +1,7 @@
 ﻿body {
 	font-family: arial, sans-serif;
 	color: #222;
-	background-color: #EBEBEB;
+	background-color: #E5E5E5;
 }
 .cb-enable, .cb-disable, .cb-enable > span, .cb-disable > span {
 	background: url(../img/switch.png) repeat-x;
@@ -80,30 +80,47 @@
 #wrapper {
 	margin: 0 auto;
 }
-.coda-nav ul li a.current {
-	background: limegreen;
-	color: #FFF;
- }
+.label {
+	padding: 1px 3px 2px;
+	font-size: 9.75px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+	white-space: nowrap;
+	background-color: #BFBFBF;
+	border-radius: 3px;
+}
+.red {
+	background-color: #C43C35;
+}
 .coda-slider .panel-wrapper {
 	padding: 20px;
 }
 .coda-nav ul {
 	clear: both;
 	display: block;
-	margin: auto;
+	margin: 0;
+	padding: 0;
 	overflow: hidden;
 }
-.coda-nav ul li {
+.coda-nav ul > li {
 	display: inline;
 }
-.coda-nav ul li a {
+.coda-nav ul > li  > a {
 	color: #000;
 	display: block;
 	float: left;
-	margin-right: 1px;
-	padding: 3px 6px;
+	padding: 8px;
 	text-decoration: none;
+	border-right: 1px solid #CCC;
 }
+.coda-nav ul > li:first-child  > a {
+	border-left: 1px solid #CCC;
+}
+.coda-nav ul > li > a.current {
+	background-image: -webkit-linear-gradient(top, rgb(235,235,235) 0%, rgb(255,255,255) 100%);
+	color: #000;
+ }
 .coda-slider-wrapper {
 	clear: both;
 	overflow: hidden;

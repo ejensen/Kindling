@@ -64,15 +64,15 @@ kindling.module(function () {
 			initSetting('enterRoom', 'false');
 			initSetting('leaveRoom', 'false');
 			initSetting('timeStamps', 'true');
-			initSetting('showAvatars', 'true');
+			initSetting('showAvatars', 'false');
 			initSetting('filterNotifications', 'false');
 			initSetting('autoDismiss', 'true');
 			initSetting('notifications', 'true');
 			initSetting('notificationTimeout', '5000');
 			initSetting('highlightName', 'true');
 			initSetting('soundAndEmojiMenus', 'true');
-			initSetting('faviconCounter', true);
-			initSetting('showAvatarsInChat', true);
+			initSetting('faviconCounter', 'false');
+			initSetting('showAvatarsInChat', 'true');
 			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 			localStorage.removeItem('focusNotifications'); //obsolete option
 

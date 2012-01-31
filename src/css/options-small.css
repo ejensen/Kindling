@@ -1,5 +1,6 @@
 ﻿body {
 	font-size: 85%;
+	margin:0;
 }
 p {
 	margin-bottom: 0.5em;
@@ -10,17 +11,17 @@ p {
 }
 .coda-slider {
 	border-top: 1px solid #CCC;
-	background: #FFF;
 }
 body, #wrapper, .coda-slider, .coda-slider .panel {
 	width: 400px;
 }
 #logo {
 	background: url(../img/icon48.png) no-repeat;
-	float: right;
-	margin: 4px 10px -48px auto;
+	margin: 4px 40px -32px auto;
 	height: 48px;
 	width: 48px;
+	left: 0;
+	top: 10px;
 }
 #notificationTimeout {
 	width: 75px;
