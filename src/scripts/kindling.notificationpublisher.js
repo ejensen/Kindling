@@ -30,8 +30,8 @@ kindling.module(function () {
 				value: {
 					username: username,
 					room: $('#room_name').html(),
-					author: $author.text(),
-					avatar: $author.attr('data-avatar'),
+					author: $author.text() || $author.data('short-name'),
+					avatar: $author.data('avatar'),
 					message: $body.html()
 				}
 			});

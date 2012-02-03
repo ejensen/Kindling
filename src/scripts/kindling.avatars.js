@@ -4,24 +4,30 @@ kindling.module(function () {
 
 	var isEnabled = false;
 
-	function getAvatar(personEl) {
-		var $author = $(personEl).find('.author');
+	function getAvatar($person) {
+		var $author = $person.find('.author');
 		if (!$author.is(':visible')) {
 			return null;
 		}
 
 		var el = document.createElement('img');
-		$(el).attr('src', $author.attr('data-avatar'))
+		$(el).attr('src', $author.data('avatar'))
 			.addClass('avatar');
 		return el;
 	}
 
 	function moveAuthorToBody($message) {
 		var $author = $message.find('.author');
-		$author.hide();
+		
+		$author.data('short-name', $author.text());
+		$author.html('');
+		
+		if ($author.css('display') === 'none') {
+			return;
+		}
 
 		var $bodyAuthor = $(document.createElement('h4'));
-		$bodyAuthor.html($author.html() + ' ')
+		$bodyAuthor.html($author.data('name'))
 			.addClass('inline-author');
 
 		var $messageBody = $message.find('td.body');
@@ -30,44 +36,45 @@ kindling.module(function () {
 		$messageBody.prepend($bodyAuthor);
 	}
 
-	function removeAuthorFromBody($message) {
-		var $messageBody = $message.find('td.body');
-		$messageBody.css('vertical-align', '');
-
-		$message.find('.author').show();
-		$message.find('.inline-author').remove();
-	}
-
-	function tryToAddAvatar(person) {
-		var messageId = $(person).parent().attr('id');
+	function tryToAddAvatar($person) {
+		var messageId = $person.parent().attr('id');
 		if (!messageId) {
 			return false;
 		}
 
-		var avatar = getAvatar(person);
+		var avatar = getAvatar($person);
 		if (!avatar) {
 			return false;
 		}
 
-		var $message = $(person).parent();
+		var $message = $person.parent();
 		if (!$message.find('td.body').find('div').hasClass('body')) {
 			return false;
 		}
 
-		$(person).append(avatar);
+		$person.append(avatar);
 		moveAuthorToBody($message);
 		return true;
 	}
 
-	function tryToRemoveAvatar(person) {
-		var $avatar = $(person).find('.avatar');
+	function removeAuthorFromBody($message) {
+		var $messageBody = $message.find('td.body');
+		$messageBody.css('vertical-align', '');
+		
+		$message.find('.inline-author').remove();
+
+		var $author = $message.find('.author');
+		$author.html($author.data('short-name'));
+	}
+
+	function tryToRemoveAvatar($person) {
+		var $avatar = $person.find('.avatar');
 		if (!$avatar) {
 			return false;
 		}
 		$avatar.remove();
 
-		removeAuthorFromBody($(person).parent())
-
+		removeAuthorFromBody($person.parent());
 		return true;
 	}
 
@@ -79,11 +86,7 @@ kindling.module(function () {
 
 	function visitPersonElements(visiter) {
 		var modified = false;
-		var $people = $('.person');
-		var i;
-		for (i = $people.size() - 1; i >= 0; i--) {
-			modified = visiter($people[i]);
-		}
+		$('.person').each(function(i, e) { modified |= visiter($(e)); });
 
 		if (modified) {
 			scrollChatToBottom();
@@ -104,8 +107,8 @@ kindling.module(function () {
 
 	function onNewMessage(e, options, username, message) {
 		if (options.showAvatarsInChat === 'true') {
-			var $person = $(message).find('.person');
-			if ($person[0] && tryToAddAvatar($person[0])) {
+			var $person = $(message).find('.person').first();
+			if ($person && tryToAddAvatar($person)) {
 				scrollChatToBottom();
 			}
 		}
