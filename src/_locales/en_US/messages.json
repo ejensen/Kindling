@@ -18,7 +18,7 @@
 		"message": "Only display when my name is mentioned"
 	},
 	"showAvatarsInNotifications":{
-		"message": "Display avatars"
+		"message": "Display avatars in notifications"
 	},
 	"autoDismiss":{
 		"message": "Auto-dismiss"
