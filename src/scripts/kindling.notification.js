@@ -8,9 +8,9 @@ kindling.module(function () {
 		var query = window.location.search.substring(1);
 		var vars = query.split('&');
 		var i, pair;
-		for (i = 0; i < vars.length; i += 1) {
+		for (i = 0; i < vars.length; i++) {
 			pair = vars[i].split('=');
-			variables[pair[0]] = unescape(pair[1]);
+			variables[pair[0]] = decodeURIComponent(pair[1]);
 		}
 	}
 

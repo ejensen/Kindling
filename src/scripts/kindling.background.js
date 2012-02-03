@@ -44,11 +44,11 @@ kindling.module(function () {
 
 	function showNotification(payload, sender) {
 		var notification = webkitNotifications.createHTMLNotification('notification.html'
-			+ '?room=' + payload.room
-			+ '&author=' + payload.author
-			+ '&avatar=' + payload.avatar
-			+ '&user=' + payload.username
-			+ '&baseUrl=' + kindling.getDomain(sender.tab.url)
+			+ '?room=' + encodeURIComponent(payload.room)
+			+ '&author=' + encodeURIComponent(payload.author)
+			+ '&avatar=' + encodeURIComponent(payload.avatar)
+			+ '&user=' + encodeURIComponent(payload.username)
+			+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
 			+ '#' + payload.message);
 
 		notification.onclick = function () {
