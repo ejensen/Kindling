@@ -45,7 +45,7 @@
 		"message": "Name highlighting"
 	},
 	"soundAndEmojiMenus":{
-		"message": "Emoticon and sound menus"
+		"message": "Emoji and sound menus"
 	},
 	"faviconCounter":{
 		"message": "Display unread message count in tab icon"
@@ -66,7 +66,7 @@
 		"message": "Kindling Options"
 	},
 	"emojiMenuTooltip":{
-		"message": "Insert emoticon..."
+		"message": "Insert emoji..."
 	},
 	"soundMenuTooltip":{
 		"message": "Play sound..."
