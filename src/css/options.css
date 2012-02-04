@@ -108,23 +108,8 @@
 .coda-slider .panel-wrapper {
 	padding: 20px;
 }
-.coda-nav ul {
-	clear: both;
-	display: block;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-.coda-nav ul > li {
-	display: inline;
-}
 .coda-nav ul > li  > a {
-	color: #000;
-	display: block;
-	float: left;
 	padding: 6px 8px;
-	text-decoration: none;
-	margin-right: 1px;
 }
 .coda-nav ul > li > a.current {
 	background: -webkit-linear-gradient(bottom, #FFFFFF 0%,#F5F5F5 100%);
@@ -137,19 +122,3 @@
  .coda-nav ul > li:first-child > a.current {
 	border-left-width: 0;
  }
-.coda-slider-wrapper {
-	clear: both;
-	overflow: hidden;
-}
-.coda-slider { 
-	float: left;
-	overflow: hidden;
-	position: relative;
-}
-.coda-slider .panel {
-	display: block;
-	float: left;
-}
-.coda-slider .panel-container {
-	position: relative;
-}
