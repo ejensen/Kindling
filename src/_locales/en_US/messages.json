@@ -17,14 +17,8 @@
 	"filterNotifications":{
 		"message": "Only display when my name is mentioned"
 	},
-   "filterNotificationsByCustom":{
-      "message": "Only display when this filter matches"
-   },
-   "customFilterValue":{
-      "message": "Filter for messages"
-   },
-	"showAvatars":{
-		"message": "Display avatars"
+	"showAvatarsInNotifications":{
+		"message": "Display avatars in notifications"
 	},
 	"autoDismiss":{
 		"message": "Auto-dismiss"
@@ -36,13 +30,13 @@
 		"message": "Messages"
 	},
 	"enterRoom":{
-		"message": "Enter room"
+		"message": "Enter room messages"
 	},
 	"leaveRoom":{
-		"message": "Leave room"
+		"message": "Leave room messages"
 	},
 	"timeStamps":{
-		"message": "Time stamps"
+		"message": "Time stamp messages"
 	},
 	"otherTitle":{
 		"message": "Misc."
@@ -52,6 +46,12 @@
 	},
 	"soundAndEmojiMenus":{
 		"message": "Emoticon and sound menus"
+	},
+	"faviconCounter":{
+		"message": "Display unread message count in tab icon"
+	},
+	"showAvatarsInChat":{
+		"message": "Display avatars in chat"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Kindling..."

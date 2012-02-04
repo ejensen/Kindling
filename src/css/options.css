@@ -1,16 +1,14 @@
 ﻿body {
-	font-family: helvetica,arial,sans-serif;
+	font-family: arial, sans-serif;
 	color: #222;
 	background-color: #E5E5E5;
+	margin: 0;
+	padding: 0;
 }
 .cb-enable, .cb-disable, .cb-enable > span, .cb-disable > span {
 	background: url(../img/switch.png) repeat-x;
 	display: block;
 	float: left;
-}
-h1 {
-	font-size: 1.5em;
-	margin: 0;
 }
 .cb-enable > span, .cb-disable > span {
 	line-height: 30px; 
@@ -19,7 +17,7 @@ h1 {
 	font-weight: bold;
 	color: #000;
 	padding: 0 10px;
-	text-shadow: 0 1px 0 #e5e5ee;
+	text-shadow: 0 1px 0 #E5E5EE;
 }
 .cb-enable > span {
 	background-position: left -90px;
@@ -49,13 +47,19 @@ h1 {
 .description {
 	margin-left: 0.6em;
 }
-.round-panel {
-	border: 3px solid #DDD;
-	border-radius: 12px;
-	width: 26em;
-	padding: 8px 24px;
-	margin: 24px auto;
-	background-color: #FFF;
+.coda-slider {
+	background-color: white;
+}
+#wrapper {
+	position:relative;
+}
+#wrapper:after{
+	content: "";
+	position: absolute;
+	bottom:-15px;
+	width:100%;
+	background: url(../img/options-shadow.png) no-repeat;
+	height: 15px;
 }
 .description {
 	line-height: 30px;
@@ -64,8 +68,9 @@ h1 {
 	background: url(../img/icon96.png) no-repeat;
 	display: block;
 	position: relative;
-	left: 10em;
-	margin: 0 auto -88px auto;
+	z-index: 1;
+	left: 150px;
+	margin: 0 auto -75px auto;
 	height: 96px;
 	width: 96px;
 }
@@ -75,4 +80,76 @@ h1 {
 }
 #notificationTimeout {
 	width: 80px;
+}
+#wrapper, .coda-slider, .coda-slider .panel  {
+	width: 500px;
+}
+#wrapper {
+	margin: 0 auto;
+}
+.label {
+	padding: 1px 3px 2px;
+	font-size: 9.75px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+	white-space: nowrap;
+	background-color: #BFBFBF;
+	border-radius: 3px;
+}
+.red {
+	background-color: #C43C35;
+}
+.asterisk {
+	color:#C43C35;
+	font-weight:bolder;
+	font-size:1.5em;
+}
+.coda-slider .panel-wrapper {
+	padding: 20px;
+}
+.coda-nav ul {
+	clear: both;
+	display: block;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.coda-nav ul > li {
+	display: inline;
+}
+.coda-nav ul > li  > a {
+	color: #000;
+	display: block;
+	float: left;
+	padding: 6px 8px;
+	text-decoration: none;
+	margin-right: 1px;
+}
+.coda-nav ul > li > a.current {
+	background: -webkit-linear-gradient(bottom, #FFFFFF 0%,#F5F5F5 100%);
+	font-weight: bold;
+	border-style: solid;
+	border-color: #CACACA;
+	border-width: 1px 1px 0 1px;
+	padding: 6px 7px;
+ }
+ .coda-nav ul > li:first-child > a.current {
+	border-left-width: 0;
+ }
+.coda-slider-wrapper {
+	clear: both;
+	overflow: hidden;
+}
+.coda-slider { 
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.coda-slider .panel {
+	display: block;
+	float: left;
+}
+.coda-slider .panel-container {
+	position: relative;
 }

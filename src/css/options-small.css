@@ -1,80 +1,25 @@
 ﻿body {
-	font-family: arial,sans-serif;
-	color: #222;
-	width: 400px;
 	font-size: 85%;
-	background-color: #E8E8E8;
-}
-.cb-enable, .cb-disable, .cb-enable > span, .cb-disable > span {
-	background: url(../img/switch.png) repeat-x;
-	display: block;
-	float: left;
-}
-h1 {
-	font-size: 1.25em;
-	margin-top: 0;
-	margin-bottom: 0.25em;
-}
-p{
-	margin-bottom: 0.5em;
-	margin-top: 0.5em;
-}
-.cb-enable > span, .cb-disable > span {
-	line-height: 30px; 
-	display: block;
-	background-repeat: no-repeat;
-	font-weight: bold;
-	color: #000;
-	padding: 0 10px;
-	text-shadow: 0 1px 0 #e5e5ee;
-}
-.cb-enable > span {
-	background-position: left -90px;
-}
-.cb-disable > span { 
-	background-position: right -180px;
-}
-.cb-disable.selected {
-	background-position: 0 -30px;
-}
-.cb-disable.selected > span {
-	background-position: right -210px;
-	color: #FFF;
-	text-shadow: 0 -1px 0 #374683;
-}
-.cb-enable.selected {
-	background-position: 0 -60px;
-}
-.cb-enable.selected > span {
-	background-position: left -150px;
-	color: #FFF;
-	text-shadow: 0 -1px 0 #374683;
-}
-.switch > label {
-	cursor: pointer;
 }
 .description {
 	margin-left: 8px;
 }
-.round-panel {
-	background-color: #FFF;
-	margin-bottom: 0.75em;
-	padding: 8px 12px 4px 12px;
-	border-radius: 5px;
+.coda-slider .panel-wrapper {
+	padding: 10px;
 }
-.description {
-	line-height: 30px; 
+body, #wrapper, .coda-slider, .coda-slider .panel {
+	width: 400px;
+}
+#wrapper:after {
+	display: none;
 }
 #logo {
-	background: url(../img/icon48.png) no-repeat;
-	float: right;
-	margin: 4px 10px -48px auto;
-	height: 48px;
-	width: 48px;
-}
-#rangeTooltip {
-	position: relative;
-	top: -0.4em;
+	background: url(../img/icon64.png) no-repeat;
+	margin: 0 24px -48px auto;
+	height: 64px;
+	width: 64px;
+	left: 0;
+	top: 10px;
 }
 #notificationTimeout {
 	width: 75px;
