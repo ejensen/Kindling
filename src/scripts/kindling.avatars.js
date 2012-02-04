@@ -78,18 +78,12 @@ kindling.module(function () {
 		return true;
 	}
 
-	function scrollChatToBottom() {
-		var pageHeight = Math.max(document.documentElement.offsetHeight, document.body.scrollHeight);
-		var targetY = pageHeight + window.innerHeight + 100;
-		window.scrollTo(0, targetY);
-	}
-
 	function visitPersonElements(visiter) {
 		var modified = false;
 		$('.person').each(function(i, e) { modified |= visiter($(e)); });
 
 		if (modified) {
-			scrollChatToBottom();
+			kindling.scrollToBottom();
 		}
 	}
 
@@ -109,7 +103,7 @@ kindling.module(function () {
 		if (options.showAvatarsInChat === 'true') {
 			var $person = $(message).find('.person').first();
 			if ($person && tryToAddAvatar($person)) {
-				scrollChatToBottom();
+				kindling.scrollToBottom();
 			}
 		}
 	}

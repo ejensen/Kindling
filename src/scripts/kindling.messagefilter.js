@@ -5,8 +5,10 @@ kindling.module(function () {
 		var $chat = $('#chat-wrapper');
 		if (value === 'false' && $chat.hasClass(key) === false) {
 			$chat.addClass(key);
+			kindling.scrollToBottom();
 		} else if (value === 'true' && $chat.hasClass(key) === true) {
 			$chat.removeClass(key);
+			kindling.scrollToBottom();
 		}
 	}
 
