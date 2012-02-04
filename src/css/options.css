@@ -124,13 +124,14 @@
 	float: left;
 	padding: 6px 8px;
 	text-decoration: none;
-	border: 1px solid #CACACA;
-	border-bottom-width: 0;
 	margin-right: 1px;
 }
 .coda-nav ul > li > a.current {
 	background: -webkit-linear-gradient(bottom, #FFFFFF 0%,#F5F5F5 100%);
 	font-weight: bold;
+	border-style: solid;
+	border-color: #CACACA;
+	border-width: 1px 1px 0 1px;
 	padding: 6px 7px;
  }
  .coda-nav ul > li:first-child > a.current {
