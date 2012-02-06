@@ -23,7 +23,7 @@ kindling.module(function () {
 
 	function loadAvatar() {
 		var avatar = getQueryVariable('avatar');
-		if (avatar && avatar !== 'undefined' && (localStorage.showAvatars === 'true')) {
+		if (avatar && avatar !== 'undefined' && (localStorage.showAvatarsInNotifications === 'true')) {
 			document.getElementById('avatar').src = avatar;
 		}
 	}
