@@ -1,6 +1,6 @@
 kindling.module(function () {
 	'use strict';
-	
+
 	var MENU_ID = 'emojiButton-wrapper';
 
 	function insertAtCaret(input, value) {
@@ -35,10 +35,10 @@ kindling.module(function () {
 
 		var $emojiContainer = $menu.find('#emojiContainer');
 		var $emojiSlider = $emojiContainer.find('#emoji-slider');
-		var i;
-		for (var group in EMOJIS) {
-			var $panel = $('<div class="panel"><div class="panel-wrapper"></div></div>');
-			var $wrapper = $panel.find('.panel-wrapper');
+		var i, group, $panel, $wrapper;
+		for (group in EMOJIS) {
+			$panel = $('<div class="panel"><div class="panel-wrapper"></div></div>');
+			$wrapper = $panel.find('.panel-wrapper');
 			for (i = 0; i < EMOJIS[group].length; i++) {
 				$wrapper.append('<span class="emoji emoji-' + EMOJIS[group][i] + '" title="' + EMOJIS[group][i] + '"></span>');
 			}
@@ -46,7 +46,7 @@ kindling.module(function () {
 		}
 
 		$('#chat_controls').append($menu);
-		
+
 		$('#emoji-slider').codaSlider();
 
 		$(document).click(function (e) {
@@ -61,7 +61,7 @@ kindling.module(function () {
 
 		var $input = $('#input');
 		$emojiContainer.click(function (e) {
-			if ($(e.target).hasClass('emoji')) { 
+			if ($(e.target).hasClass('emoji')) {
 				insertAtCaret($input[0], ':' + e.target.getAttribute('title') + ':');
 				$input.focus();
 			}
@@ -77,7 +77,7 @@ kindling.module(function () {
 	}
 
 	// List gathered from http://www.emoji-cheat-sheet.com
-	var EMOJIS = { 
+	var EMOJIS = {
 	'people': [
 		'smile',
 		'blush',

@@ -18,10 +18,10 @@ kindling.module(function () {
 
 	function moveAuthorToBody($message) {
 		var $author = $message.find('.author');
-		
+
 		$author.data('short-name', $author.text());
 		$author.html('');
-		
+
 		if ($author.css('display') === 'none') {
 			return;
 		}
@@ -60,7 +60,7 @@ kindling.module(function () {
 	function removeAuthorFromBody($message) {
 		var $messageBody = $message.find('td.body');
 		$messageBody.css('vertical-align', '');
-		
+
 		$message.find('.inline-author').remove();
 
 		var $author = $message.find('.author');
@@ -80,7 +80,7 @@ kindling.module(function () {
 
 	function visitPersonElements(visiter) {
 		var modified = false;
-		$('.person').each(function(i, e) { modified |= visiter($(e)); });
+		$('.person').each(function(i, e) { modified = modified || visiter($(e)); });
 
 		if (modified) {
 			kindling.scrollToBottom();

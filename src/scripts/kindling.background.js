@@ -19,7 +19,8 @@ kindling.module(function () {
 
 	function sendOptionsChangedNotification() {
 		var settingsObject = getSettingsObject();
-		for (var tab in tabMap) {
+		var tab;
+		for (tab in tabMap) {
 			chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: settingsObject });
 		}
 	}
