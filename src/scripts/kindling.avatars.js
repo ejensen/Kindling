@@ -6,7 +6,7 @@ kindling.module(function () {
 
 	function getAvatar($person) {
 		var $author = $person.find('.author');
-		if (!$author.is(':visible')) {
+		if ($author.css('display') === 'none') {
 			return null;
 		}
 
