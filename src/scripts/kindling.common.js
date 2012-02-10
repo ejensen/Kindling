@@ -18,6 +18,12 @@ var kindling = kindling || (function (domReady) {
 			return match ? match[0] : '';
 		},
 
+		scrollToBottom : function () {
+			var pageHeight = Math.max(document.documentElement.offsetHeight, document.body.scrollHeight);
+			var targetY = pageHeight + window.innerHeight + 100;
+			window.scrollTo(0, targetY);
+		},
+
 		module: function (m) {
 			if (m.init) {
 				domReady(function () {
@@ -27,4 +33,4 @@ var kindling = kindling || (function (domReady) {
 			return m;
 		}
 	};
-}(window.$ || function (f) { f() }));
+}(window.$ || function (f) { f(); }));

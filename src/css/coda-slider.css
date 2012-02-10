@@ -1,0 +1,33 @@
+﻿.coda-nav ul {
+	clear: both;
+	display: block;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.coda-nav ul > li {
+	display: inline;
+}
+.coda-nav ul > li  > a {
+	color: black;
+	display: block;
+	float: left;
+	text-decoration: none;
+	margin-right: 1px;
+}
+.coda-slider-wrapper {
+	clear: both;
+	overflow: hidden;
+}
+.coda-slider { 
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.coda-slider .panel {
+	display: block;
+	float: left;
+}
+.coda-slider .panel-container {
+	position: relative;
+}

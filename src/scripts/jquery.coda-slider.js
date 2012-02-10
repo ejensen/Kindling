@@ -31,12 +31,13 @@ $.fn.codaSlider = function (settings) {
 		// If we need a tabbed nav
 		$('#coda-nav-' + sliderCount + ' a').each(function (z) {
 			// What happens when a nav link is clicked
-			$(this).bind("click", function () {
+			$(this).bind("click", function (e) {
 				$(this).addClass('current').parents('ul').find('a').not($(this)).removeClass('current');
 				var offset = -(panelWidth * z);
 				alterPanelHeight(z);
 				currentPanel = z + 1;
 				$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
+				e.preventDefault();
 			});
 		});
 

@@ -5,7 +5,7 @@ kindling.module(function () {
 	var iconCanvas = null;
 	var badgedCanvas = [];
 	var enabled = false;
-	var iconSource = kindling.getDomain(window.location.toString()) + '/favicon.ico';
+	var iconSource = kindling.getDomain(window.location.href) + '/images/chromeicon-32x32.png';
 
 	function getUnreadCount() {
 		var unreadCount = 0;
