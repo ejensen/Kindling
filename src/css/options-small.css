@@ -14,12 +14,12 @@ body, #wrapper, .coda-slider, .coda-slider .panel {
 	display: none;
 }
 #logo {
-	background: url(../img/icon64.png) no-repeat;
-	margin: 0 24px -48px auto;
-	height: 64px;
-	width: 64px;
+	background: url(../img/icon48.png) no-repeat;
+	margin: 5px 10px -38px auto;
+	height: 48px;
+	width: 48px;
 	left: 0;
-	top: 10px;
+	top: 0;
 }
 #notificationTimeout {
 	width: 75px;
