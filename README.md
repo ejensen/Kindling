@@ -4,5 +4,5 @@ Formally known as Chromefire, Kindling is a collection of useful [Campfire](http
 
 ## Credits
 
-* Kindling's awesome new icon was designed by [Mike Kerby](http://twisted-studio.com).
+* Kindling's new icon was designed by [Mike Kerby](http://twisted-studio.com).
 * Kindling's logo font was made by [Jos Buivenga](http://www.exljbris.com/diavlo.html).
