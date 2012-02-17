@@ -36,7 +36,6 @@
 			"scripts/kindling.highlight.js",
 			"scripts/kindling.messagefilter.js",
 			"scripts/kindling.avatars.js",
-			"scripts/kindling.favicon.js",
 			"scripts/kindling.notificationpublisher.js",
 			"scripts/kindling.contentscript.js"
 		]

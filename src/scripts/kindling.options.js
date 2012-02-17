@@ -12,8 +12,7 @@ kindling.module(function () {
 			'autoDismiss',
 			'filterNotifications',
 			'soundAndEmojiMenus',
-			'showAvatarsInChat',
-			'faviconCounter'
+			'showAvatarsInChat'
 		];
 
 	function getMessages() {
