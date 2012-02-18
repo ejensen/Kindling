@@ -7,5 +7,9 @@
 		usernameElem.style.display = 'none';
 		usernameElem.innerText = window.chat.username;
 		document.getElementById('chat-wrapper').appendChild(usernameElem);
+
+		if (window.chat.layoutmanager) {
+			window.chat.layoutmanager.layout();
+		}
 	}
-}());
+} ());

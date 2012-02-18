@@ -1,4 +1,4 @@
-// concept borrowed from http://chalbach.com/campfire-avatars
+// concept from http://chalbach.com/campfire-avatars
 kindling.module(function () {
 	'use strict';
 
@@ -9,36 +9,32 @@ kindling.module(function () {
 		if ($author.css('display') === 'none') {
 			return null;
 		}
-
-		var el = document.createElement('img');
-		$(el).attr('src', $author.data('avatar'))
-			.addClass('avatar');
-		return el;
+		return $('<img height="55" width="55" class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
 	}
 
-	function moveAuthorToBody($message) {
-		var $author = $message.find('.author');
-
+	function moveAuthorToMessage($author, $message) {
 		$author.data('short-name', $author.text());
 		$author.html('');
-
-		if ($author.css('display') === 'none') {
-			return;
-		}
-
-		var $bodyAuthor = $(document.createElement('h4'));
-		$bodyAuthor.html($author.data('name'))
-			.addClass('inline-author');
 
 		var $messageBody = $message.find('td.body');
 		$messageBody.css('vertical-align', 'top');
 
+		var $bodyAuthor = $('<h4 class="inline-author">' + $author.data('name') + '</h4>');
 		$messageBody.prepend($bodyAuthor);
 	}
 
+	function removeAuthorFromMessage($author, $message) {
+		var $messageBody = $message.find('td.body');
+		$messageBody.css('vertical-align', '');
+
+		$message.find('.inline-author').remove();
+
+		$author.html($author.data('short-name'));
+	}
+
 	function tryToAddAvatar($person) {
-		var messageId = $person.parent().attr('id');
-		if (!messageId) {
+		var $message = $person.parent();
+		if (!$message.find('td.body div.body').length || $message.find('.inline-author').length) {
 			return false;
 		}
 
@@ -47,24 +43,15 @@ kindling.module(function () {
 			return false;
 		}
 
-		var $message = $person.parent();
-		if (!$message.find('td.body').find('div').hasClass('body')) {
+		var $author = $message.find('.author');
+		if ($author.css('display') === 'none') {
 			return false;
 		}
 
+		moveAuthorToMessage($author, $message);
 		$person.append(avatar);
-		moveAuthorToBody($message);
+
 		return true;
-	}
-
-	function removeAuthorFromBody($message) {
-		var $messageBody = $message.find('td.body');
-		$messageBody.css('vertical-align', '');
-
-		$message.find('.inline-author').remove();
-
-		var $author = $message.find('.author');
-		$author.html($author.data('short-name'));
 	}
 
 	function tryToRemoveAvatar($person) {
@@ -72,15 +59,19 @@ kindling.module(function () {
 		if (!$avatar) {
 			return false;
 		}
-		$avatar.remove();
 
-		removeAuthorFromBody($person.parent());
+		$avatar.remove();
+		var $message = $person.parent();
+		if ($message) {
+			removeAuthorFromMessage($message.find('.author'), $message);
+		}
+
 		return true;
 	}
 
 	function visitPersonElements(visiter) {
 		var modified = false;
-		$('.person').each(function(i, e) { modified |= visiter($(e)); });
+		$('.person').each(function (i, e) { modified |= visiter($(e)); });
 
 		if (modified) {
 			kindling.scrollToBottom();
