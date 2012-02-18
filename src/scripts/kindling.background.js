@@ -70,6 +70,7 @@ kindling.module(function () {
 			initSetting('notifications', 'true');
 			initSetting('notificationTimeout', '5000');
 			initSetting('highlightName', 'true');
+			initSetting('useDifferentTheme', 'false');
 			initSetting('soundAndEmojiMenus', 'true');
 			initSetting('showAvatarsInChat', 'false');
 			initSetting('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');

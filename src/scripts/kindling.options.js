@@ -2,18 +2,19 @@ kindling.module(function () {
 	'use strict';
 
 	var OPTIONS = [
-			'enterRoom',
-			'leaveRoom',
-			'timeStamps',
-			'notifications',
-			'highlightName',
-			'showAvatarsInNotifications',
-			'disableNotificationsWhenInFocus',
-			'autoDismiss',
-			'filterNotifications',
-			'soundAndEmojiMenus',
-			'showAvatarsInChat'
-		];
+		'enterRoom',
+		'leaveRoom',
+		'timeStamps',
+		'notifications',
+		'highlightName',
+		'showAvatarsInNotifications',
+		'disableNotificationsWhenInFocus',
+		'autoDismiss',
+		'filterNotifications',
+		'soundAndEmojiMenus',
+		'showAvatarsInChat',
+		'useDifferentTheme'
+	];
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('options');
@@ -48,6 +49,8 @@ kindling.module(function () {
 			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').slideToggle(500, 'easeInOutExpo');
 		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
 			$('#timeoutDiv').slideToggle(500, 'easeInOutExpo');
+		} else if ($parent[0].id === 'useDifferentTheme' && value !== (localStorage.useDifferentTheme === 'true')) {
+			$('#themeColor').slideToggle(500, 'easeInOutExpo');
 		}
 	}
 
@@ -72,6 +75,11 @@ kindling.module(function () {
 		onOptionChanged();
 	}
 
+	function onThemeColorChanged() {
+		localStorage.themeColor = $('#themeColor input:checked').attr('title');
+		onOptionChanged();
+	}
+
 	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
@@ -86,6 +94,8 @@ kindling.module(function () {
 			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
 		}
 
+		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
+
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
 		onNotificationTimeoutChanged();
@@ -95,6 +105,9 @@ kindling.module(function () {
 		}
 		if (localStorage.autoDismiss === 'false') {
 			$('#timeoutDiv').hide();
+		}
+		if (localStorage.useDifferentTheme === 'false') {
+			$('#themeColor').hide();
 		}
 	}
 
@@ -111,6 +124,8 @@ kindling.module(function () {
 			$('.description').click(onToggle);
 
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
+
+			$('#themeColor').change(onThemeColorChanged);
 
 			initOptions();
 

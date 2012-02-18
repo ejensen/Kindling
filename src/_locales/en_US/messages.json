@@ -47,8 +47,8 @@
 	"soundAndEmojiMenus":{
 		"message": "Emoji and sound menus"
 	},
-	"faviconCounter":{
-		"message": "Display unread message count in tab icon"
+	"useDifferentTheme":{
+		"message": "Use an alternate theme"
 	},
 	"showAvatarsInChat":{
 		"message": "Display avatars in chat"
