@@ -1,21 +1,21 @@
 kindling.module(function () {
 	'use strict';
 
-	var originalTheme = null;
-
 	function getThemeLink() {
-		return $('link[title=Theme]');
+		return $('link[title=Theme]').first();
 	}
 
 	function onLoaded () {
-		originalTheme = getThemeLink().attr('href');
+		var themeLink = getThemeLink();
+		themeLink.data('original-theme', themeLink.attr('href'));
 	}
 
 	function onOptionsChanged(e, options) {
+		var themeLink = getThemeLink();
 		if (options.useDifferentTheme === 'true' && options.themeColor) {
-			getThemeLink().attr('href', '/stylesheets/' + options.themeColor + '.css');
+			themeLink.attr('href', '/stylesheets/' + options.themeColor + '.css');
 		} else {
-			getThemeLink().attr('href', originalTheme);
+			themeLink.attr('href', themeLink.data('original-theme'));
 		}
 	}
 
