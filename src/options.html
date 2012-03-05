@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{options}</title>
 	<link rel="stylesheet" media="screen" href="css/coda-slider.css" />
 	<link rel="stylesheet" media="screen" href="css/options.css" />
 	<link rel="stylesheet" media="screen and (max-width:425px)" href="css/options-small.css" />
@@ -25,7 +24,7 @@
 			<div id="coda-slider" class="coda-slider">
 				<div class="panel">
 					<div class="panel-wrapper">
-					   <p class="field switch" id="notifications">
+					   <p class="field switch" id="notifications" data-dependants="#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="notifications" class="description">{notifications}</label>
@@ -46,7 +45,7 @@
 							<label for="showAvatarsInNotifications" class="description">{showAvatarsInNotifications}</label>
 						</p>
 						<div id="dismissDiv">
-							<p class="field switch" id="autoDismiss">
+							<p class="field switch" id="autoDismiss" data-dependants="#timeoutDiv">
 								<label class="cb-enable"><span>{on}</span></label>
 								<label class="cb-disable selected"><span>{off}</span></label>
 								<label for="autoDismiss" class="description">{autoDismiss}</label>
@@ -56,7 +55,7 @@
 									<input id="notificationTimeout" type="range" min="1000" max="15000" step="1000" /><br />
 									<span id="rangeTooltip"></span>
 								</div>
-								<label for="notificationTimeout" style="vertical-align: top; margin-left: 5px;">{autoDismiss}</label>
+								<label for="notificationTimeout" style="vertical-align: top; margin-left: 5px;">{notificationTimeout}</label>
 							</div>
 						</div>
 					</div>
@@ -87,17 +86,22 @@
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="highlightName" class="description">{highlightName}</label>
 						</p>
-						<p class="field switch" id="showAvatarsInChat">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-							<label for="showAvatarsInChat" class="description">{showAvatarsInChat}</label><span class="asterisk">*</span>
-						</p>
 						<p class="field switch" id="soundAndEmojiMenus">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="soundAndEmojiMenus" class="description">{soundAndEmojiMenus}</label>
 						</p>
-						<p class="field switch" id="useDifferentTheme">
+						<p class="field switch" id="showAvatarsInChat" data-dependants="#useLargeAvatars">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="showAvatarsInChat" class="description">{showAvatarsInChat}</label><span class="asterisk">*</span>
+						</p>
+						<p class="field switch" id="useLargeAvatars">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="useLargeAvatars" class="description">{useLargeAvatars}</label>
+						</p>
+						<p class="field switch" id="useDifferentTheme" data-dependants="#themeColor">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="useDifferentTheme" class="description">{useDifferentTheme}</label>
@@ -116,7 +120,7 @@
 							<input type="radio" name="color" title="black" style="background-color:#000"/>
 							<input type="radio" name="color" title="grey" style="background-color:#999"/>
 						</div>
-						<div style="text-align:right;"><span class="asterisk">*</span><span class="label red">beta</span></div>
+						<div style="text-align:right;"><span class="asterisk">*</span><span class="label red">{beta}</span></div>
 					</div>
 				</div>
 			</div>

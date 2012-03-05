@@ -3,13 +3,14 @@ kindling.module(function () {
 	'use strict';
 
 	var isEnabled = false;
+	var largeAvatars = false;
 
 	function getAvatar($person) {
 		var $author = $person.find('.author');
 		if ($author.css('display') === 'none') {
 			return null;
 		}
-		return $('<img height="55" width="55" class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
+		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
 	}
 
 	function moveAuthorToMessage($author, $message) {
@@ -49,6 +50,11 @@ kindling.module(function () {
 		}
 
 		moveAuthorToMessage($author, $message);
+
+		if (largeAvatars) {
+			avatar.addClass('large');
+		}
+
 		$person.append(avatar);
 
 		return true;
@@ -79,14 +85,24 @@ kindling.module(function () {
 	}
 
 	function onOptionsChanged(e, options) {
-		var enabled = options.showAvatarsInChat === 'true';
-		if (enabled !== isEnabled) {
-			if (enabled) {
+		var newValue = options.showAvatarsInChat === 'true';
+		if (newValue !== isEnabled) {
+			isEnabled = newValue;
+			if (isEnabled) {
 				visitPersonElements(tryToAddAvatar);
 			} else {
 				visitPersonElements(tryToRemoveAvatar);
 			}
-			isEnabled = enabled;
+		}
+
+		newValue = options.useLargeAvatars === 'true';
+		if (newValue !== largeAvatars) {
+			largeAvatars = newValue;
+			if (largeAvatars) {
+				$('.avatar').addClass('large');
+			} else {
+				$('.avatar').removeClass('large');
+			}
 		}
 	}
 

@@ -73,6 +73,7 @@ kindling.module(function () {
 			initSetting('useDifferentTheme', 'false');
 			initSetting('soundAndEmojiMenus', 'true');
 			initSetting('showAvatarsInChat', 'false');
+			initSetting('useLargeAvatars', 'false');
 			initSetting('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 			localStorage.removeItem('focusNotifications'); //obsolete option

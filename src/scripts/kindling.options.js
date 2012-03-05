@@ -13,23 +13,17 @@ kindling.module(function () {
 		'filterNotifications',
 		'soundAndEmojiMenus',
 		'showAvatarsInChat',
+		'useLargeAvatars',
 		'useDifferentTheme'
 	];
 
 	function getMessages() {
 		document.title = chrome.i18n.getMessage('options');
-		$('.cb-enable > span').html(chrome.i18n.getMessage('on'));
-		$('.cb-disable > span').html(chrome.i18n.getMessage('off'));
-
-		$('#notificationsTitle').html(chrome.i18n.getMessage('notificationsTitle'));
-		$('#messagesTitle').html(chrome.i18n.getMessage('messagesTitle'));
-		$('#otherTitle').html(chrome.i18n.getMessage('otherTitle'));
-		$('label[for="notificationTimeout"]').html(chrome.i18n.getMessage('notificationTimeout'));
-
-		var i;
-		for (i = 0; i < OPTIONS.length; i += 1) {
-			$('.description[for="' + OPTIONS[i] + '"]').html(chrome.i18n.getMessage(OPTIONS[i]));
-		}
+		var html = $(document.body).html();
+		$(html.match(new RegExp('\{([^}]*)\}', 'g'))).each(function(i, e) {
+			html = html.replace(e, chrome.i18n.getMessage(e.substring(1, e.length - 1)));
+		});
+		$(document.body).html(html);
 	}
 
 	function onOptionChanged() {
@@ -45,12 +39,8 @@ kindling.module(function () {
 			$parent.find('.cb-disable').addClass('selected');
 		}
 
-		if ($parent[0].id === 'notifications' && value !== (localStorage.notifications === 'true')) {
-			$('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').slideToggle(500, 'easeInOutExpo');
-		} else if ($parent[0].id === 'autoDismiss' && value !== (localStorage.autoDismiss === 'true')) {
-			$('#timeoutDiv').slideToggle(500, 'easeInOutExpo');
-		} else if ($parent[0].id === 'useDifferentTheme' && value !== (localStorage.useDifferentTheme === 'true')) {
-			$('#themeColor').slideToggle(500, 'easeInOutExpo');
+		if (value !== (localStorage[$parent[0].id] === 'true')) {
+			$($parent.data('dependants')).slideToggle(300);
 		}
 	}
 
@@ -91,7 +81,11 @@ kindling.module(function () {
 		for (i = 0; i < OPTIONS.length; i += 1) {
 			var savedValue = localStorage[OPTIONS[i]];
 			var checked = savedValue === undefined || (savedValue === 'true');
-			onCheckChange($(document.getElementById(OPTIONS[i])), checked);
+			var $element = $(document.getElementById(OPTIONS[i]));
+			onCheckChange($element, checked);
+
+			if (!checked)
+				$($element.data('dependants')).hide();
 		}
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
@@ -99,16 +93,6 @@ kindling.module(function () {
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
 		onNotificationTimeoutChanged();
-
-		if (localStorage.notifications === 'false') {
-		    $('#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv').hide();
-		}
-		if (localStorage.autoDismiss === 'false') {
-			$('#timeoutDiv').hide();
-		}
-		if (localStorage.useDifferentTheme === 'false') {
-			$('#themeColor').hide();
-		}
 	}
 
 	return {

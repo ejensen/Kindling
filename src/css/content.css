@@ -5,7 +5,7 @@
 #chat-wrapper.noEnterRoom tr.enter_message *,
 #chat-wrapper.noLeaveRoom tr.leave_message *,
 #chat-wrapper.noLeaveRoom tr.kick_message * {
-/* 'display: none' causes issues with the placement of the 'star buttons' */
+/* 'display: none' causes issues with the placement of the star "buttons" */
 	height: 0;
 	line-height: 0;
 	margin: 0;
@@ -16,11 +16,15 @@
 }
 
 .avatar {
-	border-radius: 5px;
 	background-size: contain;
-	height: 55px;
-	width: 55px;
+	height: 36px;
+	width: 36px;
 	opacity: 1.0 !important;
+}
+.avatar.large {
+	height: 50px;
+	width: 50px;
+	border-radius: 4px;
 }
 .inline-author {
 	margin-bottom: 0.5em;

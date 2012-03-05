@@ -5,6 +5,9 @@
 	"off":{
 		"message": "Off"
 	},
+	"beta":{
+		"message": "Beta"
+	},
 	"notificationsTitle":{
 		"message": "Notifications"
 	},
@@ -52,6 +55,9 @@
 	},
 	"showAvatarsInChat":{
 		"message": "Display avatars in chat"
+	},
+	"useLargeAvatars":{
+		"message": "Use large avatars"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Kindling..."

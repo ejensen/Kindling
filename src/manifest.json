@@ -1,6 +1,6 @@
 {
 	"name": "Kindling for Campfire",
-	"version": "3.1.0",
+	"version": "3.2.0",
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
 	"background_page": "background.html",
