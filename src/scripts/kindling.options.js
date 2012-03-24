@@ -40,7 +40,7 @@ kindling.module(function () {
 		}
 
 		if (value !== (localStorage[$parent[0].id] === 'true')) {
-			$($parent.data('dependants')).slideToggle(300);
+			$($parent.data('dependents')).slideToggle(300);
 		}
 	}
 
@@ -85,7 +85,7 @@ kindling.module(function () {
 			onCheckChange($element, checked);
 
 			if (!checked)
-				$($element.data('dependants')).hide();
+				$($element.data('dependents')).hide();
 		}
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
