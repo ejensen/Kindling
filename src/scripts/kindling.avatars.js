@@ -5,14 +5,6 @@ kindling.module(function () {
 	var isEnabled = false;
 	var largeAvatars = false;
 
-	function getAvatar($person) {
-		var $author = $person.find('.author');
-		if ($author.css('display') === 'none') {
-			return null;
-		}
-		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
-	}
-
 	function moveAuthorToMessage($author, $message) {
 		$author.data('short-name', $author.text());
 		$author.html('');
@@ -33,14 +25,22 @@ kindling.module(function () {
 		$author.html($author.data('short-name'));
 	}
 
+	function getAvatar($person) {
+		var $author = $person.find('.author');
+		if ($author.css('display') === 'none') {
+			return null;
+		}
+		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
+	}
+
 	function tryToAddAvatar($person) {
 		var $message = $person.parent();
 		if (!$message.find('td.body div.body').length || $message.find('.inline-author').length) {
 			return false;
 		}
 
-		var avatar = getAvatar($person);
-		if (!avatar) {
+		var $avatar = getAvatar($person);
+		if (!$avatar) {
 			return false;
 		}
 
@@ -52,10 +52,10 @@ kindling.module(function () {
 		moveAuthorToMessage($author, $message);
 
 		if (largeAvatars) {
-			avatar.addClass('large');
+			$avatar.addClass('large');
 		}
 
-		$person.append(avatar);
+		$person.append($avatar);
 
 		return true;
 	}
