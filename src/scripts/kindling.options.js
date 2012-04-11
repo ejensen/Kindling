@@ -96,8 +96,10 @@ kindling.module(function () {
 	}
 
 	return {
-		init: function () {
+		init: function () {			
 			getMessages();
+
+			$('#coda-slider').codaSlider();
 
 			$('.cb-enable').click(function () {
 				onCheckClick(this, true);
@@ -112,8 +114,6 @@ kindling.module(function () {
 			$('#themeColor').change(onThemeColorChanged);
 
 			initOptions();
-
-			$('#coda-slider').codaSlider();
 		}
 	};
 }());

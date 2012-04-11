@@ -15,6 +15,9 @@
 	text-decoration: none;
 	margin-right: 1px;
 }
+.coda-nav ul > li  > a:focus {
+	outline: 0;
+}
 .coda-slider-wrapper {
 	clear: both;
 	overflow: hidden;
