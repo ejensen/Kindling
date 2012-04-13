@@ -63,7 +63,7 @@
 		"message": "Click to configure Kindling..."
 	},
 	"description":{
-		"message": "Kindling adds desktop notifications, name highlighting, and message filtering to 37signals Campfire."
+		"message": "Kindling adds useful features and customizations to 37signals Campfire."
 	},
 	"seconds":{
 		"message": "sec"
