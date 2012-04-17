@@ -12,6 +12,7 @@ kindling.module(function () {
 		'autoDismiss',
 		'filterNotifications',
 		'soundAndEmojiMenus',
+		'minimalInterface',
 		'showAvatarsInChat',
 		'useLargeAvatars',
 		'useDifferentTheme'
@@ -96,7 +97,7 @@ kindling.module(function () {
 	}
 
 	return {
-		init: function () {			
+		init: function () {
 			getMessages();
 
 			$('#coda-slider').codaSlider();
