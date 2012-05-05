@@ -38,7 +38,8 @@
 			"scripts/kindling.messagefilter.js",
 			"scripts/kindling.avatars.js",
 			"scripts/kindling.notificationpublisher.js",
-			"scripts/kindling.contentscript.js"
+			"scripts/kindling.contentscript.js",
+			"scripts/kindling.minimalinterface.js"
 		]
 	}]
 }

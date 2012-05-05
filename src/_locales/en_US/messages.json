@@ -50,6 +50,9 @@
 	"soundAndEmojiMenus":{
 		"message": "Emoji and sound menus"
 	},
+	"minimalInterface":{
+		"message": "Minimal Interface"
+	},
 	"useDifferentTheme":{
 		"message": "Use an alternate color scheme"
 	},
