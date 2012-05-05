@@ -17,11 +17,11 @@ kindling.module(function () {
 		},
 		{
 			selector : "div.Left",
-			css : { "width" : "auto", "float" : "none", "margin-top" : "0px" }
+			css : { "width" : "auto", "float" : "none", "margin-top" : "0" }
 		},
 		{
 			selector : "#Wrapper",
-			css : { "padding-left" : "10px", "padding-right" : "10px" }
+			css : { "padding-left" : "10px", "padding-right" : "10px", "padding-top" : "10px" }
 		},
 		{
 			selector : "div.speak",
@@ -45,21 +45,22 @@ kindling.module(function () {
 		}
 	];
 
-	function cleanMode() {
-
+	function enableCleanMode() {
 		actions.forEach(function(action) {
-			var element = $(action.selector);
+			var $element = $(action.selector);
 			var css = action.css;
 
-			if(css) element.css(css);
-			else element.hide();
+			if (css) {
+				$element.css(css);
+			} else {
+				$element.hide();
+			}
 		});
-
 	}
 
 	function disableCleanMode() {
 		actions.forEach(function(action) {
-			$(action.selector).removeAttr("style");
+			$(action.selector).removeAttr('style');
 		});
 	}
 
@@ -68,17 +69,16 @@ kindling.module(function () {
 		if (newValue !== isEnabled) {
 			isEnabled = newValue;
 			if (isEnabled) {
-				cleanMode();
+				enableCleanMode();
 			} else {
 				disableCleanMode();
 			}
 		}
 	}
 
-
 	return {
 		init: function () {
-			$.subscribe('optionsChanged', onOptionsChanged);
+			$.subscribe('loaded optionsChanged', onOptionsChanged);
 		}
 	};
 }());
