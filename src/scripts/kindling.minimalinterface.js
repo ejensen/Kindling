@@ -65,6 +65,9 @@ kindling.module(function () {
 	}
 
 	function onOptionsChanged(e, options) {
+		if (!options) {
+			return;
+		}
 		var newValue = options.minimalInterface === 'true';
 		if (newValue !== isEnabled) {
 			isEnabled = newValue;
