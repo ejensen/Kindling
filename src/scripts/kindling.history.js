@@ -117,9 +117,10 @@ kindling.module(function () {
 			isEnabled = newValue;
 			if (isEnabled) {
 				$.subscribe('newMessage', onNewMessage);
-				$('#input').keydown(history);
+				$('#input').bind('keydown', history);
 			} else {
 				$.unsubscribe('newMessage', onNewMessage);
+        $('#input').unbind('keydown', history);
 				reset();
 			}
 		}
