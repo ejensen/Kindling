@@ -50,6 +50,9 @@
 	"soundAndEmojiMenus":{
 		"message": "Emoji and sound menus"
 	},
+	"history":{
+		"message": "Commands history"
+	},
 	"minimalInterface":{
 		"message": "Minimal interface"
 	},
