@@ -2,22 +2,30 @@ kindling.module(function () {
 	'use strict';
 
 	var SOUNDS = {
+		'56k': '56k',
 		'Bueller?': 'bueller',
 		'Crickets chirping': 'crickets',
+		'Danger zone': 'dangerzone',
 		'Do it live!': 'live',
 		'Drama': 'drama',
 		'Great job': 'greatjob',
+		'Horn': 'horn',
+		'Kenny Loggins': 'loggins',
+		'Noooo': 'noooo',
 		'Nyan cat': 'nyan',
 		'Oh my': 'ohmy',
 		'Oh yeah': 'ohyeah',
 		'Push it': 'pushit',
 		'Rimshot': 'rimshot',
 		'Sad trombone': 'trombone',
+		'Saxaphone': 'sax',
 		'Secret area': 'secret',
 		'Ta-da!' : 'tada',
+		'The horror': 'horror',
 		'The More You Know': 'tmyk',
+		'Vuvuzela': 'vuvuzela',
 		'Yeeeaaah!': 'yeah',
-		'Vuvuzela': 'vuvuzela'
+		'Yodel': 'yodel'
 	};
 
 	var MENU_ID = 'soundButton-wrapper';
