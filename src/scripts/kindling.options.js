@@ -12,6 +12,7 @@ kindling.module(function () {
 		'autoDismiss',
 		'filterNotifications',
 		'soundAndEmojiMenus',
+		'history',
 		'minimalInterface',
 		'showAvatarsInChat',
 		'useLargeAvatars',

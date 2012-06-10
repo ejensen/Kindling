@@ -18,6 +18,12 @@ var kindling = kindling || (function (domReady) {
 			return match ? match[0] : '';
 		},
 
+		getRoomId: function (url) {
+			var regex = new RegExp('(chrome-extension|https?):\/\/(.[^/]+)\/room\/([0-9]+)');
+			var match = url.match(regex);
+			return match.length > 3 ? match[3] : '';
+		},
+
 		scrollToBottom : function () {
 			var pageHeight = Math.max(document.documentElement.offsetHeight, document.body.scrollHeight);
 			var targetY = pageHeight + window.innerHeight + 100;
