@@ -15,7 +15,7 @@
 		"notifications",
 		"tabs",
 		"*://*.campfirenow.com/room/*",
-      "http://*.screencast.com/"
+		"http://*.screencast.com/"
 	],
 	"page_action": {
 		"default_icon": "img/icon16.png",
@@ -41,7 +41,7 @@
 			"scripts/kindling.notificationpublisher.js",
 			"scripts/kindling.contentscript.js",
 			"scripts/kindling.minimalinterface.js",
-         "scripts/kindling.screencast.js"
+			"scripts/kindling.screencast.js"
 		]
 	}]
 }
