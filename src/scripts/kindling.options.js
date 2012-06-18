@@ -15,7 +15,8 @@ kindling.module(function () {
 		'minimalInterface',
 		'showAvatarsInChat',
 		'useLargeAvatars',
-		'useDifferentTheme'
+		'useDifferentTheme',
+      'expandScreencastLinks'
 	];
 
 	function getMessages() {
@@ -74,6 +75,7 @@ kindling.module(function () {
 	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
+
 		onCheckClick(e.currentTarget, value === 'true' ? false : true);
 	}
 
