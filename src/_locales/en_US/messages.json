@@ -80,7 +80,7 @@
 	"soundMenuTooltip":{
 		"message": "Play sound..."
 	},
-   "expandScreencastLinks":{
-      "message" : "Expand Screencast.com tiny urls into images"
-   }
+	"expandScreencastLinks":{
+		"message" : "Expand Screencast.com tiny urls into images"
+	}
 }
