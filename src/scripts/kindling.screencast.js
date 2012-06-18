@@ -32,7 +32,9 @@ kindling.module(function () {
 					var contentLink = $( data ).find( ".embeddedObject" ).attr('src');
 					
 					if( contentLink != undefined ) {
-						$(value).html( "<img src='"+ contentLink +"' data-screencast='"+theLink+"' style='max-height:250px' />" );
+						$(value).html( "<img src='"+ contentLink +"' data-screencast='"+theLink+"' "+
+												"onload='$dispatch(\"inlineImageLoaded\", this );' "+
+												"onerror='$dispatch(\"inlineImageLoadFailed\", this );' />" );
 					}
 				} );
 			}
