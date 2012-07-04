@@ -1,11 +1,14 @@
 {
 	"name": "Kindling for Campfire",
-	"version": "3.3.1",
+	"version": "3.3.2",
+	"manifest_version": 2,
 	"default_locale": "en_US",
 	"description": "__MSG_description__",
-	"background_page": "background.html",
+	"background": {
+		"scripts": ["scripts/kindling.common.js", "scripts/kindling.background.js"]
+	},
 	"options_page": "options.html",
-	"minimum_chrome_version": "10.0.648.133",
+	"minimum_chrome_version": "18",
 	"icons": {
 		"16": "img/icon16.png",
 		"48": "img/icon48.png",
@@ -21,6 +24,15 @@
 		"default_title": "__MSG_iconTooltip__",
 		"default_popup": "options.html"
 	},
+	"web_accessible_resources": [
+		"img/emoji.gif",
+		"img/sound.gif",
+		"img/symbols.png",
+		"img/nature.png",
+		"img/objects.png",
+		"img/places.png",
+		"scripts/kindling.inject.js"
+	],
 	"content_scripts": [{
 		"matches": ["*://*.campfirenow.com/room/*"],
 		"css": ["css/content.css", "css/coda-slider.css"],
