@@ -9,7 +9,7 @@ kindling.module(function () {
 		'Do it live!': 'live',
 		'Drama': 'drama',
 		'Great job': 'greatjob',
-		'Hey Girl' : 'heygirl',
+		'Hey girl' : 'heygirl',
 		'Horn': 'horn',
 		'Inconceivable' : 'inconceivable',
 		'Kenny Loggins': 'loggins',
