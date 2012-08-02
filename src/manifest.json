@@ -17,7 +17,8 @@
 	"permissions": [
 		"notifications",
 		"tabs",
-		"*://*.campfirenow.com/room/*"
+		"*://*.campfirenow.com/room/*",
+		"http://*.screencast.com/"
 	],
 	"page_action": {
 		"default_icon": "img/icon16.png",
@@ -51,7 +52,8 @@
 			"scripts/kindling.avatars.js",
 			"scripts/kindling.notificationpublisher.js",
 			"scripts/kindling.contentscript.js",
-			"scripts/kindling.minimalinterface.js"
+			"scripts/kindling.minimalinterface.js",
+			"scripts/kindling.screencast.js"
 		]
 	}]
 }
