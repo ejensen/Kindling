@@ -73,11 +73,11 @@
 	bottom: -14px;
 }
 #emojiContainer {
-	width: 224px;
-	margin-left: -124px;
+	width: 252px;
+	margin-left: -137px;
 }
-#emoji-slider , #emoji-slider .panel {
-	width: 224px;
+#emoji-slider, #emoji-slider .panel {
+	width: 252px;
 }
 #soundContainer {
 	width: 132px;

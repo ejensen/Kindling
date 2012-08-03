@@ -6,6 +6,7 @@ kindling.module(function () {
 		'Bueller?': 'bueller',
 		'Crickets chirping': 'crickets',
 		'Danger zone': 'dangerzone',
+		'Deeper': 'deeper',
 		'Do it live!': 'live',
 		'Drama': 'drama',
 		'Great job': 'greatjob',
