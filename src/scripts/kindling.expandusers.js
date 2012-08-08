@@ -1,68 +1,74 @@
 kindling.module(function () {
-   'use strict';
+  'use strict';
 
-   var input = $('#input');
-   var form = $('#chat_form');
-   var abbreviation_pattern = /(?:\/\/|@)([^\s.:;,-]+)(?=[\s.:;,-]+|$)/ig;
-   var _participants;
+  var input = $('#input');
+  var form = $('#chat_form');
+  var abbreviation_pattern = /(?:\/\/|@)([^\s.:;,-]+)(?=[\s.:;,-]+|$)/ig;
+  var _participants = [];
 
-   function onOptionsChanged(e, options) {
-      if (!options) {
-         return;
+  function onOptionsChanged(e, options) {
+    if (!options) {
+      return;
+    }
+
+    input.bind('keyup keydown', function(){
+      if(event.which == 9) {
+        expandAllAbbreviations();
+        return false
       }
+    });
+  }
 
-      input.bind('keyup keydown', function(){
-         expandUsersOfMessage();
-      });
-   }
+  function expandAllAbbreviations(){
+    var abbreviations = getAbbreviationsFromMessage();
+    var index = 0;
+    for(index in abbreviations) {
+      var abbreviation = abbreviations[index];
+      replaceAbbreviation(abbreviation, findAbbreviation(abbreviation.replace(/^@|\/\//, '')));
+    }
+  }
 
-   function expandUsersOfMessage(){
-      var abbreviations = getAbbreviationsFromMessage();
-      var index = 0;
-      for(index in abbreviations) {
-         var abbreviation = abbreviations[index];
-         replaceAbbreviation(abbreviation, findAbbreviation(abbreviation.replace(/^@|\/\//, '')));
-      }
-   }
+  function getAbbreviationsFromMessage() {
+    return input.val().match(abbreviation_pattern);
+  }
 
-   function replaceAbbreviation(abbreviation, userName){
+  function replaceAbbreviation(abbreviation, userName) {
+    if(userName){
       input.val([input.val().replace(abbreviation, userName), " "].join(''));
-   }
+    }
+  }
 
-   function getAbbreviationsFromMessage(){
-      return input.val().match(abbreviation_pattern);
-   }
+  function findAbbreviation(abbreviation) {
+    var initials    = new RegExp("^" + abbreviation.split("").join(".*\\W"), "i");
+    var succession  = new RegExp(abbreviation.split("").join(".*"), "i");
+    return findPattern(initials) || findPattern(succession);
+  }
 
-   function findAbbreviation(abbreviation) {
-      var initials    = new RegExp("^" + abbreviation.split("").join(".*\\W"), "i");
-      var succession  = new RegExp(abbreviation.split("").join(".*"), "i");
-      var participant = findParticipantBy(initials) || findParticipantBy(succession);
-      return participant;
-   }
+  function findPattern(pattern) {
+    var match =  $.grep(participants(), function(element) {
+      return element.match(pattern);
+    });
+    return match[0] || false;
+  }
 
-   function findParticipantBy(pattern) {
-      var match =  $.grep(participants(), function(element) {
-         return element.match(pattern); 
-      });
-      return match[0];
-   }
+  function participants(){
+    if(_participants.lenght != $('.participant-list li').length) {
+      getParticipantList();
+    }
+    return _participants;
+  }
 
-   function participants(){
-      return _participants || getParticipantList();
+  function getParticipantList(){
+    _participants = [];
+    $('.participant-list li').each(function(){
+      _participants.push($(this).find('span.name').text());
+    });
+    return _participants;
+  }
 
-   }
-
-   function getParticipantList(){
-      _participants = [];
-      $('.participant-list li').each(function(){
-         _participants.push($(this).find('span.name').text());
-      });
-      return _participants;
-   }
-
-   return {
-      init: function () {
-         $.subscribe('loaded optionsChanged', onOptionsChanged);
-      }
-   };
+  return {
+    init: function () {
+      $.subscribe('loaded optionsChanged', onOptionsChanged);
+    }
+  };
 }());
