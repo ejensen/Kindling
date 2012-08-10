@@ -15,7 +15,8 @@ kindling.module(function () {
 		'minimalInterface',
 		'showAvatarsInChat',
 		'useLargeAvatars',
-		'useDifferentTheme'
+		'useDifferentTheme',
+		'expandAbbreviations'
 	];
 
 	function getMessages() {
