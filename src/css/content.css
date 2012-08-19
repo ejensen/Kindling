@@ -1,10 +1,7 @@
 ﻿mark.nameHighlight {
 	background-color:#FF8;
 }
-#chat-wrapper.noTimeStamp tr.timestamp_message *,
-#chat-wrapper.noEnterRoom tr.enter_message *,
-#chat-wrapper.noLeaveRoom tr.leave_message *,
-#chat-wrapper.noLeaveRoom tr.kick_message * {
+#chat-wrapper tr.hidden_message * {
 /* 'display: none' causes issues with the placement of the star "buttons" */
 	height: 0;
 	line-height: 0;
