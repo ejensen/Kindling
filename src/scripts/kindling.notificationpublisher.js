@@ -32,7 +32,7 @@ kindling.module(function () {
 					room: $('#room_name').html(),
 					author: $author.text() || $author.data('short-name'),
 					avatar: $author.data('avatar'),
-					message: $body.html()
+					message: (options.htmlNotifications === 'true' ? $body.html() : $body.text())
 				}
 			});
 		}

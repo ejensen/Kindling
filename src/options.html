@@ -24,7 +24,7 @@
 			<div id="coda-slider" class="coda-slider">
 				<div class="panel">
 					<div class="panel-wrapper">
-					   <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv">
+					   <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterNotifications,#htmlNotifications,#showAvatarsInNotifications,#dismissDiv">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="notifications" class="description">{notifications}</label>
@@ -38,6 +38,11 @@
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="filterNotifications" class="description">{filterNotifications}</label>
+						</p>
+						<p class="field switch" id="htmlNotifications">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="htmlNotifications" class="description">{htmlNotifications}</label>
 						</p>
 						<p class="field switch" id="showAvatarsInNotifications">
 							<label class="cb-enable"><span>{on}</span></label>
@@ -77,29 +82,10 @@
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="timeStamps" class="description">{timeStamps}</label>
 						</p>
-                  <p class="field switch" id="expandAbbreviations">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-                     <label for="expandAbbreviations" class="description">{expandAbbreviations}</label>
-						</p>
-					</div>
-				</div>
-				<div class="panel">
-					<div class="panel-wrapper">
 						<p class="field switch" id="highlightName">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="highlightName" class="description">{highlightName}</label>
-						</p>
-						<p class="field switch" id="soundAndEmojiMenus">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-							<label for="soundAndEmojiMenus" class="description">{soundAndEmojiMenus}</label>
-						</p>
-						<p class="field switch" id="minimalInterface">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-							<label for="minimalInterface" class="description">{minimalInterface}</label>
 						</p>
 						<p class="field switch" id="showAvatarsInChat" data-dependents="#useLargeAvatars">
 							<label class="cb-enable"><span>{on}</span></label>
@@ -110,6 +96,25 @@
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="useLargeAvatars" class="description">{useLargeAvatars}</label>
+						</p>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="panel-wrapper">
+						<p class="field switch" id="soundAndEmojiMenus">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="soundAndEmojiMenus" class="description">{soundAndEmojiMenus}</label>
+						</p>
+						<p class="field switch" id="expandAbbreviations" style="display:none;">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="expandAbbreviations" class="description">{expandAbbreviations}</label>
+						</p>
+						<p class="field switch" id="minimalInterface">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="minimalInterface" class="description">{minimalInterface}</label>
 						</p>
 						<p class="field switch" id="useDifferentTheme" data-dependents="#themeColor">
 							<label class="cb-enable"><span>{on}</span></label>

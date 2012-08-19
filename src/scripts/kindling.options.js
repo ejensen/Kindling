@@ -8,6 +8,7 @@ kindling.module(function () {
 		'notifications',
 		'highlightName',
 		'showAvatarsInNotifications',
+		'htmlNotifications',
 		'disableNotificationsWhenInFocus',
 		'autoDismiss',
 		'filterNotifications',

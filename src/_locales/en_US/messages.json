@@ -12,7 +12,7 @@
 		"message": "Notifications"
 	},
 	"notifications":{
-		"message": "Chat notifications"
+		"message": "Message notifications"
 	},
 	"disableNotificationsWhenInFocus":{
 		"message": "Disable when tab has focus"
@@ -24,10 +24,13 @@
 		"message": "Display avatars in notifications"
 	},
 	"autoDismiss":{
-		"message": "Auto-dismiss"
+		"message": "Auto-dismiss notifications"
 	},
 	"notificationTimeout":{
 		"message": "Auto-dismiss duration"
+	},
+	"htmlNotifications":{
+		"message": "Display media in notifications"
 	},
 	"messagesTitle":{
 		"message": "Messages"
@@ -48,19 +51,19 @@
 		"message": "Misc."
 	},
 	"highlightName":{
-		"message": "Name highlighting"
+		"message": "Highlight my name"
 	},
 	"soundAndEmojiMenus":{
 		"message": "Emoji and sound menus"
 	},
 	"minimalInterface":{
-		"message": "Minimal interface"
+		"message": "Minimal UI"
 	},
 	"useDifferentTheme":{
 		"message": "Use an alternate color scheme"
 	},
 	"showAvatarsInChat":{
-		"message": "Display avatars in chat"
+		"message": "Display avatars"
 	},
 	"useLargeAvatars":{
 		"message": "Use large avatars"

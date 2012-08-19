@@ -3,25 +3,25 @@ kindling.module(function () {
 
 	var tabMap = {};
 
-	function initSetting(setting, defaultValue) {
-		localStorage[setting] = localStorage[setting] || defaultValue;
+	function initOption(option, defaultValue) {
+		localStorage[option] = localStorage[option] || defaultValue;
 	}
 
-	function getSettingsObject() {
-		var i, settingsObject = {};
+	function getOptionsObject() {
+		var i, optionsObject = {};
 		var count = localStorage.length;
 		for (i = 0; i < count; i += 1) {
 			var key = localStorage.key(i);
-			settingsObject[key] = localStorage.getItem(key);
+			optionsObject[key] = localStorage.getItem(key);
 		}
-		return settingsObject;
+		return optionsObject;
 	}
 
 	function sendOptionsChangedNotification() {
-		var settingsObject = getSettingsObject();
+		var optionsObject = getOptionsObject();
 		var tab;
 		for (tab in tabMap) {
-			chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: settingsObject });
+			chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: optionsObject });
 		}
 	}
 
@@ -44,13 +44,19 @@ kindling.module(function () {
 	}
 
 	function showNotification(payload, sender) {
-		var notification = webkitNotifications.createHTMLNotification('notification.html'
+		var notification;
+
+		if (localStorage.htmlNotifications === 'true') {
+			notification = webkitNotifications.createHTMLNotification('notification.html'
 			+ '?room=' + encodeURIComponent(payload.room)
 			+ '&author=' + encodeURIComponent(payload.author)
 			+ '&avatar=' + encodeURIComponent(payload.avatar)
 			+ '&user=' + encodeURIComponent(payload.username)
 			+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
 			+ '#' + payload.message);
+		} else {
+			notification = webkitNotifications.createNotification(payload.avatar, payload.room + ': ' + payload.author, payload.message);
+		}
 
 		notification.onclick = function () {
 			chrome.windows.update(tabMap[sender.tab.id], { focused: true });
@@ -62,23 +68,23 @@ kindling.module(function () {
 
 	return {
 		init: function () {
-			initSetting('enterRoom', 'false');
-			initSetting('leaveRoom', 'false');
-			initSetting('timeStamps', 'true');
-			initSetting('filterNotifications', 'false');
-			initSetting('autoDismiss', 'true');
-			initSetting('notifications', 'true');
-			initSetting('notificationTimeout', '5000');
-			initSetting('highlightName', 'true');
-			initSetting('useDifferentTheme', 'false');
-			initSetting('soundAndEmojiMenus', 'true');
-			initSetting('showAvatarsInChat', 'true');
-			initSetting('useLargeAvatars', 'false');
-			initSetting('minimalInterface', 'false');
-			initSetting('expandAbbreviations', 'true');
-			initSetting('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
-			initSetting('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
-			localStorage.removeItem('focusNotifications'); //obsolete option
+			initOption('enterRoom', 'false');
+			initOption('leaveRoom', 'false');
+			initOption('timeStamps', 'true');
+			initOption('filterNotifications', 'false');
+			initOption('autoDismiss', 'true');
+			initOption('notifications', 'true');
+			initOption('notificationTimeout', '5000');
+			initOption('highlightName', 'true');
+			initOption('useDifferentTheme', 'false');
+			initOption('soundAndEmojiMenus', 'true');
+			initOption('showAvatarsInChat', 'true');
+			initOption('useLargeAvatars', 'false');
+			initOption('minimalInterface', 'false');
+			initOption('expandAbbreviations', 'true');
+			initOption('htmlNotifications', 'true');
+			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
+			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 
 			chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
 				if (tabMap.hasOwnProperty(tabId)) {
