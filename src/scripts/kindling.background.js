@@ -56,6 +56,11 @@ kindling.module(function () {
 			+ '#' + payload.message);
 		} else {
 			notification = webkitNotifications.createNotification(payload.avatar, payload.author + ' in ' + payload.room, payload.message);
+			if (localStorage.autoDismiss === 'true') {
+				setTimeout(function () {
+					notification.cancel();
+				}, localStorage.notificationTimeout);
+			}
 		}
 
 		notification.onclick = function () {
