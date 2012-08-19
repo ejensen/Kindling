@@ -55,7 +55,7 @@ kindling.module(function () {
 			+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
 			+ '#' + payload.message);
 		} else {
-			notification = webkitNotifications.createNotification(payload.avatar, payload.room + ': ' + payload.author, payload.message);
+			notification = webkitNotifications.createNotification(payload.avatar, payload.author + ' in ' + payload.room, payload.message);
 		}
 
 		notification.onclick = function () {
