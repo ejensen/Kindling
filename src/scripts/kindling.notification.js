@@ -44,7 +44,9 @@ kindling.module(function () {
 			$('#author').html(getQueryVariable('author'));
 			$('#room').html(getQueryVariable('room'));
 
-			injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css');
+			var cacheParam = Math.round(new Date().getTime() / (1000 * 60 * 60));
+
+			injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css?' + cacheParam);
 
 			loadAvatar();
 
