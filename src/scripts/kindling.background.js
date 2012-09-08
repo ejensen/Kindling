@@ -63,9 +63,12 @@ kindling.module(function () {
 			}
 		}
 
-		notification.onclick = function () {
+		notification.onclick = function (e) {
 			chrome.windows.update(tabMap[sender.tab.id], { focused: true });
 			chrome.tabs.update(sender.tab.id, { selected: true });
+			if (e.target.cancel) {
+				e.target.cancel();
+			}
 		};
 
 		notification.show();
