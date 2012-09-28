@@ -24,6 +24,7 @@ kindling.module(function () {
 		'Sad trombone': 'trombone',
 		'Saxaphone': 'sax',
 		'Secret area': 'secret',
+		'Sexy back': 'sexyback',
 		'Ta-da!' : 'tada',
 		'The horror': 'horror',
 		'The More You Know': 'tmyk',
