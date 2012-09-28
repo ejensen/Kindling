@@ -41,7 +41,7 @@
 	cursor: pointer;
 	display: inline-block;
 }
-.tooltip-inner {
+.tooltip-outer {
 	display: none;
 	cursor: default;
 	position: absolute;
@@ -52,7 +52,7 @@
 	background-color: rgba(255,255,255, 0.95);
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
-.tooltip-inner:before, .tooltip-inner:after {
+.tooltip-outer:before, .tooltip-outer:after {
 	content: "";
 	position: absolute;
 	z-index: 1000;
@@ -65,20 +65,27 @@
 	border-bottom: 0;
 	opacity: 0.9;
 }
-.tooltip-inner:before {
+.tooltip-outer:before {
 	border-top-color: #ccc;
 	bottom: -14px;
 }
+#emojiContainer.tooltip-outer:before, #emojiContainer.tooltip-outer:after {
+	left: 308px;
+}
 #emojiContainer {
-	width: 252px;
-	margin-left: -137px;
+	width: 390px;
+	margin-left: -310px;
 }
 #emoji-slider, #emoji-slider .panel {
-	width: 252px;
+	width: 400px;
 }
 #soundContainer {
-	width: 132px;
+	width: 140px;
 	margin-left: -78px;
+}
+#soundContainer  .tooltip-inner {
+	max-height: 430px;
+	overflow-y: auto;
 }
 .tooltip-inner .emoji, .tooltip-inner > .sound {
 	cursor: pointer;

@@ -19,8 +19,8 @@ kindling.module(function () {
 
 		var $menu = $('<div id="' + MENU_ID + '" class="tooltip">\
 				<img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL('img/emoji.gif') + '" width="16" height="16"/>\
-				<div id="emojiContainer" class="tooltip-inner">\
-					<div id="emoji-slider" class="coda-slider"></div>\
+				<div id="emojiContainer" class="tooltip-outer">\
+					<div id="emoji-slider" class="tooltip-inner coda-slider"></div>\
 					<div id="coda-nav-1" class="coda-nav">\
 						<ul>\
 							<li class="tab1"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/emoji.gif') + '"/></a></li>\
