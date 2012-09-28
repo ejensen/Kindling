@@ -4,6 +4,7 @@ kindling.module(function () {
 	var SOUNDS = {
 		'56k': '56k',
 		'Bueller?': 'bueller',
+		'Clown town': 'clowntown',
 		'Crickets chirping': 'crickets',
 		'Danger zone': 'dangerzone',
 		'Deeper': 'deeper',
@@ -27,6 +28,8 @@ kindling.module(function () {
 		'The horror': 'horror',
 		'The More You Know': 'tmyk',
 		'Vuvuzela': 'vuvuzela',
+		'What up with that?': 'what',
+		'Whoomp': 'whoomp',
 		'Yeeeaaah!': 'yeah',
 		'Yodel': 'yodel'
 	};
