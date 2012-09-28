@@ -52,6 +52,7 @@ kindling.module(function () {
 			+ '&author=' + encodeURIComponent(payload.author)
 			+ '&avatar=' + encodeURIComponent(payload.avatar)
 			+ '&user=' + encodeURIComponent(payload.username)
+			+ '&emojiUrl=' + encodeURIComponent(payload.emojiUrl)
 			+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
 			+ '#' + payload.message);
 		} else {

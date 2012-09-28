@@ -44,9 +44,9 @@ kindling.module(function () {
 			$('#author').html(getQueryVariable('author'));
 			$('#room').html(getQueryVariable('room'));
 
-			var cacheParam = Math.round(new Date().getTime() / (1000 * 60 * 60));
+			var baseUrl = getQueryVariable('baseUrl');
 
-			injectCss(getQueryVariable('baseUrl') + '/stylesheets/emoji.css?' + cacheParam);
+			injectCss(baseUrl + getQueryVariable('emojiUrl'));
 
 			loadAvatar();
 
@@ -54,13 +54,13 @@ kindling.module(function () {
 			$content.html(location.hash.substring(1));
 			$content.find('img').each(function () {
 				if (isRelative(this.src)) {
-					this.src = getQueryVariable('baseUrl') + this.src.substring(kindling.getDomain(this.src).length);
+					this.src = baseUrl + this.src.substring(kindling.getDomain(this.src).length);
 				}
 			});
 
 			$content.find('a').each(function () {
 				if (isRelative(this.href)) {
-					this.href = getQueryVariable('baseUrl') + this.pathname + this.search;
+					this.href = baseUrl + this.pathname + this.search;
 				}
 			});
 			$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');

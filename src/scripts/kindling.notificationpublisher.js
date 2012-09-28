@@ -32,6 +32,7 @@ kindling.module(function () {
 					room: $('#room_name').html(),
 					author: $author.text() || $author.data('short-name'),
 					avatar: $author.data('avatar'),
+					emojiUrl: $('link[href^="/stylesheets/emoji.css"]').attr('href'),
 					message: (options.htmlNotifications === 'true' ? $body.html() : $body.text())
 				}
 			});
