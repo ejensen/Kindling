@@ -11,7 +11,6 @@
 	font-size: 0;
 	visibility: hidden;
 }
-
 .avatar {
 	background-size: contain;
 	height: 36px;
@@ -70,14 +69,14 @@
 	bottom: -14px;
 }
 #emojiContainer.tooltip-outer:before, #emojiContainer.tooltip-outer:after {
-	left: 308px;
+	left: 269px;
 }
 #emojiContainer {
-	width: 390px;
-	margin-left: -310px;
+	width: 360px;
+	margin-left: -270px;
 }
 #emoji-slider, #emoji-slider .panel {
-	width: 400px;
+	width: 370px;
 }
 #soundContainer {
 	width: 140px;
@@ -106,6 +105,10 @@
 #emojiContainer .tab-button {
 	margin: 0;
 }
+#emojiContainer .coda-nav {
+ 	margin: auto;
+ 	width: 240px;
+ }
 #emojiContainer .coda-nav ul > li > a.current {
 	background: -webkit-linear-gradient(top, #FFFFFF 0%,#F5F5F5 100%);
 	border: 1px solid #CACACA;
@@ -116,3 +119,4 @@
 #emojiContainer .coda-nav ul > li > a:hover {
 	background-color: transparent;
  }
+
