@@ -1,9 +1,9 @@
 kindling.module(function () {
    'use strict';
 
-   var $input = $('#input');
-   var caller = /@all/ig;
-   var _participants = [];
+   var $input = $('#input'),
+   caller = /@all/ig,
+   _participants = [];
 
    function listenMessage(e, options) {
       if (!options || options.expandAbbreviations === 'false') {
@@ -22,12 +22,12 @@ kindling.module(function () {
       $input.val($input.val().replace(caller, participants));
    }
 
-	function participants() {
-		if (_participants.length !== $('.participant-list li').length) {
-			getParticipantList();
-		}
-		return [_participants.join(', '), ': '].join('');
-	}
+   function participants() {
+      if (_participants.length !== $('.participant-list li').length) {
+         getParticipantList();
+      }
+      return [_participants.join(', '), ': '].join('');
+   }
 
    function getParticipantList() {
       _participants = [];
