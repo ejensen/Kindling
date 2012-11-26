@@ -2,7 +2,7 @@ kindling.module(function () {
 	'use strict';
 
 	var $input = $('#input');
-	var abbreviation_pattern = /(?:\/\/|@)([^\s.:;,-]+)(?=[\s.:;,-]+|$)/ig;
+	var abbreviation_pattern = /(?!@all)(?:\/\/|@)([^\s.:;,-]+)(?=[\s.:;,-]+|$)/ig;
 	var _participants = [];
 
 	function listenMessage(e, options) {
