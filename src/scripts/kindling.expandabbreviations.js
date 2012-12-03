@@ -3,6 +3,7 @@ kindling.module(function () {
 
 	var $input = $('#input');
 	var abbreviation_pattern = /(?!@all)(?:\/\/|@)([^\s.:;,-]+)(?=[\s.:;,-]+|$)/ig;
+	var all_pattern = /@all/ig;
 	var _participants = [];
 
 	function listenMessage(e, options) {
@@ -25,6 +26,8 @@ kindling.module(function () {
 			var abbreviation = abbreviations[index];
 			replaceAbbreviation(abbreviation, findAbbreviation(abbreviation.replace(/^@|\/\//, '')));
 		}
+
+		replaceAllAbbreviation();
 	}
 
 	function getAbbreviationsFromMessage() {
@@ -48,6 +51,10 @@ kindling.module(function () {
 			return element.match(pattern);
 		});
 		return match[0] || false;
+	}
+
+	function replaceAllAbbreviation() {
+		$input.val($input.val().replace(all_pattern, participants));
 	}
 
 	function participants() {
