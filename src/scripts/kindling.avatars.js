@@ -80,7 +80,7 @@ kindling.module(function () {
 		$('.person').each(function (i, e) { modified |= visiter($(e)); });
 
 		if (modified) {
-			kindling.scrollToBottom();
+			kindling.scrollToBottom(true);
 		}
 	}
 

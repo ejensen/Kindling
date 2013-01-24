@@ -18,10 +18,18 @@ var kindling = kindling || (function (domReady) {
 			return match ? match[0] : '';
 		},
 
-		scrollToBottom : function () {
+		scrollToBottom : function (force) {
 			var pageHeight = Math.max(document.documentElement.offsetHeight, document.body.scrollHeight);
 			var targetY = pageHeight + window.innerHeight + 100;
+
+			// only scroll to bottom if we are already close to the bottom
+			var chatHeight = document.documentElement.clientHeight;
+			var offset = window.scrollY + chatHeight;
+			var max = document.documentElement.scrollHeight;
+
+			if (force === true || offset + (chatHeight * 0.1) >= max) {
 			window.scrollTo(0, targetY);
+			}
 		},
 
 		module: function (m) {
