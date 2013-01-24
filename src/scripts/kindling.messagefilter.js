@@ -36,6 +36,10 @@ kindling.module(function () {
   function filterMessage(e, options, username, message) {
     var $message = $(message);
 
+    if (options.playMessageSounds === 'false') {
+      $message.find('[data-sound]').removeAttr('data-sound');
+    }
+
     if($message.hasClass("message")) {
       var hideCurrentMessage = shouldHideThisMessage($message, options);
 

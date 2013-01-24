@@ -85,5 +85,8 @@
 	},
 	"soundMenuTooltip":{
 		"message": "Play sound..."
+	},
+	"playMessageSounds":{
+		"message": "Play message sounds"
 	}
 }
