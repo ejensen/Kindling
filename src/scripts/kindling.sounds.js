@@ -3,6 +3,7 @@ kindling.module(function () {
 
 	var SOUNDS = {
 		'56k': '56k',
+		'Bell': 'bell',
 		'Bueller?': 'bueller',
 		'Clown town': 'clowntown',
 		'Crickets chirping': 'crickets',
@@ -16,6 +17,7 @@ kindling.module(function () {
 		'Inconceivable' : 'inconceivable',
 		'Jeff Bezos': 'bezos',
 		'Kenny Loggins': 'loggins',
+		'Make it so': 'makeitso',
 		'Noooo': 'noooo',
 		'Nyan cat': 'nyan',
 		'Oh my': 'ohmy',
