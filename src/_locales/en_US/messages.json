@@ -12,7 +12,7 @@
 		"message": "Notifications"
 	},
 	"notifications":{
-		"message": "Message notifications"
+		"message": "New message notifications"
 	},
 	"disableNotificationsWhenInFocus":{
 		"message": "Disable when tab has focus"
@@ -63,10 +63,10 @@
 		"message": "Alternate color scheme"
 	},
 	"showAvatarsInChat":{
-		"message": "Display avatars"
+		"message": "Display user avatars"
 	},
 	"useLargeAvatars":{
-		"message": "Use large avatars"
+		"message": "Large user avatars"
 	},
 	"iconTooltip":{
 		"message": "Click to configure Kindling..."

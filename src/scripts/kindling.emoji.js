@@ -77,17 +77,17 @@ kindling.module(function () {
 	}
 
 	function onLoaded() {
-		var emojisArray = [];
+		var emojiArray = [];
 		for (var prop in EMOJIS) {
 			if (EMOJIS.hasOwnProperty(prop)) {
-				emojisArray = emojisArray.concat(EMOJIS[prop]);
+				emojiArray = emojiArray.concat(EMOJIS[prop]);
 			}
 		}
 
-		var emojisMap = $.map(emojisArray, function(value, i) { return { key:value + ':', name:value }; });
+		var emojiMap = $.map(emojiArray, function(value, i) { return { key:value + ':', name:value }; });
 		$('#input').atwho(':', {
 			limit: 6,
-			data: emojisMap,
+			data: emojiMap,
 			callbacks: {
 				sorter: function (query, items, search_key) {
 					var item, results, text, i, len;
@@ -106,7 +106,7 @@ kindling.module(function () {
 					});
 				}
 			},
-			tpl:"<li data-value='${key}'><img src='/images/emoji/${name}.png?1359156757' height='20' width='20' /> ${name}</li>"
+			tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png?1359156757" height="20" width="20" /> ${name}</li>'
 		});
 	}
 

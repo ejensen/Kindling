@@ -83,8 +83,36 @@ kindling.module(function () {
 		}
 	}
 
+	function onLoaded() {
+		var soundMap = $.map(SOUNDS, function(value, i) { return { key: value, name: i }; });
+		$('#input').atwho('/play ', {
+			limit: 12,
+			data: soundMap,
+			callbacks: {
+				sorter: function (query, items, search_key) {
+					var item, results, text, i, len;
+					if (!query) {
+						return items;
+					}
+					results = [];
+					for (i = 0, len = items.length; i < len; i++) {
+						item = items[i];
+						text = item[search_key].toLowerCase();
+						item.order = text.indexOf(query) + ' ' + text;
+						results.push(item);
+					}
+					return results.sort(function(a, b) {
+						return a.order.localeCompare(b.order);
+					});
+				}
+			},
+			tpl:'<li data-value="${key}"><img height="12" src="/images/sound.png?1359156757" width="12"> ${name}</li>'
+		});
+	}
+
 	return {
 		init: function () {
+			$.subscribe('loaded', onLoaded);
 			$.subscribe('optionsChanged', onOptionsChanged);
 		}
 	};
