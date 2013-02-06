@@ -60,7 +60,7 @@
 		"message": "Minimal UI"
 	},
 	"useDifferentTheme":{
-		"message": "Use an alternate color scheme"
+		"message": "Alternate color scheme"
 	},
 	"showAvatarsInChat":{
 		"message": "Display avatars"
