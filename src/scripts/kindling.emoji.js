@@ -76,6 +76,40 @@ kindling.module(function () {
 		}
 	}
 
+	function onLoaded() {
+		var emojisArray = [];
+		for (var prop in EMOJIS) {
+			if (EMOJIS.hasOwnProperty(prop)) {
+				emojisArray = emojisArray.concat(EMOJIS[prop]);
+			}
+		}
+
+		var emojisMap = $.map(emojisArray, function(value, i) { return { key:value + ':', name:value }; });
+		$('#input').atwho(':', {
+			limit: 6,
+			data: emojisMap,
+			callbacks: {
+				sorter: function (query, items, search_key) {
+					var item, results, text, i, len;
+					if (!query) {
+						return items;
+					}
+					results = [];
+					for (i = 0, len = items.length; i < len; i++) {
+						item = items[i];
+						text = item[search_key].toLowerCase();
+						item.order = text.indexOf(query) + ' ' + text;
+						results.push(item);
+					}
+					return results.sort(function(a, b) {
+						return a.order.localeCompare(b.order);
+					});
+				}
+			},
+			tpl:"<li data-value='${key}'><img src='/images/emoji/${name}.png?1359156757' height='20' width='20' /> ${name}</li>"
+		});
+	}
+
 	// List gathered from http://www.emoji-cheat-sheet.com
 	var EMOJIS = {
 	'people': [
@@ -336,7 +370,6 @@ kindling.module(function () {
 		'maple_leaf',
 		'leaves',
 		'fallen_leaf',
-		'palm_tree',
 		'herb',
 		'mushroom',
 		'cactus',
@@ -930,6 +963,7 @@ kindling.module(function () {
 
 	return {
 		init: function () {
+			$.subscribe('loaded', onLoaded);
 			$.subscribe('optionsChanged', onOptionsChanged);
 		}
 	};

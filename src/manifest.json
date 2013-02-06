@@ -35,7 +35,7 @@
 	],
 	"content_scripts": [{
 		"matches": ["*://*.campfirenow.com/room/*"],
-		"css": ["css/content.css", "css/coda-slider.css"],
+		"css": ["css/content.css", "css/coda-slider.css", "css/jquery.atwho.css"],
 		"js": [
 			"scripts/jquery.min.js",
 			"scripts/pubsub.min.js",
@@ -43,6 +43,7 @@
 			"scripts/kindling.common.js",
 			"scripts/jquery.easing.js",
 			"scripts/jquery.coda-slider.js",
+			"scripts/jquery.atwho.min.js",
 			"scripts/kindling.theme.js",
 			"scripts/kindling.emoji.js",
 			"scripts/kindling.sounds.js",
