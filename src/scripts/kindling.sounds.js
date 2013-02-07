@@ -86,24 +86,29 @@ kindling.module(function () {
 	function onLoaded() {
 		var soundMap = $.map(SOUNDS, function(value, i) { return { key: value, name: i }; });
 		$('#input').atwho('/play ', {
-			limit: 12,
+			limit: 35,
 			data: soundMap,
 			callbacks: {
+				matcher: function(flag, subtext) {
+					var match, matched, regexp;
+					regexp = new RegExp('^' + flag + '([A-Za-z0-9_\+\-]*)$', 'gi');
+					match = regexp.exec(subtext);
+					matched = null;
+					if (match) {
+						matched = match[2] ? match[2] : match[1];
+					}
+					return matched;
+				},
 				sorter: function (query, items, search_key) {
-					var item, results, text, i, len;
 					if (!query) {
 						return items;
 					}
-					results = [];
-					for (i = 0, len = items.length; i < len; i++) {
-						item = items[i];
-						text = item[search_key].toLowerCase();
-						item.order = text.indexOf(query) + ' ' + text;
-						results.push(item);
-					}
-					return results.sort(function(a, b) {
-						return a.order.localeCompare(b.order);
+					return items.sort(function(a, b) {
+						return a[search_key].localeCompare(b[search_key]);
 					});
+				},
+				highlighter: function(li, query) {
+					return li;
 				}
 			},
 			tpl:'<li data-value="${key}"><img height="12" src="/images/sound.png?1359156757" width="12"> ${name}</li>'

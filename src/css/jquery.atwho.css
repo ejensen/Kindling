@@ -1,4 +1,4 @@
-#at-view{position:absolute;top:0;left:0;display:none;margin-top:18px;background:#fff;border:1px solid #DDD;border-radius:3px;box-shadow:0 0 5px rgba(0,0,0,.1);min-width:120px;z-index:10}
+#at-view{position:absolute;top:0;left:0;display:none;margin-top:18px;background:#fff;border:1px solid #DDD;border-radius:3px;box-shadow:0 0 5px rgba(0,0,0,.1);min-width:120px;max-height:340px;overflow:scroll;z-index:10}
 #at-view .cur{background:#36F;color:#fff}
 #at-view .cur small{color:#fff}
 #at-view strong{color:#36F}
