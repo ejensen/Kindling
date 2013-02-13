@@ -46,7 +46,7 @@ kindling.module(function () {
 			return;
 		}
 		$('#chat_controls').append('<div id="' + MENU_ID + '" class="tooltip">\
-				<img id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" src="' + chrome.extension.getURL('img/sound.gif') + '" width="18" height="15" />\
+				<img id="soundButton" title="' + chrome.i18n.getMessage('soundMenuTooltip') + '" src="' + chrome.extension.getURL('img/sound.png') + '" width="20" height="16" />\
 				<div id="soundContainer" class="tooltip-outer"><div class="tooltip-inner"></div></div>\
 		</div>');
 

@@ -18,12 +18,12 @@ kindling.module(function () {
 		}
 
 		var $menu = $('<div id="' + MENU_ID + '" class="tooltip">\
-				<img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL('img/emoji.gif') + '" width="16" height="16"/>\
+				<img id="emojiButton" title="' + chrome.i18n.getMessage('emojiMenuTooltip') + '" src="' + chrome.extension.getURL('img/emoji.png') + '" width="16" height="16"/>\
 				<div id="emojiContainer" class="tooltip-outer">\
 					<div id="emoji-slider" class="tooltip-inner coda-slider"></div>\
 					<div id="coda-nav-1" class="coda-nav">\
 						<ul>\
-							<li class="tab1"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/emoji.gif') + '"/></a></li>\
+							<li class="tab1"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/emoji.png') + '"/></a></li>\
 							<li class="tab2"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/nature.png') + '"/></a></li>\
 							<li class="tab3"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/objects.png') + '"/></a></li>\
 							<li class="tab4"><a class="tab-button" href="#"><img height="16" width="16" src="' + chrome.extension.getURL('img/places.png') + '"/></a></li>\

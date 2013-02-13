@@ -75,7 +75,7 @@
 		"message": "Click to configure Kindling..."
 	},
 	"description":{
-		"message": "Adds useful features and customizations to 37signals Campfire."
+		"message": "Adds useful features to 37signals Campfire."
 	},
 	"seconds":{
 		"message": "sec"
