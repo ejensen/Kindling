@@ -6,7 +6,7 @@ kindling.module(function () {
 			return;
 		}
 
-		var $messages = $('#chat-wrapper').find('div:.body');
+		var $messages = $('#chat-wrapper').find('div.body');
 
 		kindling.unbindNewMessages();
 		try {
