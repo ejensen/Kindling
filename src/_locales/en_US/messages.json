@@ -41,9 +41,6 @@
 	"leaveRoom":{
 		"message": "Leave room messages"
 	},
-	"expandAbbreviations":{
-		"message": "Expand abbreviations"
-	},
 	"timeStamps":{
 		"message": "Time stamp messages"
 	},
