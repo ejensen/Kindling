@@ -13,6 +13,7 @@ kindling.module(function () {
 		'autoDismiss',
 		'filterNotifications',
 		'soundAndEmojiMenus',
+		'soundAndEmojiAutoComplete',
 		'minimalInterface',
 		'showAvatarsInChat',
 		'useLargeAvatars',

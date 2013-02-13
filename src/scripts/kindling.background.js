@@ -87,6 +87,7 @@ kindling.module(function () {
 			initOption('highlightName', 'true');
 			initOption('useDifferentTheme', 'false');
 			initOption('soundAndEmojiMenus', 'true');
+			initOption('soundAndEmojiAutoComplete', 'true');
 			initOption('showAvatarsInChat', 'true');
 			initOption('useLargeAvatars', 'false');
 			initOption('minimalInterface', 'false');

@@ -75,16 +75,10 @@ kindling.module(function () {
 		});
 	}
 
-	function onOptionsChanged(e, options) {
-		if (options.soundAndEmojiMenus === 'true') {
-			displayMenu();
-		} else {
-			$('#' + MENU_ID).remove();
-		}
-	}
+	function initializeAutoComplete(options) {
+		var soundsArray = (options.soundAndEmojiAutoComplete === 'true') ? SOUNDS : [];
+		var soundMap = $.map(soundsArray, function(value, i) { return { key: value, name: i }; });
 
-	function onLoaded() {
-		var soundMap = $.map(SOUNDS, function(value, i) { return { key: value, name: i }; });
 		$('#input').atwho('/play ', {
 			limit: 35,
 			data: soundMap,
@@ -115,9 +109,17 @@ kindling.module(function () {
 		});
 	}
 
+	function onOptionsChanged(e, options) {
+		if (options.soundAndEmojiMenus === 'true') {
+			displayMenu();
+		} else {
+			$('#' + MENU_ID).remove();
+		}
+		initializeAutoComplete(options);
+	}
+
 	return {
 		init: function () {
-			$.subscribe('loaded', onLoaded);
 			$.subscribe('optionsChanged', onOptionsChanged);
 		}
 	};

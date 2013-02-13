@@ -68,23 +68,19 @@ kindling.module(function () {
 		});
 	}
 
-	function onOptionsChanged(e, options) {
-		if (options.soundAndEmojiMenus === 'true') {
-			displayMenu();
-		} else {
-			$('#' + MENU_ID).remove();
-		}
-	}
-
-	function onLoaded() {
+	function initializeAutoComplete(options) {
 		var emojiArray = [];
-		for (var prop in EMOJIS) {
-			if (EMOJIS.hasOwnProperty(prop)) {
-				emojiArray = emojiArray.concat(EMOJIS[prop]);
+
+		if (options.soundAndEmojiAutoComplete === 'true') {
+			for (var prop in EMOJIS) {
+				if (EMOJIS.hasOwnProperty(prop)) {
+					emojiArray = emojiArray.concat(EMOJIS[prop]);
+				}
 			}
 		}
 
 		var emojiMap = $.map(emojiArray, function(value, i) { return { key:value + ':', name:value }; });
+
 		$('#input').atwho(':', {
 			limit: 6,
 			data: emojiMap,
@@ -106,8 +102,17 @@ kindling.module(function () {
 					});
 				}
 			},
-			tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png?1359156757" height="20" width="20" /> ${name}</li>'
+			tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png?1360702140" height="20" width="20"/> ${name}</li>'
 		});
+	}
+
+	function onOptionsChanged(e, options) {
+		if (options.soundAndEmojiMenus === 'true') {
+			displayMenu();
+		} else {
+			$('#' + MENU_ID).remove();
+		}
+		initializeAutoComplete(options);
 	}
 
 	// List gathered from http://www.emoji-cheat-sheet.com
@@ -963,7 +968,6 @@ kindling.module(function () {
 
 	return {
 		init: function () {
-			$.subscribe('loaded', onLoaded);
 			$.subscribe('optionsChanged', onOptionsChanged);
 		}
 	};

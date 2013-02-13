@@ -56,6 +56,9 @@
 	"soundAndEmojiMenus":{
 		"message": "Emoji and sound menus"
 	},
+	"soundAndEmojiAutoComplete":{
+		"message": "Emoji and sound auto-completion"
+	},
 	"minimalInterface":{
 		"message": "Minimal UI"
 	},
