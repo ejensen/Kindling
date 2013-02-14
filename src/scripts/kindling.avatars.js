@@ -77,7 +77,7 @@ kindling.module(function () {
 
 	function visitPersonElements(visiter) {
 		var modified = false;
-		$('.person').each(function (i, e) { modified |= visiter($(e)); });
+		$('.person').each(function (i, e) { modified = visiter($(e)) || modified; });
 
 		if (modified) {
 			kindling.scrollToBottom(true);

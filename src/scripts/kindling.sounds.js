@@ -55,7 +55,9 @@ kindling.module(function () {
 		var $tooltipInner = $soundContainer.find('.tooltip-inner');
 		var sound;
 		for (sound in SOUNDS) {
-			$tooltipInner.append('<a class="sound" data-value="' + SOUNDS[sound] + '">' + sound + '</a>');
+			if (SOUNDS.hasOwnProperty(sound)) {
+				$tooltipInner.append('<a class="sound" data-value="' + SOUNDS[sound] + '">' + sound + '</a>');
+			}
 		}
 
 		$(document).click(function (e) {
@@ -89,7 +91,7 @@ kindling.module(function () {
 					match = regexp.exec(subtext);
 					matched = null;
 					if (match) {
-						matched = match[2] ? match[2] : match[1];
+						matched = match[2] || match[1];
 					}
 					return matched;
 				},
@@ -101,7 +103,7 @@ kindling.module(function () {
 						return a[search_key].localeCompare(b[search_key]);
 					});
 				},
-				highlighter: function(li, query) {
+				highlighter: function(li) {
 					return li;
 				}
 			},

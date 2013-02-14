@@ -10,7 +10,7 @@ kindling.module(function () {
 	function getOptionsObject() {
 		var i, optionsObject = {};
 		var count = localStorage.length;
-		for (i = 0; i < count; i += 1) {
+		for (i = 0; i < count; i++) {
 			var key = localStorage.key(i);
 			optionsObject[key] = localStorage.getItem(key);
 		}
@@ -21,7 +21,9 @@ kindling.module(function () {
 		var optionsObject = getOptionsObject();
 		var tab;
 		for (tab in tabMap) {
-			chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: optionsObject });
+			if (tabMap.hasOwnProperty(tab)) {
+				chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: optionsObject });
+			}
 		}
 	}
 

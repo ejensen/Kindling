@@ -37,12 +37,14 @@ kindling.module(function () {
 		var $emojiSlider = $emojiContainer.find('#emoji-slider');
 		var i, group, $panel, $wrapper;
 		for (group in EMOJIS) {
-			$panel = $('<div class="panel"><div class="panel-wrapper"></div></div>');
-			$wrapper = $panel.find('.panel-wrapper');
-			for (i = 0; i < EMOJIS[group].length; i++) {
-				$wrapper.append('<span class="emoji emoji-' + EMOJIS[group][i] + '" title="' + EMOJIS[group][i] + '"></span>');
+			if (EMOJIS.hasOwnProperty(group)) {
+				$panel = $('<div class="panel"><div class="panel-wrapper"></div></div>');
+				$wrapper = $panel.find('.panel-wrapper');
+				for (i = 0; i < EMOJIS[group].length; i++) {
+					$wrapper.append('<span class="emoji emoji-' + EMOJIS[group][i] + '" title="' + EMOJIS[group][i] + '"></span>');
+				}
+				$emojiSlider.append($panel);
 			}
-			$emojiSlider.append($panel);
 		}
 
 		$('#chat_controls').append($menu);
@@ -72,14 +74,15 @@ kindling.module(function () {
 		var emojiArray = [];
 
 		if (options.soundAndEmojiAutoComplete === 'true') {
-			for (var prop in EMOJIS) {
+			var prop;
+			for (prop in EMOJIS) {
 				if (EMOJIS.hasOwnProperty(prop)) {
 					emojiArray = emojiArray.concat(EMOJIS[prop]);
 				}
 			}
 		}
 
-		var emojiMap = $.map(emojiArray, function(value, i) { return { key:value + ':', name:value }; });
+		var emojiMap = $.map(emojiArray, function(value) { return { key:value + ':', name:value }; });
 
 		$('#input').atwho(':', {
 			limit: 6,
@@ -291,7 +294,7 @@ kindling.module(function () {
 		'godmode',
 		'trollface',
 		'shipit',
-		'octocat',
+		'octocat'
 	],
 	'nature': [
 		'sunny',

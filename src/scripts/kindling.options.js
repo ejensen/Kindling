@@ -82,14 +82,15 @@ kindling.module(function () {
 
 	function initOptions() {
 		var i;
-		for (i = 0; i < OPTIONS.length; i += 1) {
+		for (i = 0; i < OPTIONS.length; i++) {
 			var savedValue = localStorage[OPTIONS[i]];
 			var checked = savedValue === undefined || (savedValue === 'true');
 			var $element = $(document.getElementById(OPTIONS[i]));
 			onCheckChange($element, checked);
 
-			if (!checked)
+			if (!checked) {
 				$($element.data('dependents')).hide();
+			}
 		}
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);

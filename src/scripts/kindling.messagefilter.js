@@ -8,11 +8,11 @@ kindling.module(function () {
   }
 
   function isEnterMessage($message) {
-    return $message.hasClass('enter_message')
+    return $message.hasClass('enter_message');
   }
 
   function isTimestampMessage($message) {
-    return $message.hasClass('timestamp_message')
+    return $message.hasClass('timestamp_message');
   }
 
   function showMessage($message) {

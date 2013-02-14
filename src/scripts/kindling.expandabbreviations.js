@@ -12,9 +12,9 @@ kindling.module(function () {
 		}
 
 		$input.bind('keyup keydown', function () {
-			if (event.which == 9) {
+			if (event.which === 9) {
 				expandAllAbbreviations();
-				return false
+				return false;
 			}
 		});
 	}
@@ -23,8 +23,10 @@ kindling.module(function () {
 		var abbreviations = getAbbreviationsFromMessage();
 		var index = 0;
 		for (index in abbreviations) {
-			var abbreviation = abbreviations[index];
-			replaceAbbreviation(abbreviation, findAbbreviation(abbreviation.replace(/^@|\/\//, '')));
+			if (abbreviations.hasOwnProperty(index)) {
+				var abbreviation = abbreviations[index];
+				replaceAbbreviation(abbreviation, findAbbreviation(abbreviation.replace(/^@|\/\//, '')));
+			}
 		}
 
 		replaceAllAbbreviation();
