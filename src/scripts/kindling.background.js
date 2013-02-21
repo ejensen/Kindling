@@ -95,6 +95,7 @@ kindling.module(function () {
 			initOption('minimalInterface', 'false');
 			initOption('expandAbbreviations', 'true');
 			initOption('htmlNotifications', 'true');
+			initOption('playMessageSounds', 'true');
 			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 
