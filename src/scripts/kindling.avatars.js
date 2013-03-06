@@ -30,7 +30,7 @@ kindling.module(function () {
 		if ($author.css('display') === 'none') {
 			return null;
 		}
-		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + ($author.data('avatar') || chrome.extension.getURL('img/avatar.gif')) + '"/>');
+		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + ($author.data('avatar') || chrome.extension.getURL('img/avatar.png')) + '"/>');
 	}
 
 	function tryToAddAvatar($person) {
