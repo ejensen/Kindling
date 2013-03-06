@@ -1,8 +1,8 @@
 ﻿mark.nameHighlight {
-	background-color:#FF8;
+	background-color: #FF8;
 }
 #chat-wrapper tr.hidden_message * {
-/* 'display: none' causes issues with the placement of the star "buttons" */
+/* 'display: none' causes issues with the placement of the star buttons */
 	height: 0;
 	line-height: 0;
 	margin: 0;
@@ -98,7 +98,7 @@
 .tooltip-inner a {
 	display: block;
 }
-#emojiContainer .coda-nav ul > li  > a  > img{
+#emojiContainer .coda-nav ul > li  > a  > img {
 	padding: 6px 13px;
 	opacity: 0.7;
 }
@@ -113,7 +113,7 @@
 	background: -webkit-linear-gradient(top, #FFFFFF 0%,#F5F5F5 100%);
 	border: 1px solid #CACACA;
  }
-#emojiContainer .coda-nav ul > li  > a.current  > img{
+#emojiContainer .coda-nav ul > li  > a.current  > img {
 	opacity: 1;
 }
 #emojiContainer .coda-nav ul > li > a:hover {

@@ -16,13 +16,13 @@ kindling.module(function () {
   }
 
   function showMessage($message) {
-    if($message) {
+    if ($message) {
       $message.removeClass('hidden_message');
     }
   }
 
   function hideMessage($message) {
-    if($message) {
+    if ($message) {
       $message.addClass('hidden_message');
     }
   }
@@ -40,17 +40,17 @@ kindling.module(function () {
       $message.find('[data-sound]').removeAttr('data-sound');
     }
 
-    if($message.hasClass("message")) {
+    if ($message.hasClass("message")) {
       var hideCurrentMessage = shouldHideThisMessage($message, options);
 
-      if(isTimestampMessage($message)) {
+      if (isTimestampMessage($message)) {
         hideMessage($lastTimestampMessage);
         $lastTimestampMessage = $message;
       } else if(!hideCurrentMessage) {
         $lastTimestampMessage = null;
       }
 
-      if(hideCurrentMessage) {
+      if (hideCurrentMessage) {
         hideMessage($message);
       } else {
         showMessage($message);
@@ -76,4 +76,3 @@ kindling.module(function () {
     }
   };
 }());
-
