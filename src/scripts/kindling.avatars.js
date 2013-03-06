@@ -30,7 +30,7 @@ kindling.module(function () {
 		if ($author.css('display') === 'none') {
 			return null;
 		}
-		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + $author.data('avatar') + '"/>');
+		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + ($author.data('avatar') || chrome.extension.getURL('img/avatar.gif')) + '"/>');
 	}
 
 	function tryToAddAvatar($person) {
@@ -108,8 +108,8 @@ kindling.module(function () {
 
 	function onNewMessage(e, options, username, message) {
 		if (options.showAvatarsInChat === 'true') {
-			var $person = $(message).find('.person').first();
-			if ($person && tryToAddAvatar($person)) {
+			var $person = $(message).find('.person');
+			if ($person.length && tryToAddAvatar($person.first())) {
 				kindling.scrollToBottom();
 			}
 		}

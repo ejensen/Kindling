@@ -31,7 +31,7 @@ kindling.module(function () {
 					username: username,
 					room: $('#room_name').html(),
 					author: $author.text() || $author.data('short-name'),
-					avatar: $author.data('avatar'),
+					avatar: $author.data('avatar') || chrome.extension.getURL('img/avatar.gif'),
 					emojiUrl: $('link[href^="/stylesheets/emoji.css"]').attr('href'),
 					message: (options.htmlNotifications === 'true' ? $body.html() : $body.text())
 				}
