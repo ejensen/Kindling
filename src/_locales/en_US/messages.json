@@ -29,9 +29,6 @@
 	"notificationTimeout":{
 		"message": "Auto-dismiss duration"
 	},
-	"htmlNotifications":{
-		"message": "Display media in notifications"
-	},
 	"messagesTitle":{
 		"message": "Messages"
 	},

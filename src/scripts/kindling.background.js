@@ -47,18 +47,19 @@ kindling.module(function () {
 
 	function showNotification(payload, sender) {
 		var notification;
+		var icon = (localStorage.showAvatarsInNotifications === 'true') ? payload.avatar : chrome.extension.getURL('/img/campfire46.png');
 
-		if (localStorage.htmlNotifications === 'true') {
+		if (webkitNotifications.createHTMLNotification) {
 			notification = webkitNotifications.createHTMLNotification('notification.html'
-			+ '?room=' + encodeURIComponent(payload.room)
-			+ '&author=' + encodeURIComponent(payload.author)
-			+ '&avatar=' + encodeURIComponent(payload.avatar)
-			+ '&user=' + encodeURIComponent(payload.username)
-			+ '&emojiUrl=' + encodeURIComponent(payload.emojiUrl)
-			+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
-			+ '#' + payload.message);
+				+ '?room=' + encodeURIComponent(payload.room)
+				+ '&author=' + encodeURIComponent(payload.author)
+				+ '&avatar=' + encodeURIComponent(icon)
+				+ '&user=' + encodeURIComponent(payload.username)
+				+ '&emojiUrl=' + encodeURIComponent(payload.emojiUrl)
+				+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
+				+ '#' + payload.message);
 		} else {
-			notification = webkitNotifications.createNotification(payload.avatar, payload.author + ' in ' + payload.room, payload.message);
+			notification = webkitNotifications.createNotification(icon, payload.author + ' in ' + payload.room, payload.message);
 			if (localStorage.autoDismiss === 'true') {
 				setTimeout(function () {
 					notification.cancel();
@@ -94,7 +95,6 @@ kindling.module(function () {
 			initOption('useLargeAvatars', 'false');
 			initOption('minimalInterface', 'false');
 			initOption('expandAbbreviations', 'true');
-			initOption('htmlNotifications', 'true');
 			initOption('playMessageSounds', 'true');
 			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
