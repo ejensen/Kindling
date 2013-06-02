@@ -95,9 +95,11 @@ kindling.module(function () {
 			initOption('useLargeAvatars', 'false');
 			initOption('minimalInterface', 'false');
 			initOption('expandAbbreviations', 'true');
+			initOption('htmlNotifications', 'true');
 			initOption('playMessageSounds', 'true');
 			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+			localStorage['htmlNotifications'] = (localStorage.htmlNotifications === 'true' && webkitNotifications.createHTMLNotification) ? 'true' : 'false';
 
 			chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
 				if (tabMap.hasOwnProperty(tabId)) {
