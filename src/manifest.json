@@ -53,6 +53,7 @@
 			"scripts/kindling.emoji.js",
 			"scripts/kindling.sounds.js",
 			"scripts/kindling.highlight.js",
+			"scripts/kindling.highlightpostifpersonsayssomething.js",
 			"scripts/kindling.messagefilter.js",
 			"scripts/kindling.avatars.js",
 			"scripts/kindling.notificationpublisher.js",
