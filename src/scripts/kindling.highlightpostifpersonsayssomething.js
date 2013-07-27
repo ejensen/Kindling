@@ -1,23 +1,31 @@
 kindling.module(function () {
 	'use strict';
 
-	function changePostsBorder(borderStyle){
-		$('#chat-wrapper div:contains("something")').css("border", borderStyle);
+	function resetPostBorders(){
+		$('#chat-wrapper div').css("border", "");
+	}
+
+	function changePostsBorder(wordList, borderStyle){
+		var words = wordList.split('\n');
+		for(var i = 0; i < words.length; i++){
+			$('#chat-wrapper div:contains(' + words[i] + ')').css("border", borderStyle);
+		}
 	}
 
 	function highlightPostIfPersonSaysSomething(e, options, username) {
 		
 		if(options.highlightPostIfPersonSaysSomething === 'true'){
-			changePostsBorder("9px solid red");
+			changePostsBorder(options.highlightPostWordList, "9px solid red");
 		}
 		
 	}
 
 	function onOptionsChanged(e, options) {
+
+		resetPostBorders();
+		
 		if(options.highlightPostIfPersonSaysSomething === 'true'){
-			changePostsBorder("9px solid red")
-		}else{
-			changePostsBorder("");
+			changePostsBorder(options.highlightPostWordList, "9px solid red")
 		}
 	}
 

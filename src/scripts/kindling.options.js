@@ -76,6 +76,7 @@ kindling.module(function () {
 
 	function onHighlightPostWordListChanged() {
 		localStorage.highlightPostWordList = $('#highlightPostWordList textarea').val();
+		onOptionChanged();
 	}
 
 	function onToggle(e) {
