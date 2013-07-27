@@ -74,6 +74,10 @@ kindling.module(function () {
 		onOptionChanged();
 	}
 
+	function onHighlightPostWordListChanged() {
+		localStorage.highlightPostWordList = $('#highlightPostWordList textarea').val();
+	}
+
 	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
@@ -94,6 +98,8 @@ kindling.module(function () {
 		}
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
+
+		$('#highlightPostWordList textarea').val(localStorage.highlightPostWordList);
 
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
@@ -117,6 +123,8 @@ kindling.module(function () {
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
 
 			$('#themeColor').change(onThemeColorChanged);
+
+			$('#highlightPostWordList').change(onHighlightPostWordListChanged);
 
 			initOptions();
 		}
