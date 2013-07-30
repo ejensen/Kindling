@@ -6,6 +6,8 @@ kindling.module(function () {
 	}
 
 	function changePostsBorder(wordList, borderStyle){
+		if(wordList == "") return;
+		
 		var words = wordList.split('\n');
 		for(var i = 0; i < words.length; i++){
 			$('#chat-wrapper div:contains(' + words[i] + ')').css("border", borderStyle);

@@ -75,8 +75,19 @@ kindling.module(function () {
 	}
 
 	function onHighlightPostWordListChanged() {
-		localStorage.highlightPostWordList = $('#highlightPostWordList textarea').val();
+		var wordList = $('#highlightPostWordList textarea').val().split("\n");
+        wordList = removeEmptiesFromWordList(wordList);
+		localStorage.highlightPostWordList = wordList.join("\n");
 		onOptionChanged();
+	}
+
+	function removeEmptiesFromWordList(originalArray){
+		var i = 0;
+		
+        while(i < originalArray.length)
+			originalArray[i] === "" ? originalArray.splice( i, 1 ) : i++;
+		
+		return originalArray;
 	}
 
 	function onToggle(e) {
