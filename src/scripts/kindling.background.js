@@ -95,6 +95,7 @@ kindling.module(function () {
 			initOption('useLargeAvatars', 'false');
 			initOption('minimalInterface', 'false');
 			initOption('expandAbbreviations', 'true');
+			initOption('highlightPostIfPersonSaysSomething', 'false');
 			initOption('htmlNotifications', 'true');
 			initOption('playMessageSounds', 'true');
 			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');

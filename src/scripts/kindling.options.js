@@ -17,7 +17,8 @@ kindling.module(function () {
 		'showAvatarsInChat',
 		'useLargeAvatars',
 		'playMessageSounds',
-		'useDifferentTheme'
+		'useDifferentTheme',
+		'highlightPostIfPersonSaysSomething'
 	];
 
 	function getMessages() {
@@ -73,6 +74,22 @@ kindling.module(function () {
 		onOptionChanged();
 	}
 
+	function onHighlightPostWordListChanged() {
+		var wordList = $('#highlightPostWordList textarea').val().split("\n");
+		wordList = removeEmptiesFromWordList(wordList);
+		localStorage.highlightPostWordList = wordList.join("\n");
+		onOptionChanged();
+	}
+
+	function removeEmptiesFromWordList(originalArray){
+		var i = 0;
+		
+		while(i < originalArray.length)
+			originalArray[i] === "" ? originalArray.splice( i, 1 ) : i++;
+		
+		return originalArray;
+	}
+
 	function onToggle(e) {
 		var option = $(e.currentTarget).attr('for');
 		var value = localStorage[option];
@@ -93,6 +110,8 @@ kindling.module(function () {
 		}
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
+
+		$('#highlightPostWordList textarea').val(localStorage.highlightPostWordList);
 
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
@@ -116,6 +135,8 @@ kindling.module(function () {
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
 
 			$('#themeColor').change(onThemeColorChanged);
+
+			$('#highlightPostWordList').change(onHighlightPostWordListChanged);
 
 			initOptions();
 		}

@@ -85,5 +85,11 @@
 	},
 	"playMessageSounds":{
 		"message": "Play sound messages"
+	},
+	"highlightPostIfPersonSaysSomething":{
+		"message": "Highlight posts with these words"
+	},
+	"highlightPostIfPersonSaysSomethingDescription":{
+		"message": "Put a word or phrase on each line:"
 	}
 }
