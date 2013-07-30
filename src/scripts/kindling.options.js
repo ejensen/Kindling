@@ -76,7 +76,7 @@ kindling.module(function () {
 
 	function onHighlightPostWordListChanged() {
 		var wordList = $('#highlightPostWordList textarea').val().split("\n");
-        wordList = removeEmptiesFromWordList(wordList);
+		wordList = removeEmptiesFromWordList(wordList);
 		localStorage.highlightPostWordList = wordList.join("\n");
 		onOptionChanged();
 	}
@@ -84,7 +84,7 @@ kindling.module(function () {
 	function removeEmptiesFromWordList(originalArray){
 		var i = 0;
 		
-        while(i < originalArray.length)
+		while(i < originalArray.length)
 			originalArray[i] === "" ? originalArray.splice( i, 1 ) : i++;
 		
 		return originalArray;
