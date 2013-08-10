@@ -1,6 +1,9 @@
 ﻿body, input[type=text] {
 	font-size: 85%;
 }
+input[type=text] {
+	width: 240px;
+}
 .description {
 	margin-left: 8px;
 }
