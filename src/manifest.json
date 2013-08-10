@@ -43,7 +43,6 @@
 		"css": ["css/content.css", "lib/coda-slider/coda-slider.css", "lib/at-who/jquery.atwho.css"],
 		"js": [
 			"lib/jquery.min.js",
-			"lib/jquery.easing.js",
 			"lib/pubsub.min.js",
 			"lib/highlight.min.js",
 			"lib/coda-slider/jquery.coda-slider.js",

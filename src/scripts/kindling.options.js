@@ -43,7 +43,7 @@ kindling.module(function () {
 		}
 
 		if (value !== (localStorage[$parent[0].id] === 'true')) {
-			$($parent.data('dependents')).slideToggle(300);
+			$($parent.data('dependents')).slideToggle(50);
 		}
 	}
 
@@ -88,7 +88,7 @@ kindling.module(function () {
 			onCheckChange($element, checked);
 
 			if (!checked) {
-				$($element.data('dependents')).hide();
+				$($element.data('dependents')).hide(50);
 			}
 		}
 
