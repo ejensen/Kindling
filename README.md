@@ -14,3 +14,5 @@ Kindling is a collection of useful [Campfire](http://campfirenow.com) enhancemen
 ## License
 
 Kindling is available under the MIT license. See the LICENSE file for more info.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ejensen/Kindling/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
