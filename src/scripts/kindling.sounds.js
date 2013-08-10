@@ -8,6 +8,7 @@ kindling.module(function () {
 		'Clown town': 'clowntown',
 		'Crickets chirping': 'crickets',
 		'Danger zone': 'dangerzone',
+		'Daniel San': 'danielsan',
 		'Deeper': 'deeper',
 		'Do it live!': 'live',
 		'Drama': 'drama',
