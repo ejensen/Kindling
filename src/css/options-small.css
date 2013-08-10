@@ -1,4 +1,4 @@
-﻿body {
+﻿body, input[type=text] {
 	font-size: 85%;
 }
 .description {
@@ -8,7 +8,7 @@
 	padding: 10px;
 }
 body, #wrapper, .coda-slider, .coda-slider .panel {
-	width: 360px;
+	width: 380px;
 }
 #wrapper:after {
 	display: none;

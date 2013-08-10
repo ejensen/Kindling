@@ -6,7 +6,7 @@ kindling.module(function () {
 		'leaveRoom',
 		'timeStamps',
 		'notifications',
-		'highlightName',
+		'highlightKeywords',
 		'showAvatarsInNotifications',
 		'disableNotificationsWhenInFocus',
 		'autoDismiss',
@@ -94,6 +94,9 @@ kindling.module(function () {
 
 		$('#themeColor input[title=' + localStorage.themeColor + ']').attr('checked', true);
 
+		$('#filterKeywords').val(localStorage['filterKeywords']);
+		$('#highlightKeywordList').val(localStorage['highlightKeywordList']);
+
 		var notificationTimeoutSlider = document.getElementById('notificationTimeout');
 		notificationTimeoutSlider.value = localStorage.notificationTimeout;
 		onNotificationTimeoutChanged();
@@ -114,6 +117,14 @@ kindling.module(function () {
 			$('.description').click(onToggle);
 
 			$('#notificationTimeout').change(onNotificationTimeoutChanged);
+
+			$('#filterKeywords').change(function() {
+				saveOption('filterKeywords', $(this).val());
+			});
+
+			$('#highlightKeywordList').change(function() {
+				saveOption('highlightKeywordList', $(this).val());
+			});
 
 			$('#themeColor').change(onThemeColorChanged);
 

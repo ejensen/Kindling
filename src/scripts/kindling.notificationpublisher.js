@@ -19,8 +19,8 @@ kindling.module(function () {
 			}
 
 			if (options.filterNotifications === 'true') {
-				var regex = kindling.getUsernameRegex(username);
-				if (!regex.test($body.html())) {
+				var regex = kindling.getKeywordsRegex(options.filterKeywords, username);
+				if (!regex.test($body.text())) {
 					return;
 				}
 			}

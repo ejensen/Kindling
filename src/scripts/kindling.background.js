@@ -87,7 +87,7 @@ kindling.module(function () {
 			initOption('autoDismiss', 'true');
 			initOption('notifications', 'true');
 			initOption('notificationTimeout', '5000');
-			initOption('highlightName', 'true');
+			initOption('highlightKeywords', localStorage.highlightName === 'false' ? 'false' : 'true');
 			initOption('useDifferentTheme', 'false');
 			initOption('soundAndEmojiMenus', 'true');
 			initOption('soundAndEmojiAutoComplete', 'true');

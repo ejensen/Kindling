@@ -175,3 +175,10 @@
  .coda-nav ul > li:first-child > a.current {
 	border-left-width: 0;
  }
+input[type=text] {
+	margin-left: 90px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	font-size: 16px;
+	width: 260px;
+}

@@ -65,9 +65,9 @@ kindling.module(function () {
 			});
 			$content.find('img').css('max-width', 226).css('max-height', 118).css('background-size', 'contain');
 
-			if (localStorage.highlightName === 'true') {
-				var usernameRegex = kindling.getUsernameRegex(getQueryVariable('user'));
-				$content.highlightRegex(usernameRegex, { className: 'nameHighlight', tagType: 'mark' });
+			if (localStorage.highlightKeywords === 'true') {
+				var usernameRegex = kindling.getKeywordsRegex(localStorage['highlightKeywordList'], getQueryVariable('user'));
+				$content.highlightRegex(usernameRegex, { className: 'keywordHighlight', tagType: 'mark' });
 			}
 
 			if (localStorage.autoDismiss === 'true') {

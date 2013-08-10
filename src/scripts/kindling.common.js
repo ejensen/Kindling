@@ -7,9 +7,21 @@ var kindling = kindling || (function (domReady) {
 	}
 
 	return {
-		getUsernameRegex: function (username) {
+		getUsernameRegexString: function (username) {
 			var escapedUsername = regExpEscape(username);
-			return new RegExp('\\b(' + escapedUsername + '|' + escapedUsername.split(' ').join('|') + ')\\b', 'i');
+			return escapedUsername + '|' + escapedUsername.split(' ').join('|');
+		},
+
+		getKeywordsRegex: function (keywords, username) {
+			var escaped = [];
+			var list = (keywords || '').split(/\s*,\s*/);
+			for (var i = 0; i < list.length; i++) {
+				var escapedKeyword = regExpEscape(list[i].replace(/^\s+|\s+$/g, ''));
+				if (escapedKeyword) {
+					escaped.push(escapedKeyword);
+				}
+			}
+			return new RegExp('\\b(' + (username ? kindling.getUsernameRegexString(username) + (escaped.length ? '|' : '') : '') + escaped.join('|') + ')\\b', 'i');
 		},
 
 		getDomain: function (url) {
@@ -28,7 +40,7 @@ var kindling = kindling || (function (domReady) {
 			var max = document.documentElement.scrollHeight;
 
 			if (force === true || offset + (chatHeight * 0.1) >= max) {
-			window.scrollTo(0, targetY);
+				window.scrollTo(0, targetY);
 			}
 		},
 

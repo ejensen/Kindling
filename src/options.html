@@ -23,7 +23,7 @@
 			<div id="coda-slider" class="coda-slider">
 				<div class="panel">
 					<div class="panel-wrapper">
-					   <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterNotifications,#showAvatarsInNotifications,#dismissDiv">
+					   <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterDiv,#showAvatarsInNotifications,#dismissDiv">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="notifications" class="description">{notifications}</label>
@@ -33,11 +33,16 @@
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="disableNotificationsWhenInFocus" class="description">{disableNotificationsWhenInFocus}</label>
 						</p>
-						<p class="field switch" id="filterNotifications">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-							<label for="filterNotifications" class="description">{filterNotifications}</label>
-						</p>
+						<div id="filterDiv">
+							<p class="field switch" id="filterNotifications" data-dependents="#filterKeywordsDiv">
+								<label class="cb-enable"><span>{on}</span></label>
+								<label class="cb-disable selected"><span>{off}</span></label>
+								<label for="filterNotifications" class="description">{filterNotifications}</label>
+							</p>
+							<div class="field" id="filterKeywordsDiv">
+								<input type="text" id="filterKeywords" placeholder="Comma-separated list of keywords" />
+							</div>
+						</div>
 						<p class="field switch" id="showAvatarsInNotifications">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
@@ -76,11 +81,6 @@
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="timeStamps" class="description">{timeStamps}</label>
 						</p>
-						<p class="field switch" id="highlightName">
-							<label class="cb-enable"><span>{on}</span></label>
-							<label class="cb-disable selected"><span>{off}</span></label>
-							<label for="highlightName" class="description">{highlightName}</label>
-						</p>
 						<p class="field switch" id="showAvatarsInChat" data-dependents="#useLargeAvatars">
 							<label class="cb-enable"><span>{on}</span></label>
 							<label class="cb-disable selected"><span>{off}</span></label>
@@ -96,6 +96,14 @@
 							<label class="cb-disable selected"><span>{off}</span></label>
 							<label for="playMessageSounds" class="description">{playMessageSounds}</label>
 						</p>
+						<p class="field switch" id="highlightKeywords" data-dependents="#highlightKeywordsDiv">
+							<label class="cb-enable"><span>{on}</span></label>
+							<label class="cb-disable selected"><span>{off}</span></label>
+							<label for="highlightKeywords" class="description">{highlightKeywords}</label>
+						</p>
+						<div class="field" id="highlightKeywordsDiv">
+							<input type="text" id="highlightKeywordList" placeholder="Comma-separated list of keywords" />
+						</div>
 					</div>
 				</div>
 				<div class="panel">
