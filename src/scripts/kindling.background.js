@@ -46,36 +46,29 @@ kindling.module(function () {
 	}
 
 	function showNotification(payload, sender) {
-		var notification;
-		var icon = (localStorage.showAvatarsInNotifications === 'true') ? payload.avatar : chrome.extension.getURL('/img/campfire46.png');
+		chrome.notifications.create(payload.id, {
+			type: 'basic',
+			title: payload.author,
+			contextMessage: payload.room,
+			message: payload.message,
+			iconUrl: (localStorage.showAvatarsInNotifications === 'true') ? payload.avatar : chrome.extension.getURL('/img/campfire46.png')
+		}, function () {});
 
-		if (webkitNotifications.createHTMLNotification) {
-			notification = webkitNotifications.createHTMLNotification('notification.html'
-				+ '?room=' + encodeURIComponent(payload.room)
-				+ '&author=' + encodeURIComponent(payload.author)
-				+ '&avatar=' + encodeURIComponent(icon)
-				+ '&user=' + encodeURIComponent(payload.username)
-				+ '&emojiUrl=' + encodeURIComponent(payload.emojiUrl)
-				+ '&baseUrl=' + encodeURIComponent(kindling.getDomain(sender.tab.url))
-				+ '#' + payload.message);
-		} else {
-			notification = webkitNotifications.createNotification(icon, payload.author + ' in ' + payload.room, payload.message);
-			if (localStorage.autoDismiss === 'true') {
-				setTimeout(function () {
-					notification.cancel();
-				}, localStorage.notificationTimeout);
-			}
+		if (localStorage.autoDismiss === 'true') {
+			setTimeout(function () {
+				chrome.notifications.clear(payload.id, function () {});
+			}, localStorage.notificationTimeout);
 		}
 
-		notification.onclick = function (e) {
-			chrome.windows.update(tabMap[sender.tab.id], { focused: true });
-			chrome.tabs.update(sender.tab.id, { selected: true });
-			if (e.target.cancel) {
-				e.target.cancel();
+		chrome.notifications.onClicked.addListener(function (id) {
+			if (payload.id === id) {
+				chrome.windows.update(tabMap[sender.tab.id], { focused: true });
+				chrome.tabs.update(sender.tab.id, { selected: true });
+				if (e.target.cancel) {
+					e.target.cancel();
+				}
 			}
-		};
-
-		notification.show();
+		});
 	}
 
 	return {
@@ -95,11 +88,9 @@ kindling.module(function () {
 			initOption('useLargeAvatars', 'false');
 			initOption('minimalInterface', 'false');
 			initOption('expandAbbreviations', 'true');
-			initOption('htmlNotifications', 'true');
 			initOption('playMessageSounds', 'true');
 			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
-			localStorage['htmlNotifications'] = (localStorage.htmlNotifications === 'true' && webkitNotifications.createHTMLNotification) ? 'true' : 'false';
 
 			chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
 				if (tabMap.hasOwnProperty(tabId)) {

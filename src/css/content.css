@@ -110,10 +110,10 @@
  	width: 240px;
  }
 #emojiContainer .coda-nav ul > li > a.current {
-	background: -webkit-linear-gradient(top, #FFFFFF 0%,#F5F5F5 100%);
+	background: -webkit-linear-gradient(top, #FFFFFF 0%, #F5F5F5 100%);
 	border: 1px solid #CACACA;
  }
-#emojiContainer .coda-nav ul > li  > a.current  > img {
+#emojiContainer .coda-nav ul > li > a.current  > img {
 	opacity: 1;
 }
 #emojiContainer .coda-nav ul > li > a:hover {

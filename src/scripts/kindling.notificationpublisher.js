@@ -28,12 +28,12 @@ kindling.module(function () {
 			chrome.extension.sendRequest({
 				type: 'notification',
 				value: {
+					id: message.id,
 					username: username,
-					room: $('#room_name').html(),
+					room: $('#room_name').text(),
 					author: $author.text() || $author.data('short-name'),
 					avatar: $author.data('avatar') || chrome.extension.getURL('img/avatar.png'),
-					emojiUrl: $('link[href^="/stylesheets/emoji.css"]').attr('href'),
-					message: (options.htmlNotifications === 'true' ? $body.html() : $body.text())
+					message: $body.text()
 				}
 			});
 		}
