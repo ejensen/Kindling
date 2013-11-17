@@ -58,7 +58,8 @@
 			"scripts/kindling.notificationpublisher.js",
 			"scripts/kindling.contentscript.js",
 			"scripts/kindling.minimalinterface.js",
-			"scripts/kindling.expandabbreviations.js"
+			"scripts/kindling.expandabbreviations.js",
+			"scripts/kindling.history.js"
 		]
 	}]
 }
