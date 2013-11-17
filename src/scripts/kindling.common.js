@@ -1,36 +1,30 @@
 var kindling = kindling || (function (domReady) {
 	'use strict';
 
-	function regExpEscape(text) {
+	function escapeRegex(text) {
 		var regex = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
 		return text.replace(regex, '\\$&');
 	}
 
-	return {
-		getUsernameRegexString: function (username) {
-			var escapedUsername = regExpEscape(username);
-			return escapedUsername + '|' + escapedUsername.split(' ').join('|');
-		},
+	function getUsernameRegexString(username) {
+		var escapedUsername = escapeRegex(username);
+		return escapedUsername + '|' + escapedUsername.split(' ').join('|');
+	}
 
+	return {
 		getKeywordsRegex: function (keywords, username) {
 			var escaped = [];
 			var list = (keywords || '').split(/\s*,\s*/);
 			for (var i = 0; i < list.length; i++) {
-				var escapedKeyword = regExpEscape(list[i].replace(/^\s+|\s+$/g, ''));
+				var escapedKeyword = escapeRegex(list[i].replace(/^\s+|\s+$/g, ''));
 				if (escapedKeyword) {
 					escaped.push(escapedKeyword);
 				}
 			}
-			return new RegExp('\\b(' + (username ? kindling.getUsernameRegexString(username) + (escaped.length ? '|' : '') : '') + escaped.join('|') + ')\\b', 'i');
+			return new RegExp('\\b(' + (username ? getUsernameRegexString(username) + (escaped.length ? '|' : '') : '') + escaped.join('|') + ')\\b', 'i');
 		},
 
-		getDomain: function (url) {
-			var regex = new RegExp('(chrome-extension|https?):\/\/(.[^/]+)');
-			var match = url.match(regex);
-			return match ? match[0] : '';
-		},
-
-		scrollToBottom : function (force) {
+		scrollToBottom: function (force) {
 			var pageHeight = Math.max(document.documentElement.offsetHeight, document.body.scrollHeight);
 			var targetY = pageHeight + window.innerHeight + 100;
 
