@@ -13,17 +13,6 @@ input[type=text] {
 body, #wrapper, .coda-slider, .coda-slider .panel {
 	width: 380px;
 }
-#wrapper:after {
-	display: none;
-}
-#logo {
-	background: transparent;
-	margin: 0;
-	height: 10px;
-	width: 0;
-	left: 0;
-	top: 0;
-}
 #notificationTimeout {
 	width: 75px;
 }
