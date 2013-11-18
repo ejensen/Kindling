@@ -1,4 +1,4 @@
-kindling.module(function () {
+(function () {
 	'use strict';
 
 	var tabMap = {};
@@ -46,13 +46,27 @@ kindling.module(function () {
 	}
 
 	function showNotification(payload, sender) {
-		chrome.notifications.create(payload.id, {
+		var showAvatars = localStorage.showAvatarsInNotifications === 'true';
+		var opt = {
 			type: 'basic',
 			title: payload.author,
 			contextMessage: payload.room,
 			message: payload.message,
-			iconUrl: (localStorage.showAvatarsInNotifications === 'true') ? payload.avatar : chrome.extension.getURL('/img/campfire46.png')
-		}, function () {});
+			iconUrl: showAvatars ? '' : chrome.extension.getURL('/img/campfire46.png')
+		};
+
+		chrome.notifications.create(payload.id, opt, function () {
+			if (showAvatars && payload.avatar) {
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://www.corsproxy.com/' + payload.avatar.replace(/^https?:\/\//,''), true);
+				xhr.responseType = 'blob';
+				xhr.onload = function() {
+					opt.iconUrl = window.webkitURL.createObjectURL(this.response);
+					chrome.notifications.update(payload.id, opt, function () {});
+				};
+				xhr.send();
+			}
+		});
 
 		if (localStorage.autoDismiss === 'true') {
 			setTimeout(function () {
@@ -64,57 +78,52 @@ kindling.module(function () {
 			if (payload.id === id) {
 				chrome.windows.update(tabMap[sender.tab.id], { focused: true });
 				chrome.tabs.update(sender.tab.id, { selected: true });
-				if (e.target.cancel) {
-					e.target.cancel();
-				}
 			}
 		});
 	}
 
-	return {
-		init: function () {
-			initOption('enterRoom', 'false');
-			initOption('leaveRoom', 'false');
-			initOption('timeStamps', 'true');
-			initOption('filterNotifications', 'false');
-			initOption('autoDismiss', 'true');
-			initOption('notifications', 'true');
-			initOption('notificationTimeout', '5000');
-			initOption('highlightKeywords', localStorage.highlightName === 'false' ? 'false' : 'true');
-			initOption('useDifferentTheme', 'false');
-			initOption('soundAndEmojiMenus', 'true');
-			initOption('soundAndEmojiAutoComplete', 'true');
-			initOption('showAvatarsInChat', 'true');
-			initOption('useLargeAvatars', 'false');
-			initOption('minimalInterface', 'false');
-			initOption('expandAbbreviations', 'true');
-			initOption('playMessageSounds', 'true');
-			initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
-			initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+	return function () {
+		initOption('enterRoom', 'false');
+		initOption('leaveRoom', 'false');
+		initOption('timeStamps', 'true');
+		initOption('filterNotifications', 'false');
+		initOption('autoDismiss', 'true');
+		initOption('notifications', 'true');
+		initOption('notificationTimeout', '5000');
+		initOption('highlightKeywords', localStorage.highlightName === 'false' ? 'false' : 'true');
+		initOption('useDifferentTheme', 'false');
+		initOption('soundAndEmojiMenus', 'true');
+		initOption('soundAndEmojiAutoComplete', 'true');
+		initOption('showAvatarsInChat', 'true');
+		initOption('useLargeAvatars', 'false');
+		initOption('minimalInterface', 'false');
+		initOption('expandAbbreviations', 'true');
+		initOption('playMessageSounds', 'true');
+		initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
+		initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
 
-			chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
-				if (tabMap.hasOwnProperty(tabId)) {
-					tabMap[tabId] = attachInfo.newWindowId;
-				}
-			});
+		chrome.tabs.onAttached.addListener(function (tabId, attachInfo) {
+			if (tabMap.hasOwnProperty(tabId)) {
+				tabMap[tabId] = attachInfo.newWindowId;
+			}
+		});
 
-			chrome.extension.onRequest.addListener(function (request, sender, callback) {
-				if (request.type === 'notification') {
-					tryToCreateNotification(request.value, sender, showNotification);
-				} else if (request.type === 'init') {
-					chrome.pageAction.show(sender.tab.id);
-					tabMap[sender.tab.id] = sender.tab.windowId;
-					sendOptionsChangedNotification();
-				} else if (request.type === 'unload') {
-					delete tabMap[sender.tab.id];
-				} else if (request.type === 'optionsChanged') {
-					sendOptionsChangedNotification();
-				}
+		chrome.extension.onRequest.addListener(function (request, sender, callback) {
+			if (request.type === 'notification') {
+				tryToCreateNotification(request.value, sender, showNotification);
+			} else if (request.type === 'init') {
+				chrome.pageAction.show(sender.tab.id);
+				tabMap[sender.tab.id] = sender.tab.windowId;
+				sendOptionsChangedNotification();
+			} else if (request.type === 'unload') {
+				delete tabMap[sender.tab.id];
+			} else if (request.type === 'optionsChanged') {
+				sendOptionsChangedNotification();
+			}
 
-				if (callback) {
-					callback();
-				}
-			});
-		}
+			if (callback) {
+				callback();
+			}
+		});
 	};
-}());
+}())();
