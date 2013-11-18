@@ -8,18 +8,16 @@
 	}
 
 	function getOptionsObject() {
-		var i, optionsObject = {};
-		var count = localStorage.length;
+		var i, key, optionsObject = {}, count = localStorage.length;
 		for (i = 0; i < count; i++) {
-			var key = localStorage.key(i);
+			key = localStorage.key(i);
 			optionsObject[key] = localStorage.getItem(key);
 		}
 		return optionsObject;
 	}
 
 	function sendOptionsChangedNotification() {
-		var optionsObject = getOptionsObject();
-		var tab;
+		var tab, optionsObject = getOptionsObject();
 		for (tab in tabMap) {
 			if (tabMap.hasOwnProperty(tab)) {
 				chrome.tabs.sendRequest(parseInt(tab, 10), { type: 'optionsChanged', value: optionsObject });
