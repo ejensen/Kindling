@@ -29,7 +29,7 @@
 				var i, count = tabs.length;
 				for (i = 0; i < count; i++) {
 					if (tabs[i].id === sender.tab.id) {
-						return
+						return;
 					}
 				}
 				successCallback(payload, sender);
