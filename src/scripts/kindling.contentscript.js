@@ -46,11 +46,8 @@ kindling.module(function () {
 			kindling.bindNewMessages = bindNewMessages;
 			kindling.unbindNewMessages = unbindNewMessages;
 
-			window.onunload = function () {
-				chrome.extension.sendRequest({ type: 'unload' });
-			};
-			chrome.extension.onRequest.addListener(onRequest);
-			chrome.extension.sendRequest({ type: 'init' });
+			chrome.runtime.onMessage.addListener(onRequest);
+			chrome.runtime.sendMessage({ type: 'init' });
 
 			bindNewMessages();
 

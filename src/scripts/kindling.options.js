@@ -30,7 +30,7 @@ kindling.module(function () {
 	}
 
 	function onOptionChanged() {
-		chrome.extension.sendRequest({ type: 'optionsChanged' });
+		chrome.runtime.sendMessage({ type: 'optionsChanged' });
 	}
 
 	function onCheckChange($parent, value) {

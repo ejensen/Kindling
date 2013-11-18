@@ -25,7 +25,7 @@ kindling.module(function () {
 				}
 			}
 
-			chrome.extension.sendRequest({
+			chrome.runtime.sendMessage({
 				type: 'notification',
 				value: {
 					id: message.id,
