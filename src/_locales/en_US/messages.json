@@ -86,7 +86,7 @@
 	"playMessageSounds":{
 		"message": "Play sound messages"
 	},
-	"disableMessageHistory":{
-		"message": "Disable Message History"
+	"messageHistory":{
+		"message": "Message history"
 	}
 }

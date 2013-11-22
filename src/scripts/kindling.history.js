@@ -9,11 +9,11 @@ kindling.module(function () {
 	// This function is called when the options change
 	// if the option to disable history is on then it will 
 	// no longer respond to the up and down arrow keys
-	function toggleHistory(e, options, username, message){
-		if(options.disableMessageHistory == 'false'){
+	function toggleHistory(e, options) {
+		if (options.messageHistory === 'true') {
 			$('#input').keydown(onKeyPress);
-		} else{
-			$('#input').unbind('keydown',onKeyPress);	
+		} else {
+			$('#input').unbind('keydown', onKeyPress);	
 		}
 	}
 
@@ -39,9 +39,9 @@ kindling.module(function () {
 	// insert into history when this text is not currently in history
 	// This is used when a message is being typed, but has not been sent
 	// if the user presses an up or down arrow key it will store it in history
-	function insertIntoHistory(text,position){
-		if(text && history.indexOf(text) == -1) {
-			history.splice(position,0,text);
+	function insertIntoHistory(text, position){
+		if (text && history.indexOf(text) === -1) {
+			history.splice(position, 0, text);
 		}
 	}
 
@@ -98,7 +98,7 @@ kindling.module(function () {
 				var oldValue = this.value;
 				if (value) {
 					this.value = value;
-					insertIntoHistory(oldValue,insertPosition);
+					insertIntoHistory(oldValue, insertPosition);
 					e.preventDefault();
 				}
 			}

@@ -18,7 +18,7 @@ kindling.module(function () {
 		'useLargeAvatars',
 		'playMessageSounds',
 		'useDifferentTheme',
-		'disableMessageHistory'
+		'messageHistory'
 	];
 
 	function getMessages() {
