@@ -6,6 +6,17 @@ kindling.module(function () {
 	var history = [];
 	var historyPosition = 0;
 
+	// This function is called when the options change
+	// if the option to disable history is on then it will 
+	// no longer respond to the up and down arrow keys
+	function toggleHistory(e, options, username, message){
+		if(options.disableMessageHistory == 'false'){
+			$('#input').keydown(onKeyPress);
+		} else{
+			$('#input').unbind('keydown',onKeyPress);	
+		}
+	}
+
 	function addHistory(e, options, username, message) {
 		var $message = $(message);
 		var messageBody = $message.find('td.body  div.body').html();
@@ -13,6 +24,7 @@ kindling.module(function () {
 
 		if ($message.hasClass('text_message') && messageUser === username) {
 			addToHistory(messageBody);
+			resetHistoryPosition();
 		}
 	}
 
@@ -22,8 +34,15 @@ kindling.module(function () {
 		if (history[history.length -1] !== text) {
 			history.push(text);
 		}
+	}
 
-		resetHistoryPosition();
+	// insert into history when this text is not currently in history
+	// This is used when a message is being typed, but has not been sent
+	// if the user presses an up or down arrow key it will store it in history
+	function insertIntoHistory(text,position){
+		if(text && history.indexOf(text) == -1) {
+			history.splice(position,0,text);
+		}
 	}
 
 	// move to  the end of the history
@@ -63,18 +82,23 @@ kindling.module(function () {
 
 	function onKeyPress(e) {
 		var keyCode = e.keyCode;
+		var insertPosition = 0;
 
 		if (keyCode === UP) {
 			decrementHistoryPosition();
+			insertPosition = historyPosition + 1;
 		} else if (keyCode === DOWN) {
 			incrementHistoryPosition();
+			insertPosition = historyPosition - 1;
 		}
 
 		if (keyCode === UP || keyCode === DOWN) {
 			if (this.value.substr(0, this.selectionStart).split('\n').length <= 1) {
 				var value = getCurrentPosition();
+				var oldValue = this.value;
 				if (value) {
 					this.value = value;
+					insertIntoHistory(oldValue,insertPosition);
 					e.preventDefault();
 				}
 			}
@@ -83,8 +107,8 @@ kindling.module(function () {
 
 	return {
 		init: function () {
+			$.subscribe('optionsChanged', toggleHistory);
 			$.subscribe('newMessage', addHistory);
-			$('#input').keydown(onKeyPress);
 		}
 	};
 }());
