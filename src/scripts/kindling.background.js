@@ -95,6 +95,7 @@
 		initOption('playMessageSounds', 'true');
 		initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
 		initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
+		initOption('disableMessageHistory','false');
 
 		chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 			if (message.type === 'notification') {
