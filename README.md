@@ -11,8 +11,11 @@ Kindling is a collection of useful [Campfire](http://campfirenow.com) enhancemen
 * Icons from [The Noun Project](http://thenounproject.com).
 * Kindling's [contributors](https://github.com/ejensen/Kindling/contributors).
 
+## To-do
+
+- [ ] Replace `localStorage` with [`chrome.storage`](https://developer.chrome.com/apps/storage)
+- [ ] Package manager for 3rd party libraries
+
 ## License
 
 Kindling is available under the MIT license. See the LICENSE file for more info.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ejensen/Kindling/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
