@@ -119,3 +119,36 @@
 #emojiContainer .coda-nav ul > li > a:hover {
 	background-color: transparent;
  }
+
+.collapsable, .collapsable:hover {
+  font-size: 0;
+  background: transparent;
+  text-decoration: none;
+}
+
+.collapsable::after {
+  display: inline-block;
+  content: "▲";
+  vertical-align: top;
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 14px;
+  background: #ccc;
+  color: white;
+}
+
+.collapsable.collapsed::after {
+  content: "▼";
+}
+
+.collapsable.collapsed::before {
+  font-size: 14px;
+  color: #ccc;
+  font-style: italic;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 5px;
+  content: "Image hidden";
+}

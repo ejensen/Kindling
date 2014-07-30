@@ -60,7 +60,8 @@
 			"scripts/kindling.contentscript.js",
 			"scripts/kindling.minimalinterface.js",
 			"scripts/kindling.expandabbreviations.js",
-			"scripts/kindling.history.js"
+			"scripts/kindling.history.js",
+ 			"scripts/kindling.images.js"
 		]
 	}]
 }
