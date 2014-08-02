@@ -71,8 +71,7 @@ kindling.module(function () {
 
   return {
     init: function () {
-      $.subscribe('optionsChanged', filterMessages);
-      $.subscribe('newMessage', filterMessage);
+      $.subscribe('optionsChanged newMessage', filterMessages);
     }
   };
 }());

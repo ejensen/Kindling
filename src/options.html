@@ -1,155 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" media="screen" href="lib/coda-slider/coda-slider.css" />
-	<link rel="stylesheet" media="screen" href="css/options.css" />
-	<link rel="stylesheet" media="screen and (max-width:400px)" href="css/options-small.css" />
-	<script src="lib/jquery.min.js"></script>
-	<script src="lib/coda-slider/jquery.coda-slider.js"></script>
-	<script src="scripts/kindling.common.js"></script>
-	<script src="scripts/kindling.options.js"></script>
+  <link rel="stylesheet" media="screen" href="lib/coda-slider/coda-slider.css" />
+  <link rel="stylesheet" media="screen" href="css/options.css" />
+  <link rel="stylesheet" media="screen and (max-width:400px)" href="css/options-small.css" />
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/coda-slider/jquery.coda-slider.js"></script>
+  <script src="scripts/kindling.common.js"></script>
+  <script src="scripts/kindling.options.js"></script>
 </head>
 <body>
-	<div id="wrapper">
-		<div id="coda-nav-1" class="coda-nav">
-			<ul>
-				<li class="tab1"><a href="#" id="notificationsTitle">{notificationsTitle}</a></li>
-				<li class="tab2"><a href="#" id="messagesTitle">{messagesTitle}</a></li>
-				<li class="tab3"><a href="#" id="otherTitle">{otherTitle}</a></li>
-			</ul>
-		</div>
-		<div class="coda-slider-wrapper">
-			<div id="coda-slider" class="coda-slider">
-				<div class="panel">
-					<div class="panel-wrapper">
-					   <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterDiv,#showAvatarsInNotifications,#dismissDiv">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="notifications" class="description">{notifications}</label>
-						</p>
-						<p class="field switch" id="disableNotificationsWhenInFocus">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="disableNotificationsWhenInFocus" class="description">{disableNotificationsWhenInFocus}</label>
-						</p>
-						<div id="filterDiv">
-							<p class="field switch" id="filterNotifications" data-dependents="#filterKeywordsDiv">
-								<label class="cb-disable selected">{off}</label>
-								<label class="cb-enable">{on}</label>
-								<label for="filterNotifications" class="description">{filterNotifications}</label>
-							</p>
-							<div class="field" id="filterKeywordsDiv">
-								<input type="text" id="filterKeywords" placeholder="Comma-separated list of keywords" />
-							</div>
-						</div>
-						<p class="field switch" id="showAvatarsInNotifications">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="showAvatarsInNotifications" class="description">{showAvatarsInNotifications}</label>
-						</p>
-						<div id="dismissDiv">
-							<p class="field switch" id="autoDismiss" data-dependents="#timeoutDiv">
-								<label class="cb-disable selected">{off}</label>
-								<label class="cb-enable">{on}</label>
-								<label for="autoDismiss" class="description">{autoDismiss}</label>
-							</p>
-							<div class="field" id="timeoutDiv">
-								<div style="display: inline-block">
-									<input id="notificationTimeout" type="range" min="1000" max="15000" step="1000" /><br />
-									<span id="rangeTooltip"></span>
-								</div>
-								<label for="notificationTimeout" style="vertical-align: top; margin-left: 5px;">{notificationTimeout}</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel">
-					<div class="panel-wrapper">
-						<p class="field switch" id="enterRoom">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="enterRoom" class="description">{enterRoom}</label>
-						</p>
-						<p class="field switch" id="leaveRoom">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="leaveRoom" class="description">{leaveRoom}</label>
-						</p>
-						<p class="field switch" id="timeStamps">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="timeStamps" class="description">{timeStamps}</label>
-						</p>
-						<p class="field switch" id="showAvatarsInChat" data-dependents="#useLargeAvatars">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="showAvatarsInChat" class="description">{showAvatarsInChat}</label>
-						</p>
-						<p class="field switch" id="useLargeAvatars">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="useLargeAvatars" class="description">{useLargeAvatars}</label>
-						</p>
-						<p class="field switch" id="playMessageSounds">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="playMessageSounds" class="description">{playMessageSounds}</label>
-						</p>
-						<p class="field switch" id="messageHistory">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="mssageHistory" class="description">{messageHistory}</label>
-						</p>
-						<p class="field switch" id="highlightKeywords" data-dependents="#highlightKeywordsDiv">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="highlightKeywords" class="description">{highlightKeywords}</label>
-						</p>
-						<div class="field" id="highlightKeywordsDiv">
-							<input type="text" id="highlightKeywordList" placeholder="Comma-separated list of keywords" />
-						</div>
-					</div>
-				</div>
-				<div class="panel">
-					<div class="panel-wrapper">
-						<p class="field switch" id="soundAndEmojiAutoComplete">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="soundAndEmojiAutoComplete" class="description">{soundAndEmojiAutoComplete}</label>
-						</p>
-						<p class="field switch" id="soundAndEmojiMenus">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="soundAndEmojiMenus" class="description">{soundAndEmojiMenus}</label>
-						</p>
-						<p class="field switch" id="minimalInterface">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="minimalInterface" class="description">{minimalInterface}</label>
-						</p>
-						<p class="field switch" id="useDifferentTheme" data-dependents="#themeColor">
-							<label class="cb-disable selected">{off}</label>
-							<label class="cb-enable">{on}</label>
-							<label for="useDifferentTheme" class="description">{useDifferentTheme}</label>
-						</p>
-						<div id="themeColor">
-							<input type="radio" name="color" title="red" style="background-color:#900"/>
-							<input type="radio" name="color" title="pink" style="background-color:#F99"/>
-							<input type="radio" name="color" title="purple" style="background-color:#873E8F"/>
-							<input type="radio" name="color" title="blue" style="background-color:#036"/>
-							<input type="radio" name="color" title="ice" style="background-color:#A2BDC8"/>
-							<input type="radio" name="color" title="turq" style="background-color:#3B9E93"/>
-							<input type="radio" name="color" title="green" style="background-color:#093"/>
-							<input type="radio" name="color" title="gold" style="background-color:#FFB94F"/>
-							<input type="radio" name="color" title="orange" style="background-color:#930"/>
-							<input type="radio" name="color" title="brown" style="background-color:#785817"/>
-							<input type="radio" name="color" title="black" style="background-color:#000"/>
-							<input type="radio" name="color" title="grey" style="background-color:#999"/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div id="wrapper">
+    <div id="coda-nav-1" class="coda-nav">
+      <ul>
+        <li class="tab1"><a href="#" id="notificationsTitle">{notificationsTitle}</a></li>
+        <li class="tab2"><a href="#" id="messagesTitle">{messagesTitle}</a></li>
+        <li class="tab3"><a href="#" id="otherTitle">{otherTitle}</a></li>
+      </ul>
+    </div>
+    <div class="coda-slider-wrapper">
+      <div id="coda-slider" class="coda-slider">
+        <div class="panel">
+          <div class="panel-wrapper">
+             <p class="field switch" id="notifications" data-dependents="#disableNotificationsWhenInFocus,#filterDiv,#showAvatarsInNotifications,#dismissDiv">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="notifications" class="description">{notifications}</label>
+            </p>
+            <p class="field switch" id="disableNotificationsWhenInFocus">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="disableNotificationsWhenInFocus" class="description">{disableNotificationsWhenInFocus}</label>
+            </p>
+            <div id="filterDiv">
+              <p class="field switch" id="filterNotifications" data-dependents="#filterKeywordsDiv">
+                <label class="cb-disable selected">{off}</label>
+                <label class="cb-enable">{on}</label>
+                <label for="filterNotifications" class="description">{filterNotifications}</label>
+              </p>
+              <div class="field" id="filterKeywordsDiv">
+                <input type="text" id="filterKeywords" placeholder="Comma-separated list of keywords" />
+              </div>
+            </div>
+            <p class="field switch" id="showAvatarsInNotifications">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="showAvatarsInNotifications" class="description">{showAvatarsInNotifications}</label>
+            </p>
+            <div id="dismissDiv">
+              <p class="field switch" id="autoDismiss" data-dependents="#timeoutDiv">
+                <label class="cb-disable selected">{off}</label>
+                <label class="cb-enable">{on}</label>
+                <label for="autoDismiss" class="description">{autoDismiss}</label>
+              </p>
+              <div class="field" id="timeoutDiv">
+                <div style="display: inline-block">
+                  <input id="notificationTimeout" type="range" min="1000" max="15000" step="1000" /><br />
+                  <span id="rangeTooltip"></span>
+                </div>
+                <label for="notificationTimeout" style="vertical-align: top; margin-left: 5px;">{notificationTimeout}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-wrapper">
+            <p class="field switch" id="enterRoom">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="enterRoom" class="description">{enterRoom}</label>
+            </p>
+            <p class="field switch" id="leaveRoom">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="leaveRoom" class="description">{leaveRoom}</label>
+            </p>
+            <p class="field switch" id="timeStamps">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="timeStamps" class="description">{timeStamps}</label>
+            </p>
+            <p class="field switch" id="showAvatarsInChat" data-dependents="#useLargeAvatars">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="showAvatarsInChat" class="description">{showAvatarsInChat}</label>
+            </p>
+            <p class="field switch" id="useLargeAvatars">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="useLargeAvatars" class="description">{useLargeAvatars}</label>
+            </p>
+            <p class="field switch" id="playMessageSounds">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="playMessageSounds" class="description">{playMessageSounds}</label>
+            </p>
+            <p class="field switch" id="messageHistory">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="mssageHistory" class="description">{messageHistory}</label>
+            </p>
+            <p class="field switch" id="highlightKeywords" data-dependents="#highlightKeywordsDiv">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="highlightKeywords" class="description">{highlightKeywords}</label>
+            </p>
+            <div class="field" id="highlightKeywordsDiv">
+              <input type="text" id="highlightKeywordList" placeholder="Comma-separated list of keywords" />
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-wrapper">
+            <p class="field switch" id="soundAndEmojiAutoComplete">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="soundAndEmojiAutoComplete" class="description">{soundAndEmojiAutoComplete}</label>
+            </p>
+            <p class="field switch" id="soundAndEmojiMenus">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="soundAndEmojiMenus" class="description">{soundAndEmojiMenus}</label>
+            </p>
+            <p class="field switch" id="minimalInterface">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="minimalInterface" class="description">{minimalInterface}</label>
+            </p>
+            <p class="field switch" id="useDifferentTheme" data-dependents="#themeColor">
+              <label class="cb-disable selected">{off}</label>
+              <label class="cb-enable">{on}</label>
+              <label for="useDifferentTheme" class="description">{useDifferentTheme}</label>
+            </p>
+            <div id="themeColor">
+              <input type="radio" name="color" title="red" style="background-color:#900"/>
+              <input type="radio" name="color" title="pink" style="background-color:#F99"/>
+              <input type="radio" name="color" title="purple" style="background-color:#873E8F"/>
+              <input type="radio" name="color" title="blue" style="background-color:#036"/>
+              <input type="radio" name="color" title="ice" style="background-color:#A2BDC8"/>
+              <input type="radio" name="color" title="turq" style="background-color:#3B9E93"/>
+              <input type="radio" name="color" title="green" style="background-color:#093"/>
+              <input type="radio" name="color" title="gold" style="background-color:#FFB94F"/>
+              <input type="radio" name="color" title="orange" style="background-color:#930"/>
+              <input type="radio" name="color" title="brown" style="background-color:#785817"/>
+              <input type="radio" name="color" title="black" style="background-color:#000"/>
+              <input type="radio" name="color" title="grey" style="background-color:#999"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,18 +1,18 @@
 ﻿body, input[type=text] {
-	font-size: 85%;
+  font-size: 85%;
 }
 input[type=text] {
-	width: 240px;
+  width: 240px;
 }
 .description {
-	margin-left: 8px;
+  margin-left: 8px;
 }
 .coda-slider .panel-wrapper {
-	padding: 10px;
+  padding: 10px;
 }
 body, #wrapper, .coda-slider, .coda-slider .panel {
-	width: 380px;
+  width: 380px;
 }
 #notificationTimeout {
-	width: 75px;
+  width: 75px;
 }

@@ -1,123 +1,123 @@
 ﻿mark.keywordHighlight {
-	background-color: #FF8;
+  background-color: #FF8;
 }
 #chat-wrapper tr.hidden_message * {
 /* 'display: none' causes issues with the placement of the star buttons */
-	height: 0;
-	line-height: 0;
-	margin: 0;
-	padding: 0;
-	border-width: 0;
-	font-size: 0;
-	visibility: hidden;
+  height: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  font-size: 0;
+  visibility: hidden;
 }
 .avatar {
-	background-size: contain;
-	height: 36px;
-	width: 36px;
-	opacity: 1.0 !important;
+  background-size: contain;
+  height: 36px;
+  width: 36px;
+  opacity: 1.0 !important;
 }
 .avatar.large {
-	height: 50px;
-	width: 50px;
-	border-radius: 4px;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
 }
 .inline-author {
-	margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 #emojiButton-wrapper, #soundButton-wrapper {
-	width: 18px;
-	height: 16px;
-	margin: 2px 5px;
-	opacity: 0.8;
-	-webkit-transition: opacity 0.25s linear;
+  width: 18px;
+  height: 16px;
+  margin: 2px 5px;
+  opacity: 0.8;
+  -webkit-transition: opacity 0.25s linear;
 }
 #emojiButton-wrapper:hover, #soundButton-wrapper:hover {
-	opacity: 1;
+  opacity: 1;
 }
 .tooltip {
-	position: relative;
-	cursor: pointer;
-	display: inline-block;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
 }
 .tooltip-outer {
-	display: none;
-	cursor: default;
-	position: absolute;
-	bottom: 30px;
-	left: 50%;
-	z-index: 999;
-	padding: 10px;
-	background-color: rgba(255,255,255, 0.95);
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  display: none;
+  cursor: default;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  z-index: 999;
+  padding: 10px;
+  background-color: rgba(255,255,255, 0.95);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 .tooltip-outer:before, .tooltip-outer:after {
-	content: "";
-	position: absolute;
-	z-index: 1000;
-	bottom: -12px;
-	left: 50%;
-	margin-left: -12px;
-	border-top: 12px solid white;
-	border-left: 12px solid transparent;
-	border-right: 12px solid transparent;
-	border-bottom: 0;
-	opacity: 0.9;
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -12px;
+  border-top: 12px solid white;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 0;
+  opacity: 0.9;
 }
 .tooltip-outer:before {
-	border-top-color: #ccc;
-	bottom: -14px;
+  border-top-color: #ccc;
+  bottom: -14px;
 }
 #emojiContainer.tooltip-outer:before, #emojiContainer.tooltip-outer:after {
-	left: 269px;
+  left: 269px;
 }
 #emojiContainer {
-	width: 360px;
-	margin-left: -270px;
+  width: 360px;
+  margin-left: -270px;
 }
 #emoji-slider, #emoji-slider .panel {
-	width: 370px;
+  width: 370px;
 }
 #soundContainer {
-	width: 140px;
-	margin-left: -78px;
+  width: 140px;
+  margin-left: -78px;
 }
 #soundContainer  .tooltip-inner {
-	max-height: 430px;
-	overflow-y: auto;
+  max-height: 430px;
+  overflow-y: auto;
 }
 .tooltip-inner .emoji, .tooltip-inner > .sound {
-	cursor: pointer;
+  cursor: pointer;
 }
 .tooltip-inner .emoji {
-	margin: 4px;
+  margin: 4px;
 }
 .tooltip-inner .emoji:hover {
-	background-color: #BDF;
+  background-color: #BDF;
 }
 .tooltip-inner a {
-	display: block;
+  display: block;
 }
 #emojiContainer .coda-nav ul > li  > a  > img {
-	padding: 6px 13px;
-	opacity: 0.7;
+  padding: 6px 13px;
+  opacity: 0.7;
 }
 #emojiContainer .tab-button {
-	margin: 0;
+  margin: 0;
 }
 #emojiContainer .coda-nav {
- 	margin: auto;
- 	width: 240px;
+  margin: auto;
+  width: 240px;
  }
 #emojiContainer .coda-nav ul > li > a.current {
-	background: -webkit-linear-gradient(top, #FFFFFF 0%, #F5F5F5 100%);
-	border: 1px solid #CACACA;
+  background: -webkit-linear-gradient(top, #FFFFFF 0%, #F5F5F5 100%);
+  border: 1px solid #CACACA;
  }
 #emojiContainer .coda-nav ul > li > a.current  > img {
-	opacity: 1;
+  opacity: 1;
 }
 #emojiContainer .coda-nav ul > li > a:hover {
-	background-color: transparent;
+  background-color: transparent;
  }
 
 .collapsable, .collapsable:hover {

@@ -1,124 +1,124 @@
 // concept from http://chalbach.com/campfire-avatars
 kindling.module(function () {
-	'use strict';
+  'use strict';
 
-	var isEnabled = false;
-	var largeAvatars = false;
+  var isEnabled = false;
+  var largeAvatars = false;
 
-	function moveAuthorToMessage($author, $message) {
-		$author.data('short-name', $author.text());
-		$author.html('');
+  function moveAuthorToMessage($author, $message) {
+    $author.data('short-name', $author.text());
+    $author.html('');
 
-		var $messageBody = $message.find('td.body');
-		$messageBody.css('vertical-align', 'top');
+    var $messageBody = $message.find('td.body');
+    $messageBody.css('vertical-align', 'top');
 
-		var $bodyAuthor = $('<h4 class="inline-author">' + $author.data('name') + '</h4>');
-		$messageBody.prepend($bodyAuthor);
-	}
+    var $bodyAuthor = $('<h4 class="inline-author">' + $author.data('name') + '</h4>');
+    $messageBody.prepend($bodyAuthor);
+  }
 
-	function removeAuthorFromMessage($author, $message) {
-		var $messageBody = $message.find('td.body');
-		$messageBody.css('vertical-align', '');
+  function removeAuthorFromMessage($author, $message) {
+    var $messageBody = $message.find('td.body');
+    $messageBody.css('vertical-align', '');
 
-		$message.find('.inline-author').remove();
+    $message.find('.inline-author').remove();
 
-		$author.html($author.data('short-name'));
-	}
+    $author.html($author.data('short-name'));
+  }
 
-	function getAvatar($person) {
-		var $author = $person.find('.author');
-		if ($author.css('display') === 'none') {
-			return null;
-		}
-		return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + ($author.data('avatar') || chrome.extension.getURL('img/avatar.png')) + '"/>');
-	}
+  function getAvatar($person) {
+    var $author = $person.find('.author');
+    if ($author.css('display') === 'none') {
+      return null;
+    }
+    return $('<img class="avatar" alt="' + $author.data('name') + '" src="' + ($author.data('avatar') || chrome.extension.getURL('img/avatar.png')) + '"/>');
+  }
 
-	function tryToAddAvatar($person) {
-		var $message = $person.parent();
-		if (!$message.find('td.body div.body').length || $message.find('.inline-author').length) {
-			return false;
-		}
+  function tryToAddAvatar($person) {
+    var $message = $person.parent();
+    if (!$message.find('td.body div.body').length || $message.find('.inline-author').length) {
+      return false;
+    }
 
-		var $avatar = getAvatar($person);
-		if (!$avatar) {
-			return false;
-		}
+    var $avatar = getAvatar($person);
+    if (!$avatar) {
+      return false;
+    }
 
-		var $author = $message.find('.author');
-		if ($author.css('display') === 'none') {
-			return false;
-		}
+    var $author = $message.find('.author');
+    if ($author.css('display') === 'none') {
+      return false;
+    }
 
-		moveAuthorToMessage($author, $message);
+    moveAuthorToMessage($author, $message);
 
-		if (largeAvatars) {
-			$avatar.addClass('large');
-		}
+    if (largeAvatars) {
+      $avatar.addClass('large');
+    }
 
-		$person.append($avatar);
+    $person.append($avatar);
 
-		return true;
-	}
+    return true;
+  }
 
-	function tryToRemoveAvatar($person) {
-		var $avatar = $person.find('.avatar');
-		if (!$avatar) {
-			return false;
-		}
+  function tryToRemoveAvatar($person) {
+    var $avatar = $person.find('.avatar');
+    if (!$avatar) {
+      return false;
+    }
 
-		$avatar.remove();
-		var $message = $person.parent();
-		if ($message) {
-			removeAuthorFromMessage($message.find('.author'), $message);
-		}
+    $avatar.remove();
+    var $message = $person.parent();
+    if ($message) {
+      removeAuthorFromMessage($message.find('.author'), $message);
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	function visitPersonElements(visiter) {
-		var modified = false;
-		$('.person').each(function (i, e) { modified = visiter($(e)) || modified; });
+  function visitPersonElements(visiter) {
+    var modified = false;
+    $('.person').each(function (i, e) { modified = visiter($(e)) || modified; });
 
-		if (modified) {
-			kindling.scrollToBottom(true);
-		}
-	}
+    if (modified) {
+      kindling.scrollToBottom(true);
+    }
+  }
 
-	function onOptionsChanged(e, options) {
-		var newValue = options.showAvatarsInChat === 'true';
-		if (newValue !== isEnabled) {
-			isEnabled = newValue;
-			if (isEnabled) {
-				visitPersonElements(tryToAddAvatar);
-			} else {
-				visitPersonElements(tryToRemoveAvatar);
-			}
-		}
+  function onOptionsChanged(e, options) {
+    var newValue = options.showAvatarsInChat === 'true';
+    if (newValue !== isEnabled) {
+      isEnabled = newValue;
+      if (isEnabled) {
+        visitPersonElements(tryToAddAvatar);
+      } else {
+        visitPersonElements(tryToRemoveAvatar);
+      }
+    }
 
-		newValue = options.useLargeAvatars === 'true';
-		if (newValue !== largeAvatars) {
-			largeAvatars = newValue;
-			if (largeAvatars) {
-				$('.avatar').addClass('large');
-			} else {
-				$('.avatar').removeClass('large');
-			}
-		}
-	}
+    newValue = options.useLargeAvatars === 'true';
+    if (newValue !== largeAvatars) {
+      largeAvatars = newValue;
+      if (largeAvatars) {
+        $('.avatar').addClass('large');
+      } else {
+        $('.avatar').removeClass('large');
+      }
+    }
+  }
 
-	function onNewMessage(e, options, username, message) {
-		if (options.showAvatarsInChat === 'true') {
-			var $person = $(message).find('.person');
-			if ($person.length && tryToAddAvatar($person.first())) {
-				kindling.scrollToBottom();
-			}
-		}
-	}
+  function onNewMessage(e, options, username, message) {
+    if (options.showAvatarsInChat === 'true') {
+      var $person = $(message).find('.person');
+      if ($person.length && tryToAddAvatar($person.first())) {
+        kindling.scrollToBottom();
+      }
+    }
+  }
 
-	return {
-		init: function () {
-			$.subscribe('optionsChanged', onOptionsChanged);
-			$.subscribe('newMessage', onNewMessage);
-		}
-	};
+  return {
+    init: function () {
+      $.subscribe('optionsChanged', onOptionsChanged);
+      $.subscribe('newMessage', onNewMessage);
+    }
+  };
 }());

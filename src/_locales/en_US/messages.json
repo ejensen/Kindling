@@ -1,92 +1,92 @@
 ﻿{
-	"on":{
-		"message": "On"
-	},
-	"off":{
-		"message": "Off"
-	},
-	"beta":{
-		"message": "Beta"
-	},
-	"notificationsTitle":{
-		"message": "Notifications"
-	},
-	"notifications":{
-		"message": "New message notifications"
-	},
-	"disableNotificationsWhenInFocus":{
-		"message": "Disable when tab has focus"
-	},
-	"filterNotifications":{
-		"message": "Only display if keywords are mentioned"
-	},
-	"showAvatarsInNotifications":{
-		"message": "Display avatars in notifications"
-	},
-	"autoDismiss":{
-		"message": "Auto-dismiss notifications"
-	},
-	"notificationTimeout":{
-		"message": "Auto-dismiss duration"
-	},
-	"messagesTitle":{
-		"message": "Messages"
-	},
-	"enterRoom":{
-		"message": "Enter room messages"
-	},
-	"leaveRoom":{
-		"message": "Leave room messages"
-	},
-	"timeStamps":{
-		"message": "Time stamp messages"
-	},
-	"otherTitle":{
-		"message": "Misc."
-	},
-	"highlightKeywords":{
-		"message": "Highlight name & keywords"
-	},
-	"soundAndEmojiMenus":{
-		"message": "Emoji and sound menus"
-	},
-	"soundAndEmojiAutoComplete":{
-		"message": "Emoji and sound auto-completion"
-	},
-	"minimalInterface":{
-		"message": "Minimal UI"
-	},
-	"useDifferentTheme":{
-		"message": "Alternate color scheme"
-	},
-	"showAvatarsInChat":{
-		"message": "Display user avatars"
-	},
-	"useLargeAvatars":{
-		"message": "Large user avatars"
-	},
-	"iconTooltip":{
-		"message": "Click to configure Kindling..."
-	},
-	"description":{
-		"message": "Adds useful features to 37signals Campfire."
-	},
-	"seconds":{
-		"message": "sec"
-	},
-	"options":{
-		"message": "Kindling Options"
-	},
-	"emojiMenuTooltip":{
-		"message": "Insert emoji..."
-	},
-	"soundMenuTooltip":{
-		"message": "Play sound..."
-	},
-	"playMessageSounds":{
-		"message": "Play sound messages"
-	},
-	"messageHistory":{
-		"message": "Message history"
-	}
+  "on":{
+    "message": "On"
+  },
+  "off":{
+    "message": "Off"
+  },
+  "beta":{
+    "message": "Beta"
+  },
+  "notificationsTitle":{
+    "message": "Notifications"
+  },
+  "notifications":{
+    "message": "New message notifications"
+  },
+  "disableNotificationsWhenInFocus":{
+    "message": "Disable when tab has focus"
+  },
+  "filterNotifications":{
+    "message": "Only display if keywords are mentioned"
+  },
+  "showAvatarsInNotifications":{
+    "message": "Display avatars in notifications"
+  },
+  "autoDismiss":{
+    "message": "Auto-dismiss notifications"
+  },
+  "notificationTimeout":{
+    "message": "Auto-dismiss duration"
+  },
+  "messagesTitle":{
+    "message": "Messages"
+  },
+  "enterRoom":{
+    "message": "Enter room messages"
+  },
+  "leaveRoom":{
+    "message": "Leave room messages"
+  },
+  "timeStamps":{
+    "message": "Time stamp messages"
+  },
+  "otherTitle":{
+    "message": "Misc."
+  },
+  "highlightKeywords":{
+    "message": "Highlight name & keywords"
+  },
+  "soundAndEmojiMenus":{
+    "message": "Emoji and sound menus"
+  },
+  "soundAndEmojiAutoComplete":{
+    "message": "Emoji and sound auto-completion"
+  },
+  "minimalInterface":{
+    "message": "Minimal UI"
+  },
+  "useDifferentTheme":{
+    "message": "Alternate color scheme"
+  },
+  "showAvatarsInChat":{
+    "message": "Display user avatars"
+  },
+  "useLargeAvatars":{
+    "message": "Large user avatars"
+  },
+  "iconTooltip":{
+    "message": "Click to configure Kindling..."
+  },
+  "description":{
+    "message": "Adds useful features to 37signals Campfire."
+  },
+  "seconds":{
+    "message": "sec"
+  },
+  "options":{
+    "message": "Kindling Options"
+  },
+  "emojiMenuTooltip":{
+    "message": "Insert emoji..."
+  },
+  "soundMenuTooltip":{
+    "message": "Play sound..."
+  },
+  "playMessageSounds":{
+    "message": "Play sound messages"
+  },
+  "messageHistory":{
+    "message": "Message history"
+  }
 }
