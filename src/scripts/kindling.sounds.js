@@ -23,6 +23,7 @@ kindling.module(function () {
     'Inconceivable' : 'inconceivable',
     'Jeff Bezos': 'bezos',
     'Kenny Loggins': 'loggins',
+    'Let it go' :'letitgo',
     'Make it so': 'makeitso',
     'Noooo': 'noooo',
     'Nyan cat': 'nyan',
