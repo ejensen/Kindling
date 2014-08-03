@@ -3,17 +3,19 @@ kindling.module(function () {
 
   function handleImages(e, options, username) {
     $('#chat-wrapper div.body > .image').each(function () {
-      if(!$(this).next('.collapsable').length) {
-        $('<a>').attr('href', '#').attr('title', 'hide').addClass('collapsable').insertAfter(this);
+      var $image = $(this);
+      if (!$image.next('.collapsable').length) {
+        $('<a>').attr('href', '#').attr('title', 'hide').text($image.attr('href')).addClass('collapsable').insertAfter(this);
       }
     });
   }
 
   function toggleImage(event) {
     event.preventDefault();
-    $(this).prev('.image').slideToggle(200);
-    $(this).toggleClass('collapsed');
-    $(this).attr('title', $(this).hasClass('collapsed') ? 'show' : 'hide');
+    var $element = $(this);
+    $element.prev('.image').toggle(100);
+    $element.toggleClass('collapsed');
+    $element.attr('title', $element.hasClass('collapsed') ? 'show' : 'hide');
   }
 
   return {

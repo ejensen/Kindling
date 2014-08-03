@@ -119,40 +119,33 @@
 #emojiContainer .coda-nav ul > li > a:hover {
   background-color: transparent;
  }
-
 .collapsable, .collapsable:hover {
   font-size: 0;
-  background: transparent;
   text-decoration: none;
+  color: inherit;
+  background-color: inherit;
 }
-
+.collapsable.collapsed {
+  font-size: 1em;
+}
 .collapsable::after {
-  display: inline-block;
-  content: "▲";
-  -webkit-transform:rotate(180deg);
-  transform:rotate(180deg);
+  position: relative;
+  left: -26px;
   vertical-align: top;
-  padding: 3px;
-  font-size: 14px;
-  line-height: 14px;
-  background: #efefef;
-  color: #333;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
+  display: none;
+  content: url("chrome-extension://__MSG_@@extension_id__/img/close.svg");
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
 }
-
+.image:hover + .collapsable::after, .collapsable:hover::after {
+  display: inline-block;
+}
+.collapsable:hover::after {
+  opacity: 0.75;
+}
 .collapsable.collapsed::after {
-  -webkit-transform:rotate(0deg);
-  transform:rotate(0deg);
-  margin-left: 5px;
-}
-
-.collapsable.collapsed::before {
-  font-size: 14px;
-  color: #333;
-  font-style: italic;
-  text-decoration: none;
-  padding-left: 10px;
-  padding-right: 5px;
-  content: "Image hidden";
+  display: inline-block;
+  left: 5px;
+  content: url("chrome-extension://__MSG_@@extension_id__/img/eye.svg");
 }

@@ -38,6 +38,8 @@
     "img/nature.png",
     "img/objects.png",
     "img/places.png",
+    "img/eye.svg",
+    "img/close.svg",
     "scripts/kindling.inject.js"
   ],
   "content_scripts": [{
