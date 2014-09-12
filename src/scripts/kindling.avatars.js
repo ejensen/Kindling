@@ -107,7 +107,7 @@ kindling.module(function () {
   }
 
   function onNewMessage(e, options, username, message) {
-    if (options.showAvatarsInChat === 'true') {
+    if (options && options.showAvatarsInChat === 'true') {
       var $person = $(message).find('.person');
       if ($person.length && tryToAddAvatar($person.first())) {
         kindling.scrollToBottom();

@@ -46,7 +46,7 @@
       title: payload.author,
       contextMessage: payload.room,
       message: payload.message,
-      iconUrl: showAvatars ? '' : chrome.extension.getURL('/img/campfire46.png')
+      iconUrl: showAvatars ? chrome.extension.getURL('/img/empty_avatar.png') : chrome.extension.getURL('/img/campfire.png')
     };
 
     chrome.notifications.create(payload.id, opt, function () {
