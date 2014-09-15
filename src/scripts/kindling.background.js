@@ -93,7 +93,7 @@
     initOption('minimalInterface', 'false');
     initOption('expandAbbreviations', 'true');
     initOption('playMessageSounds', 'true');
-    initOption('showAvatarsInNotifications', localStorage.showAvatars === 'false' ? 'false' : 'true');
+    initOption('showAvatarsInNotifications', 'false');
     initOption('disableNotificationsWhenInFocus', localStorage.focusNotifications === 'false');
     initOption('messageHistory','true');
 
