@@ -5,6 +5,7 @@ kindling.module(function () {
     '56k': '56k',
     'Bell': 'bell',
     'Bueller?': 'bueller',
+    'Hold on to your butts': 'butts',
     'Clown town': 'clowntown',
     'Cotten eye joe': 'cottoneyejoe',
     'Crickets chirping': 'crickets',
@@ -14,6 +15,7 @@ kindling.module(function () {
     'Deeper': 'deeper',
     'Do it live!': 'live',
     'Drama': 'drama',
+    'Flawless': 'flawless',
     'Get ready to rumble': 'rumble',
     'Guarantee it': 'guarantee',
     'Great job': 'greatjob',
@@ -45,6 +47,7 @@ kindling.module(function () {
     'Vuvuzela': 'vuvuzela',
     'What up with that?': 'what',
     'Whoomp': 'whoomp',
+    'Wups': 'wups',
     'Yeeeaaah!': 'yeah',
     'Yodel': 'yodel'
   };
