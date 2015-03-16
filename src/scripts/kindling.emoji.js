@@ -35,13 +35,14 @@ kindling.module(function () {
 
     var $emojiContainer = $menu.find('#emojiContainer');
     var $emojiSlider = $emojiContainer.find('#emoji-slider');
-    var i, group, $panel, $wrapper;
+    var i, group, name, $panel, $wrapper;
     for (group in EMOJIS) {
       if (EMOJIS.hasOwnProperty(group)) {
         $panel = $('<div class="panel"><div class="panel-wrapper"></div></div>');
         $wrapper = $panel.find('.panel-wrapper');
         for (i = 0; i < EMOJIS[group].length; i++) {
-          $wrapper.append('<span class="emoji emoji-' + EMOJIS[group][i] + '" title="' + EMOJIS[group][i] + '"></span>');
+          name = EMOJIS[group][i];
+          $wrapper.append('<img class="emoji_img" alt="' + name + '" title="' + name + '" + src="/images/emoji/' + name + '.png" />');
         }
         $emojiSlider.append($panel);
       }
@@ -105,7 +106,7 @@ kindling.module(function () {
           });
         }
       },
-      tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png?1360702140" height="20" width="20"/> ${name}</li>'
+      tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png" height="20" width="20"/> ${name}</li>'
     });
   }
 
@@ -128,25 +129,38 @@ kindling.module(function () {
     'relaxed',
     'smirk',
     'heart_eyes',
+    'kissing',
     'kissing_heart',
-    'kissing_face',
+    'kissing_closed_eyes',
     'flushed',
     'relieved',
     'satisfied',
     'grin',
+    'grinning',
     'wink',
-    'wink2',
-    'tongue',
+    'stuck_out_tongue',
+    'stuck_out_tongue_winking_eye',
+    'stuck_out_tongue_closed_eyes',
     'unamused',
+    'sleeping',
     'sweat_smile',
     'sweat',
+    'disappointed_relieved',
     'weary',
+    'worried',
     'pensive',
     'disappointed',
     'confounded',
     'fearful',
     'cold_sweat',
     'persevere',
+    'frowning',
+    'open_mouth',
+    'anguished',
+    'grimacing',
+    'confused',
+    'expressionless',
+    'hushed',
     'cry',
     'sob',
     'joy',
@@ -276,7 +290,7 @@ kindling.module(function () {
     'ear',
     'eyes',
     'nose',
-    'tongue2',
+    'tongue',
     'love_letter',
     'bust_in_silhouette',
     'busts_in_silhouette',
@@ -677,7 +691,6 @@ kindling.module(function () {
     'church',
     'department_store',
     'european_post_office',
-    '109',
     'city_sunrise',
     'city_sunset',
     'japanese_castle',
