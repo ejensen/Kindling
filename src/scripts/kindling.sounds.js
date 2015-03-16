@@ -94,7 +94,8 @@ kindling.module(function () {
     var soundsArray = (options.soundAndEmojiAutoComplete === 'true') ? SOUNDS : [];
     var soundMap = $.map(soundsArray, function(value, i) { return { key: value, name: i }; });
 
-    $('#input').atwho('/play ', {
+    $('#input').atwho({
+      at: "/play ",
       limit: 35,
       data: soundMap,
       callbacks: {
@@ -120,7 +121,8 @@ kindling.module(function () {
           return li;
         }
       },
-      tpl:'<li data-value="${key}"><img height="12" src="/images/sound.png?1359156757" width="12"> ${name}</li>'
+      insertTpl: "${atwho-at}${key}",
+      displayTpl:'<li data-value="${key}"><img height="12" src="/images/sound.png?1359156757" width="12"> ${name}</li>'
     });
   }
 

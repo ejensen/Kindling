@@ -85,7 +85,8 @@ kindling.module(function () {
 
     var emojiMap = $.map(emojiArray, function(value) { return { key:value + ':', name:value }; });
 
-    $('#input').atwho(':', {
+    $('#input').atwho({
+      at: ':',
       limit: 6,
       data: emojiMap,
       callbacks: {
@@ -106,7 +107,8 @@ kindling.module(function () {
           });
         }
       },
-      tpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png" height="20" width="20"/> ${name}</li>'
+      insertTpl: "${atwho-at}${key}",
+      displayTpl:'<li data-value="${key}"><img src="/images/emoji/${name}.png" height="20" width="20" /> ${name}</li>'
     });
   }
 
