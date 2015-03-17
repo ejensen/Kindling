@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Kindling for Campfire",
   "short_name": "Kindling",
-  "version": "4.4.3",
+  "version": "4.4.4",
   "default_locale": "en_US",
   "description": "__MSG_description__",
   "background": {
