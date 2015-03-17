@@ -64,7 +64,7 @@ kindling.module(function () {
 
     var $input = $('#input');
     $emojiContainer.click(function (e) {
-      if ($(e.target).hasClass('emoji')) {
+      if ($(e.target).hasClass('emoji_img')) {
         insertAtCaret($input[0], ':' + e.target.getAttribute('title') + ':');
         $input.focus();
       }
