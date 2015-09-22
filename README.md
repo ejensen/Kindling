@@ -1,5 +1,5 @@
 <p align="center" >
-  <img src="https://github.com/ejensen/Kindling/raw/master/banner.png" alt="Kindling for Campfire" title="Kindling">
+  <img src="https://github.com/ejensen/Kindling/raw/master/design/banner.png" alt="Kindling for Campfire" title="Kindling">
 </p>
 
 Kindling is a collection of useful [Campfire](http://campfirenow.com) enhancements packed into a [Google Chrome extension](https://chrome.google.com/webstore/detail/abnakpmgckdkcpgbcejajjbllagggcif).
